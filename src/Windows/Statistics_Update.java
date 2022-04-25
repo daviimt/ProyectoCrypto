@@ -11,9 +11,9 @@ import javax.swing.JTextField;
 @SuppressWarnings("serial")
 public class Statistics_Update extends JFrame {
 
-	JTextField titlef, yearf, lblNewLabel_2f;
-	JButton next, cancel;
-	JLabel title, year, lblNewLabel_2;
+	JLabel jlname, jlvalue, jlmarketCap,jlsupply;
+	JTextField jtname, jtvalue, jtmarketCap,jtsupply;
+	JButton jbnext, jbcancel;
 
 	public Statistics_Update() {
 
@@ -22,24 +22,50 @@ public class Statistics_Update extends JFrame {
 		getContentPane().setLayout(null);
 		setLocationRelativeTo(null);
 
-		title = new JLabel("Title:");
-		title.setBounds(123, 53, 45, 13);
-		getContentPane().add(title);
+		//JLabel
+		jlname = new JLabel("Name:");
+		jlname.setBounds(123, 53, 45, 13);
+		getContentPane().add(jlname);
 
-		year = new JLabel("Year:");
-		year.setBounds(123, 76, 45, 13);
-		getContentPane().add(year);
+		jlvalue = new JLabel("Value:");
+		jlvalue.setBounds(123, 76, 45, 13);
+		getContentPane().add(jlvalue);
 
-		// No entiendo bien lo que pone en la foto de la pizarra
-		lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setBounds(123, 99, 45, 13);
-		getContentPane().add(lblNewLabel_2);
+		jlmarketCap = new JLabel("Market Cap:");
+		jlmarketCap.setBounds(123, 99, 45, 13);
+		getContentPane().add(jlmarketCap);
+		
+		jlsupply = new JLabel("Supply:");
+		jlsupply.setBounds(123, 99, 45, 13);
+		getContentPane().add(jlsupply);
 
-		next = new JButton("Continue");
-		next.setBounds(101, 163, 85, 21);
-		getContentPane().add(next);
-		next.addActionListener(new ActionListener() {
+		//JTextField
+		jtname = new JTextField();
+		jtname.setBounds(207, 50, 96, 19);
+		getContentPane().add(jtname);
+		jtname.setColumns(10);
 
+		jtvalue = new JTextField();
+		jtvalue.setBounds(207, 73, 96, 19);
+		getContentPane().add(jtvalue);
+		jtvalue.setColumns(10);
+
+		jtmarketCap = new JTextField();
+		jtmarketCap.setBounds(207, 96, 96, 19);
+		getContentPane().add(jtmarketCap);
+		jtmarketCap.setColumns(10);
+		
+		jtsupply = new JTextField();
+		jtsupply.setBounds(207, 96, 96, 19);
+		getContentPane().add(jtsupply);
+		jtsupply.setColumns(10);
+		
+		//Buttons
+		jbnext = new JButton("Continue");
+		jbnext.setBounds(101, 163, 85, 21);
+		getContentPane().add(jbnext);
+		jbnext.addActionListener(new ActionListener() {
+			
 			@SuppressWarnings("unused")
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -47,12 +73,12 @@ public class Statistics_Update extends JFrame {
 				dispose();
 			}
 		});
-
-		cancel = new JButton("Cancel");
-		cancel.setBounds(218, 163, 85, 21);
-		getContentPane().add(cancel);
-		cancel.addActionListener(new ActionListener() {
-
+		
+		jbcancel = new JButton("Cancel");
+		jbcancel.setBounds(218, 163, 85, 21);
+		getContentPane().add(jbcancel);
+		jbcancel.addActionListener(new ActionListener() {
+			
 			@SuppressWarnings("unused")
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -60,22 +86,7 @@ public class Statistics_Update extends JFrame {
 				dispose();
 			}
 		});
-
-		titlef = new JTextField();
-		titlef.setBounds(207, 50, 96, 19);
-		getContentPane().add(titlef);
-		titlef.setColumns(10);
-
-		yearf = new JTextField();
-		yearf.setBounds(207, 73, 96, 19);
-		getContentPane().add(yearf);
-		yearf.setColumns(10);
-
-		// No entiendo bien lo que pone en la foto de la pizarra
-		lblNewLabel_2f = new JTextField();
-		lblNewLabel_2f.setBounds(207, 96, 96, 19);
-		getContentPane().add(lblNewLabel_2f);
-		lblNewLabel_2f.setColumns(10);
+		
 		setVisible(true);
 	}
 

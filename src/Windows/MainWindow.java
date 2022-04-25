@@ -30,7 +30,7 @@ public class MainWindow extends JFrame {
 		lblNewLabel.setBounds(170, 30, 67, 13);
 		getContentPane().add(lblNewLabel);
 
-		JLabel lblNewLabel_1 = new JLabel("New label");
+		JLabel lblNewLabel_1 = new JLabel("nombre");
 		lblNewLabel_1.setBounds(331, 30, 92, 13);
 		getContentPane().add(lblNewLabel_1);
 
