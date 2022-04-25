@@ -42,19 +42,19 @@ public class MainWindow extends JFrame {
 		panel.add(details);
 
 		insert = new JButton("Insert");
-		panel.add(insert);
-
-		update = new JButton("Update");
-		update.addActionListener(new ActionListener() {
-
+		insert.addActionListener(new ActionListener() {
+			
 			@SuppressWarnings("unused")
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Statistics_Update statistics = new Statistics_Update();
+				Insert statistics = new Insert();
 				dispose();
-
+				
 			}
 		});
+		panel.add(insert);
+
+		update = new JButton("Update");
 		panel.add(update);
 
 		close = new JButton("Close");
@@ -63,16 +63,7 @@ public class MainWindow extends JFrame {
 		statistics = new JButton("Statistics");
 		statistics.setBounds(233, 310, 109, 21);
 		getContentPane().add(statistics);
-		statistics.addActionListener(new ActionListener() {
-
-			@SuppressWarnings("unused")
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				Statistics_Update statistics = new Statistics_Update();
-				dispose();
-
-			}
-		});
+		
 		setVisible(true);
 	}
 
