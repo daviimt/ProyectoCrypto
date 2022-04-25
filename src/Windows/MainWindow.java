@@ -17,6 +17,7 @@ public class MainWindow extends JFrame {
 	JButton details, insert, update, close, statistics;
 
 	public MainWindow() {
+		super("Menu");
 		setBounds(100, 100, 600, 400);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);

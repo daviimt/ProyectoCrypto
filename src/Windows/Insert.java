@@ -18,7 +18,7 @@ public class Insert extends JFrame {
 	JButton jbnext, jbcancel;
 
 	public Insert() {
-
+		super("Insert cryptocurrency");
 		setBounds(100, 100, 450, 300);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(new GridLayout(3, 2));

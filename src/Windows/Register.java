@@ -18,6 +18,7 @@ public class Register extends JFrame {
 	JPasswordField passwordf;
 
 	public Register() {
+		super("Register user");
 		setBounds(100, 100, 250, 181);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
