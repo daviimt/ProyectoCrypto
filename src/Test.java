@@ -1,8 +1,11 @@
+import ventanas.Login;
 
 public class Test {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
+		Login login = new Login();
 
 	}
 
