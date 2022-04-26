@@ -2,8 +2,22 @@ package Entities;
 
 public class User {
 
-	private String dni, correo, nombre, apellido1, apellido2;
+	private String username, dni, correo, nombre, apellido1, apellido2, password;
 	private int tlf;
+
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	/**
 	 * @return the dni
@@ -87,6 +101,40 @@ public class User {
 	 */
 	public void setTlf(int tlf) {
 		this.tlf = tlf;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public User(String username, String dni, String correo, String nombre, String apellido1, String apellido2,
+			String password, int tlf) {
+		super();
+		this.username = username;
+		this.dni = dni;
+		this.correo = correo;
+		this.nombre = nombre;
+		this.apellido1 = apellido1;
+		this.apellido2 = apellido2;
+		this.password = password;
+		this.tlf = tlf;
+	}
+
+	public User(String username, String dni, String correo, String password, int tlf) {
+		super();
+		this.username = username;
+		this.dni = dni;
+		this.correo = correo;
+		this.password = password;
+		this.tlf = tlf;
+	}
+
+	public User() {
+		super();
 	}
 
 }
