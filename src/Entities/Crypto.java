@@ -2,6 +2,7 @@ package Entities;
 
 public class Crypto {
 	private String name;
+	private float value, marketCap, supply;
 
 	/**
 	 * @return the name
@@ -58,7 +59,5 @@ public class Crypto {
 	public void setSupply(float supply) {
 		this.supply = supply;
 	}
-
-	private float value, marketCap, supply;
 
 }

@@ -13,9 +13,9 @@ import javax.swing.JTextField;
 @SuppressWarnings("serial")
 public class Insert extends JFrame {
 
-	JLabel jlname, jlvalue, jlmarketCap, jlsupply;
-	JTextField jtname, jtvalue, jtmarketCap, jtsupply;
-	JButton jbnext, jbcancel;
+	private JLabel jlname, jlvalue, jlmarketCap, jlsupply;
+	private JTextField jtname, jtvalue, jtmarketCap, jtsupply;
+	private JButton jbnext, jbcancel;
 
 	public Insert() {
 		super("Insert cryptocurrency");

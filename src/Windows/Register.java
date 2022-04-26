@@ -12,10 +12,10 @@ import javax.swing.JTextField;
 @SuppressWarnings("serial")
 public class Register extends JFrame {
 
-	JLabel username, password, tlf;
-	JButton register, back;
-	JTextField usernamef, tlff;
-	JPasswordField passwordf;
+	private JLabel username, password, tlf;
+	private JButton register, back;
+	private JTextField usernamef, tlff;
+	private JPasswordField passwordf;
 
 	public Register() {
 		super("Register user");
