@@ -67,13 +67,14 @@ public class MainWindow extends JFrame {
 			}
 		});
 
-		close = new JButton("Close");
+		close = new JButton("Log Out");
 		panel.add(close);
 		close.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
+				Login login = new Login();
 
 			}
 		});
