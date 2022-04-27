@@ -17,7 +17,7 @@ public class MainWindow extends JFrame {
 	private JTable table;
 	private JPanel panel;
 	private JButton details, insert, update, close, statistics;
-	private JLabel user;//nombre;
+	private JLabel user;// nombre;
 	private JPanel panel_1;
 
 	public MainWindow() {
@@ -43,6 +43,16 @@ public class MainWindow extends JFrame {
 		getContentPane().add(panel);
 
 		details = new JButton("Details");
+		details.addActionListener(new ActionListener() {
+
+			@SuppressWarnings("unused")
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Details details = new Details();
+
+			}
+		});
 		panel.add(details);
 
 		insert = new JButton("Insert");
@@ -81,12 +91,22 @@ public class MainWindow extends JFrame {
 
 			}
 		});
-		
+
 		panel_1 = new JPanel();
 		getContentPane().add(panel_1);
-		
-				statistics = new JButton("Statistics");
-				panel_1.add(statistics);
+
+		statistics = new JButton("Statistics");
+		statistics.addActionListener(new ActionListener() {
+
+			@SuppressWarnings("unused")
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Statistics statistics = new Statistics();
+
+			}
+		});
+		panel_1.add(statistics);
 
 		setVisible(true);
 	}
