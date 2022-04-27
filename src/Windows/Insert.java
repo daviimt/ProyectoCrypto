@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -20,7 +19,7 @@ public class Insert extends JFrame {
 
 	public Insert() {
 		super("Insert cryptocurrency");
-		setSize(250,200);
+		setSize(250, 200);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(new GridLayout(5, 2));
 		setLocationRelativeTo(null);
@@ -29,37 +28,36 @@ public class Insert extends JFrame {
 		jlname.setHorizontalAlignment(SwingConstants.CENTER);
 		jlname.setBounds(123, 53, 45, 13);
 		getContentPane().add(jlname);
-		
-				jtname = new JTextField();
-				jtname.setBounds(207, 50, 96, 19);
-				jtname.setColumns(10);
-				getContentPane().add(jtname);
+
+		jtname = new JTextField();
+		jtname.setBounds(207, 50, 96, 19);
+		jtname.setColumns(10);
+		getContentPane().add(jtname);
 
 		jlvalue = new JLabel("Value:");
 		jlvalue.setHorizontalAlignment(SwingConstants.CENTER);
 		jlvalue.setBounds(123, 76, 45, 13);
 		getContentPane().add(jlvalue);
-		
-				jtvalue = new JTextField();
-				jtvalue.setBounds(207, 73, 96, 19);
-				jtvalue.setColumns(10);
-				getContentPane().add(jtvalue);
+
+		jtvalue = new JTextField();
+		jtvalue.setBounds(207, 73, 96, 19);
+		jtvalue.setColumns(10);
+		getContentPane().add(jtvalue);
 
 		jlmarketCap = new JLabel("Market Cap:");
 		jlmarketCap.setHorizontalAlignment(SwingConstants.CENTER);
 		jlmarketCap.setBounds(93, 99, 75, 13);
 		getContentPane().add(jlmarketCap);
-		
-				jtmarketCap = new JTextField();
-				getContentPane().add(jtmarketCap);
-				jtmarketCap.setBounds(207, 96, 96, 19);
-				jtmarketCap.setColumns(10);
+
+		jtmarketCap = new JTextField();
+		getContentPane().add(jtmarketCap);
+		jtmarketCap.setBounds(207, 96, 96, 19);
+		jtmarketCap.setColumns(10);
 
 		jlsupply = new JLabel("Supply:");
 		jlsupply.setHorizontalAlignment(SwingConstants.CENTER);
 		jlsupply.setBounds(122, 122, 46, 13);
 		getContentPane().add(jlsupply);
-		
 
 		jtsupply = new JTextField();
 		jtsupply.setBounds(207, 119, 96, 19);

@@ -1,7 +1,5 @@
 package Windows;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,12 +8,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import Entities.User;
-import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class Register extends JFrame {
@@ -23,13 +20,13 @@ public class Register extends JFrame {
 	private JLabel jlusername, jlname, jlfirstsurname, jllastsurname, jldni, jlemail, jlphone, jlpassword, jlpassword2;
 	private JTextField jtusername, jtname, jtfirstsurname, jtlastsurname, jtdni, jtemail, jtphone;
 	private JPasswordField jppassword, jppassword2;
-	private JButton jbconfirm,jbcancel;
+	private JButton jbconfirm, jbcancel;
 
 	public Register() {
 
 		// Setting the window options.
 		super("Register an user");
-		setSize(300,285);
+		setSize(300, 285);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new GridLayout(10, 2));
@@ -38,81 +35,81 @@ public class Register extends JFrame {
 		jlusername.setHorizontalAlignment(SwingConstants.CENTER);
 		jlusername.setBounds(24, 30, 94, 13);
 		getContentPane().add(jlusername);
-		
-				jtusername = new JTextField();
-				jtusername.setBounds(119, 27, 114, 19);
-				getContentPane().add(jtusername);
-				jtusername.setColumns(10);
+
+		jtusername = new JTextField();
+		jtusername.setBounds(119, 27, 114, 19);
+		getContentPane().add(jtusername);
+		jtusername.setColumns(10);
 
 		jlname = new JLabel("Name: ");
 		jlname.setHorizontalAlignment(SwingConstants.CENTER);
 		jlname.setBounds(24, 53, 94, 13);
 		getContentPane().add(jlname);
-		
-				jtname = new JTextField();
-				jtname.setBounds(119, 50, 114, 19);
-				getContentPane().add(jtname);
-				jtname.setColumns(10);
+
+		jtname = new JTextField();
+		jtname.setBounds(119, 50, 114, 19);
+		getContentPane().add(jtname);
+		jtname.setColumns(10);
 
 		jlfirstsurname = new JLabel("First Surname: ");
 		jlfirstsurname.setHorizontalAlignment(SwingConstants.CENTER);
 		jlfirstsurname.setBounds(24, 76, 94, 13);
 		getContentPane().add(jlfirstsurname);
-		
-				jtfirstsurname = new JTextField();
-				jtfirstsurname.setBounds(119, 73, 114, 19);
-				getContentPane().add(jtfirstsurname);
-				jtfirstsurname.setColumns(10);
+
+		jtfirstsurname = new JTextField();
+		jtfirstsurname.setBounds(119, 73, 114, 19);
+		getContentPane().add(jtfirstsurname);
+		jtfirstsurname.setColumns(10);
 
 		jllastsurname = new JLabel("Last Surname: ");
 		jllastsurname.setHorizontalAlignment(SwingConstants.CENTER);
 		jllastsurname.setBounds(24, 99, 94, 11);
 		getContentPane().add(jllastsurname);
-		
-				jtlastsurname = new JTextField();
-				jtlastsurname.setBounds(119, 96, 114, 19);
-				getContentPane().add(jtlastsurname);
-				jtlastsurname.setColumns(10);
+
+		jtlastsurname = new JTextField();
+		jtlastsurname.setBounds(119, 96, 114, 19);
+		getContentPane().add(jtlastsurname);
+		jtlastsurname.setColumns(10);
 
 		jldni = new JLabel("D.N.I. : ");
 		jldni.setHorizontalAlignment(SwingConstants.CENTER);
 		jldni.setBounds(24, 122, 94, 13);
 		getContentPane().add(jldni);
-		
-				jtdni = new JTextField();
-				jtdni.setBounds(119, 119, 114, 19);
-				getContentPane().add(jtdni);
-				jtdni.setColumns(12);
+
+		jtdni = new JTextField();
+		jtdni.setBounds(119, 119, 114, 19);
+		getContentPane().add(jtdni);
+		jtdni.setColumns(12);
 
 		jlemail = new JLabel("Email: ");
 		jlemail.setHorizontalAlignment(SwingConstants.CENTER);
 		jlemail.setBounds(24, 145, 94, 13);
 		getContentPane().add(jlemail);
-		
-				jtemail = new JTextField();
-				jtemail.setBounds(119, 142, 114, 19);
-				getContentPane().add(jtemail);
-				jtemail.setColumns(13);
+
+		jtemail = new JTextField();
+		jtemail.setBounds(119, 142, 114, 19);
+		getContentPane().add(jtemail);
+		jtemail.setColumns(13);
 
 		jlphone = new JLabel("Phone: ");
 		jlphone.setHorizontalAlignment(SwingConstants.CENTER);
 		jlphone.setBounds(24, 168, 94, 13);
 		getContentPane().add(jlphone);
-		
-				jtphone = new JTextField();
-				jtphone.setBounds(119, 165, 114, 19);
-				getContentPane().add(jtphone);
-				jtphone.setColumns(10);
+
+		jtphone = new JTextField();
+		jtphone.setBounds(119, 165, 114, 19);
+		getContentPane().add(jtphone);
+		jtphone.setColumns(10);
 
 		jlpassword = new JLabel("Password: ");
 		jlpassword.setHorizontalAlignment(SwingConstants.CENTER);
 		jlpassword.setBounds(24, 191, 94, 13);
 		getContentPane().add(jlpassword);
-		
-				jppassword = new JPasswordField();
-				jppassword.setBounds(119, 188, 114, 19);
-				jppassword.setColumns(10);
-				getContentPane().add(jppassword);
+
+		jppassword = new JPasswordField();
+		jppassword.setBounds(119, 188, 114, 19);
+		jppassword.setColumns(10);
+		getContentPane().add(jppassword);
 
 		jlpassword2 = new JLabel("Repeat Pass.: ");
 		jlpassword2.setHorizontalAlignment(SwingConstants.CENTER);
@@ -177,7 +174,7 @@ public class Register extends JFrame {
 
 			}
 		});
-		
+
 		setVisible(true);
 	}
 

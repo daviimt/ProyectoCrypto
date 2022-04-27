@@ -1,5 +1,6 @@
 package Windows;
 
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class MainWindow extends JFrame {
@@ -15,29 +17,29 @@ public class MainWindow extends JFrame {
 	private JTable table;
 	private JPanel panel;
 	private JButton details, insert, update, close, statistics;
-	private JLabel user, nombre;
+	private JLabel user;//nombre;
+	private JPanel panel_1;
 
 	public MainWindow() {
 		super("Menu");
 		setBounds(100, 100, 600, 400);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		getContentPane().setLayout(null);
 		setLocationRelativeTo(null);
-
-		table = new JTable();
-		table.setBounds(102, 65, 369, 175);
-		getContentPane().add(table);
+		getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
 
 		user = new JLabel("User: ");
-		user.setBounds(170, 30, 67, 13);
+		user.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(user);
 
-		nombre = new JLabel("nombre");
-		nombre.setBounds(331, 30, 92, 13);
-		getContentPane().add(nombre);
+		// Creo que es más sencillo añadir el nombre de usuario al primer label que
+		// tener dos --Juan.
+		// nombre = new JLabel("nombre");
+		// getContentPane().add(nombre);
+
+		table = new JTable();
+		getContentPane().add(table);
 
 		panel = new JPanel();
-		panel.setBounds(23, 262, 532, 38);
 		getContentPane().add(panel);
 
 		details = new JButton("Details");
@@ -71,6 +73,7 @@ public class MainWindow extends JFrame {
 		panel.add(close);
 		close.addActionListener(new ActionListener() {
 
+			@SuppressWarnings("unused")
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -78,10 +81,12 @@ public class MainWindow extends JFrame {
 
 			}
 		});
-
-		statistics = new JButton("Statistics");
-		statistics.setBounds(233, 310, 109, 21);
-		getContentPane().add(statistics);
+		
+		panel_1 = new JPanel();
+		getContentPane().add(panel_1);
+		
+				statistics = new JButton("Statistics");
+				panel_1.add(statistics);
 
 		setVisible(true);
 	}
