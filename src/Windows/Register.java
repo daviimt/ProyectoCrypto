@@ -1,5 +1,8 @@
 package Windows;
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,123 +15,121 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import Entities.User;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class Register extends JFrame {
 
-	private JPanel panel;
 	private JLabel jlusername, jlname, jlfirstsurname, jllastsurname, jldni, jlemail, jlphone, jlpassword, jlpassword2;
 	private JTextField jtusername, jtname, jtfirstsurname, jtlastsurname, jtdni, jtemail, jtphone;
 	private JPasswordField jppassword, jppassword2;
+	private JButton jbconfirm,jbcancel;
 
 	public Register() {
 
 		// Setting the window options.
-
-		setTitle("Register User: ");
-		setBounds(100, 100, 600, 505);
+		super("Register an user");
+		setSize(300,285);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
-		getContentPane().setLayout(null);
+		getContentPane().setLayout(new GridLayout(10, 2));
 
-		// Instantiation and addition of every component .
-
-		// JPanel
-		panel = new JPanel();
-		panel.setBounds(150, 61, 277, 283);
-		getContentPane().add(panel);
-		panel.setLayout(null);
-
-		// JLabel
 		jlusername = new JLabel("Username:");
-		jlusername.setBounds(43, 30, 75, 13);
-		panel.add(jlusername);
+		jlusername.setHorizontalAlignment(SwingConstants.CENTER);
+		jlusername.setBounds(24, 30, 94, 13);
+		getContentPane().add(jlusername);
+		
+				jtusername = new JTextField();
+				jtusername.setBounds(119, 27, 114, 19);
+				getContentPane().add(jtusername);
+				jtusername.setColumns(10);
 
 		jlname = new JLabel("Name: ");
-		jlname.setBounds(43, 53, 75, 13);
-		panel.add(jlname);
+		jlname.setHorizontalAlignment(SwingConstants.CENTER);
+		jlname.setBounds(24, 53, 94, 13);
+		getContentPane().add(jlname);
+		
+				jtname = new JTextField();
+				jtname.setBounds(119, 50, 114, 19);
+				getContentPane().add(jtname);
+				jtname.setColumns(10);
 
 		jlfirstsurname = new JLabel("First Surname: ");
-		jlfirstsurname.setBounds(43, 76, 75, 13);
-		panel.add(jlfirstsurname);
+		jlfirstsurname.setHorizontalAlignment(SwingConstants.CENTER);
+		jlfirstsurname.setBounds(24, 76, 94, 13);
+		getContentPane().add(jlfirstsurname);
+		
+				jtfirstsurname = new JTextField();
+				jtfirstsurname.setBounds(119, 73, 114, 19);
+				getContentPane().add(jtfirstsurname);
+				jtfirstsurname.setColumns(10);
 
 		jllastsurname = new JLabel("Last Surname: ");
-		jllastsurname.setBounds(43, 99, 75, 13);
-		panel.add(jllastsurname);
+		jllastsurname.setHorizontalAlignment(SwingConstants.CENTER);
+		jllastsurname.setBounds(24, 99, 94, 11);
+		getContentPane().add(jllastsurname);
+		
+				jtlastsurname = new JTextField();
+				jtlastsurname.setBounds(119, 96, 114, 19);
+				getContentPane().add(jtlastsurname);
+				jtlastsurname.setColumns(10);
 
 		jldni = new JLabel("D.N.I. : ");
-		jldni.setBounds(43, 122, 75, 13);
-		panel.add(jldni);
+		jldni.setHorizontalAlignment(SwingConstants.CENTER);
+		jldni.setBounds(24, 122, 94, 13);
+		getContentPane().add(jldni);
+		
+				jtdni = new JTextField();
+				jtdni.setBounds(119, 119, 114, 19);
+				getContentPane().add(jtdni);
+				jtdni.setColumns(12);
 
 		jlemail = new JLabel("Email: ");
-		jlemail.setBounds(43, 145, 75, 13);
-		panel.add(jlemail);
+		jlemail.setHorizontalAlignment(SwingConstants.CENTER);
+		jlemail.setBounds(24, 145, 94, 13);
+		getContentPane().add(jlemail);
+		
+				jtemail = new JTextField();
+				jtemail.setBounds(119, 142, 114, 19);
+				getContentPane().add(jtemail);
+				jtemail.setColumns(13);
 
 		jlphone = new JLabel("Phone: ");
-		jlphone.setBounds(43, 168, 75, 13);
-		panel.add(jlphone);
+		jlphone.setHorizontalAlignment(SwingConstants.CENTER);
+		jlphone.setBounds(24, 168, 94, 13);
+		getContentPane().add(jlphone);
+		
+				jtphone = new JTextField();
+				jtphone.setBounds(119, 165, 114, 19);
+				getContentPane().add(jtphone);
+				jtphone.setColumns(10);
 
 		jlpassword = new JLabel("Password: ");
-		jlpassword.setBounds(43, 191, 75, 13);
-		panel.add(jlpassword);
+		jlpassword.setHorizontalAlignment(SwingConstants.CENTER);
+		jlpassword.setBounds(24, 191, 94, 13);
+		getContentPane().add(jlpassword);
+		
+				jppassword = new JPasswordField();
+				jppassword.setBounds(119, 188, 114, 19);
+				jppassword.setColumns(10);
+				getContentPane().add(jppassword);
 
 		jlpassword2 = new JLabel("Repeat Pass.: ");
-		jlpassword2.setBounds(34, 214, 84, 13);
-		panel.add(jlpassword2);
-
-		// JTextField
-		jtusername = new JTextField();
-		jtusername.setBounds(119, 27, 114, 19);
-		panel.add(jtusername);
-		jtusername.setColumns(10);
-
-		jtname = new JTextField();
-		jtname.setBounds(119, 50, 114, 19);
-		panel.add(jtname);
-		jtname.setColumns(10);
-
-		jtfirstsurname = new JTextField();
-		jtfirstsurname.setBounds(119, 73, 114, 19);
-		panel.add(jtfirstsurname);
-		jtfirstsurname.setColumns(10);
-
-		jtlastsurname = new JTextField();
-		jtlastsurname.setBounds(119, 96, 114, 19);
-		panel.add(jtlastsurname);
-		jtlastsurname.setColumns(10);
-
-		jtdni = new JTextField();
-		jtdni.setBounds(119, 119, 114, 19);
-		panel.add(jtdni);
-		jtdni.setColumns(12);
-
-		jtemail = new JTextField();
-		jtemail.setBounds(119, 142, 114, 19);
-		panel.add(jtemail);
-		jtemail.setColumns(13);
-
-		jtphone = new JTextField();
-		jtphone.setBounds(119, 165, 114, 19);
-		panel.add(jtphone);
-		jtphone.setColumns(10);
-
-		// JPasswordField
-		jppassword = new JPasswordField();
-		jppassword.setBounds(119, 188, 114, 19);
-		jppassword.setColumns(10);
-		panel.add(jppassword);
+		jlpassword2.setHorizontalAlignment(SwingConstants.CENTER);
+		jlpassword2.setBounds(24, 214, 94, 13);
+		getContentPane().add(jlpassword2);
 
 		jppassword2 = new JPasswordField();
 		jppassword2.setBounds(119, 211, 114, 19);
 		jppassword2.setColumns(10);
-		panel.add(jppassword2);
+		getContentPane().add(jppassword2);
 
 		// This button tries to create the user that will be added to the binary file.
 
-		JButton confirm = new JButton("Confirm");
-		confirm.setBounds(150, 364, 85, 21);
-		getContentPane().add(confirm);
-		confirm.addActionListener(new ActionListener() {
+		jbconfirm = new JButton("Confirm");
+		jbconfirm.setBounds(150, 364, 85, 21);
+		getContentPane().add(jbconfirm);
+		jbconfirm.addActionListener(new ActionListener() {
 
 			@SuppressWarnings({ "unused", "deprecation" })
 			@Override
@@ -136,7 +137,7 @@ public class Register extends JFrame {
 				// Pendiente verificacion para usar los distintos constructores de User (campos
 				// necesarios y no necesarios)
 				// Pendiente verificacion filtros username, dni, email, phone, password y que
-				// coincidan las contraseñas entre ellas.
+				// coincidan las contraseï¿½as entre ellas.
 				boolean verification;
 				verification = isNotNull(jtusername.getText());
 				verification = isNotNull(jtname.getText());
@@ -163,10 +164,10 @@ public class Register extends JFrame {
 
 		// This button return to the Login and close Register's window.
 
-		JButton cancel = new JButton("Cancel");
-		cancel.setBounds(342, 364, 85, 21);
-		getContentPane().add(cancel);
-		cancel.addActionListener(new ActionListener() {
+		jbcancel = new JButton("Cancel");
+		jbcancel.setBounds(342, 364, 85, 21);
+		getContentPane().add(jbcancel);
+		jbcancel.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
 			@Override
@@ -176,6 +177,7 @@ public class Register extends JFrame {
 
 			}
 		});
+		
 		setVisible(true);
 	}
 
