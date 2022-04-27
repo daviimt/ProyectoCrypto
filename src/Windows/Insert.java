@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class Insert extends JFrame {
@@ -19,67 +20,56 @@ public class Insert extends JFrame {
 
 	public Insert() {
 		super("Insert cryptocurrency");
-		setBounds(100, 100, 450, 300);
+		setSize(250,200);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		getContentPane().setLayout(new GridLayout(3, 2));
+		getContentPane().setLayout(new GridLayout(5, 2));
 		setLocationRelativeTo(null);
 
-		// JPanel
-		JPanel jpname = new JPanel();
-		JPanel jpvalue = new JPanel();
-		JPanel jpmarketCap = new JPanel();
-		JPanel jpsupply = new JPanel();
-		JPanel jpbutton = new JPanel();
-		add(jpname);
-		add(jpvalue);
-		add(jpmarketCap);
-		add(jpsupply);
-		add(jpbutton);
-
-		// JLabel
 		jlname = new JLabel("Name:");
+		jlname.setHorizontalAlignment(SwingConstants.CENTER);
 		jlname.setBounds(123, 53, 45, 13);
-		jpname.add(jlname);
+		getContentPane().add(jlname);
+		
+				jtname = new JTextField();
+				jtname.setBounds(207, 50, 96, 19);
+				jtname.setColumns(10);
+				getContentPane().add(jtname);
 
 		jlvalue = new JLabel("Value:");
+		jlvalue.setHorizontalAlignment(SwingConstants.CENTER);
 		jlvalue.setBounds(123, 76, 45, 13);
-		jpvalue.add(jlvalue);
+		getContentPane().add(jlvalue);
+		
+				jtvalue = new JTextField();
+				jtvalue.setBounds(207, 73, 96, 19);
+				jtvalue.setColumns(10);
+				getContentPane().add(jtvalue);
 
 		jlmarketCap = new JLabel("Market Cap:");
+		jlmarketCap.setHorizontalAlignment(SwingConstants.CENTER);
 		jlmarketCap.setBounds(93, 99, 75, 13);
-		jpmarketCap.add(jlmarketCap);
+		getContentPane().add(jlmarketCap);
+		
+				jtmarketCap = new JTextField();
+				getContentPane().add(jtmarketCap);
+				jtmarketCap.setBounds(207, 96, 96, 19);
+				jtmarketCap.setColumns(10);
 
 		jlsupply = new JLabel("Supply:");
+		jlsupply.setHorizontalAlignment(SwingConstants.CENTER);
 		jlsupply.setBounds(122, 122, 46, 13);
-		jpsupply.add(jlsupply);
-
-		// JTextField
-		jtname = new JTextField();
-		jtname.setBounds(207, 50, 96, 19);
-		jtname.setColumns(10);
-		jpname.add(jtname);
-		jpname.add(jpvalue);
-
-		jtvalue = new JTextField();
-		jtvalue.setBounds(207, 73, 96, 19);
-		jtvalue.setColumns(10);
-		jpvalue.add(jtvalue);
-
-		jtmarketCap = new JTextField();
-		jpmarketCap.add(jtmarketCap);
-		jtmarketCap.setBounds(207, 96, 96, 19);
-		jtmarketCap.setColumns(10);
-		jpmarketCap.add(jpsupply);
+		getContentPane().add(jlsupply);
+		
 
 		jtsupply = new JTextField();
 		jtsupply.setBounds(207, 119, 96, 19);
 		jtsupply.setColumns(10);
-		jpsupply.add(jtsupply);
+		getContentPane().add(jtsupply);
 
 		// Buttons
 		jbnext = new JButton("Continue");
 		jbnext.setBounds(101, 163, 85, 21);
-		jpbutton.add(jbnext);
+		getContentPane().add(jbnext);
 		jbnext.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
@@ -92,7 +82,7 @@ public class Insert extends JFrame {
 
 		jbcancel = new JButton("Cancel");
 		jbcancel.setBounds(218, 163, 85, 21);
-		jpbutton.add(jbcancel);
+		getContentPane().add(jbcancel);
 		jbcancel.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
