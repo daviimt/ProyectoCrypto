@@ -16,10 +16,10 @@ import Entities.User;
 @SuppressWarnings("serial")
 public class Register extends JFrame {
 
-	private JLabel username, name, fname, lname, dni, email, phone, password, rpassword;
-	private JTextField usernamef, namef, fnamef, lnamef, dnif, emailf, phonef;
-	private JPasswordField passwordf, rpasswordf;
 	private JPanel panel;
+	private JLabel jlusername, jlname, jlfirstsurname, jllastsurname, jldni, jlemail, jlphone, jlpassword, jlpassword2;
+	private JTextField jtusername, jtname, jtfirstsurname, jtlastsurname, jtdni, jtemail, jtphone;
+	private JPasswordField jppassword, jppassword2;
 
 	public Register() {
 
@@ -33,91 +33,95 @@ public class Register extends JFrame {
 
 		// Instantiation and addition of every component .
 
+		// JPanel
 		panel = new JPanel();
 		panel.setBounds(150, 61, 277, 283);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 
-		username = new JLabel("Username:");
-		username.setBounds(43, 30, 75, 13);
-		panel.add(username);
+		// JLabel
+		jlusername = new JLabel("Username:");
+		jlusername.setBounds(43, 30, 75, 13);
+		panel.add(jlusername);
 
-		usernamef = new JTextField();
-		usernamef.setBounds(119, 27, 114, 19);
-		panel.add(usernamef);
-		usernamef.setColumns(10);
+		jlname = new JLabel("Name: ");
+		jlname.setBounds(43, 53, 75, 13);
+		panel.add(jlname);
 
-		name = new JLabel("Name: ");
-		name.setBounds(43, 53, 75, 13);
-		panel.add(name);
+		jlfirstsurname = new JLabel("First Surname: ");
+		jlfirstsurname.setBounds(43, 76, 75, 13);
+		panel.add(jlfirstsurname);
 
-		namef = new JTextField();
-		namef.setBounds(119, 50, 114, 19);
-		panel.add(namef);
-		namef.setColumns(10);
+		jllastsurname = new JLabel("Last Surname: ");
+		jllastsurname.setBounds(43, 99, 75, 13);
+		panel.add(jllastsurname);
 
-		fname = new JLabel("First Name: ");
-		fname.setBounds(43, 76, 75, 13);
-		panel.add(fname);
+		jldni = new JLabel("D.N.I. : ");
+		jldni.setBounds(43, 122, 75, 13);
+		panel.add(jldni);
 
-		fnamef = new JTextField();
-		fnamef.setBounds(119, 73, 114, 19);
-		panel.add(fnamef);
-		fnamef.setColumns(10);
+		jlemail = new JLabel("Email: ");
+		jlemail.setBounds(43, 145, 75, 13);
+		panel.add(jlemail);
 
-		lname = new JLabel("Last Name: ");
-		lname.setBounds(43, 99, 75, 13);
-		panel.add(lname);
+		jlphone = new JLabel("Phone: ");
+		jlphone.setBounds(43, 168, 75, 13);
+		panel.add(jlphone);
 
-		lnamef = new JTextField();
-		lnamef.setBounds(119, 96, 114, 19);
-		panel.add(lnamef);
-		lnamef.setColumns(10);
+		jlpassword = new JLabel("Password: ");
+		jlpassword.setBounds(43, 191, 75, 13);
+		panel.add(jlpassword);
 
-		dni = new JLabel("D.N.I. : ");
-		dni.setBounds(43, 122, 75, 13);
-		panel.add(dni);
+		jlpassword2 = new JLabel("Repeat Pass.: ");
+		jlpassword2.setBounds(34, 214, 84, 13);
+		panel.add(jlpassword2);
 
-		dnif = new JTextField();
-		dnif.setBounds(119, 119, 114, 19);
-		panel.add(dnif);
-		dnif.setColumns(12);
+		// JTextField
+		jtusername = new JTextField();
+		jtusername.setBounds(119, 27, 114, 19);
+		panel.add(jtusername);
+		jtusername.setColumns(10);
 
-		email = new JLabel("Email: ");
-		email.setBounds(43, 145, 75, 13);
-		panel.add(email);
+		jtname = new JTextField();
+		jtname.setBounds(119, 50, 114, 19);
+		panel.add(jtname);
+		jtname.setColumns(10);
 
-		emailf = new JTextField();
-		emailf.setBounds(119, 142, 114, 19);
-		panel.add(emailf);
-		emailf.setColumns(13);
+		jtfirstsurname = new JTextField();
+		jtfirstsurname.setBounds(119, 73, 114, 19);
+		panel.add(jtfirstsurname);
+		jtfirstsurname.setColumns(10);
 
-		phone = new JLabel("Phone: ");
-		phone.setBounds(43, 168, 75, 13);
-		panel.add(phone);
+		jtlastsurname = new JTextField();
+		jtlastsurname.setBounds(119, 96, 114, 19);
+		panel.add(jtlastsurname);
+		jtlastsurname.setColumns(10);
 
-		phonef = new JTextField();
-		phonef.setBounds(119, 165, 114, 19);
-		panel.add(phonef);
-		phonef.setColumns(10);
+		jtdni = new JTextField();
+		jtdni.setBounds(119, 119, 114, 19);
+		panel.add(jtdni);
+		jtdni.setColumns(12);
 
-		password = new JLabel("Password: ");
-		password.setBounds(43, 191, 75, 13);
-		panel.add(password);
+		jtemail = new JTextField();
+		jtemail.setBounds(119, 142, 114, 19);
+		panel.add(jtemail);
+		jtemail.setColumns(13);
 
-		passwordf = new JPasswordField();
-		passwordf.setBounds(119, 188, 114, 19);
-		passwordf.setColumns(10);
-		panel.add(passwordf);
+		jtphone = new JTextField();
+		jtphone.setBounds(119, 165, 114, 19);
+		panel.add(jtphone);
+		jtphone.setColumns(10);
 
-		rpassword = new JLabel("Repeat Pass.: ");
-		rpassword.setBounds(34, 214, 84, 13);
-		panel.add(rpassword);
+		// JPasswordField
+		jppassword = new JPasswordField();
+		jppassword.setBounds(119, 188, 114, 19);
+		jppassword.setColumns(10);
+		panel.add(jppassword);
 
-		rpasswordf = new JPasswordField();
-		rpasswordf.setBounds(119, 211, 114, 19);
-		rpasswordf.setColumns(10);
-		panel.add(rpasswordf);
+		jppassword2 = new JPasswordField();
+		jppassword2.setBounds(119, 211, 114, 19);
+		jppassword2.setColumns(10);
+		panel.add(jppassword2);
 
 		// This button tries to create the user that will be added to the binary file.
 
@@ -134,19 +138,19 @@ public class Register extends JFrame {
 				// Pendiente verificacion filtros username, dni, email, phone, password y que
 				// coincidan las contraseñas entre ellas.
 				boolean verification;
-				verification = isNotNull(usernamef.getText());
-				verification = isNotNull(namef.getText());
-				verification = isNotNull(fnamef.getText());
-				verification = isNotNull(lnamef.getText());
-				verification = isNotNull(dnif.getText());
-				verification = isNotNull(emailf.getText());
-				verification = isNotNull(phonef.getText());
-				verification = isNotNull(passwordf.getText());
-				verification = isNotNull(rpasswordf.getText());
+				verification = isNotNull(jtusername.getText());
+				verification = isNotNull(jtname.getText());
+				verification = isNotNull(jtfirstsurname.getText());
+				verification = isNotNull(jtlastsurname.getText());
+				verification = isNotNull(jtdni.getText());
+				verification = isNotNull(jtemail.getText());
+				verification = isNotNull(jtphone.getText());
+				verification = isNotNull(jppassword.getText());
+				verification = isNotNull(jppassword2.getText());
 
 				if (verification) {
-					User user = new User(usernamef.getText(), dnif.getText(), emailf.getText(), namef.getText(),
-							fnamef.getText(), lnamef.getText(), passwordf.getText(), phonef.getText());
+					User user = new User(jtusername.getText(), jtdni.getText(), jtemail.getText(), jtname.getText(),
+							jtfirstsurname.getText(), jtlastsurname.getText(), jppassword.getText(), jtphone.getText());
 					JOptionPane.showMessageDialog(null, "User creation complete.");
 				} else
 					JOptionPane.showMessageDialog(null, "Fill every required field to create the user.");
