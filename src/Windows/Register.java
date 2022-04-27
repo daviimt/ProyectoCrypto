@@ -146,8 +146,7 @@ public class Register extends JFrame {
 
 				if (verification) {
 					User user = new User(usernamef.getText(), dnif.getText(), emailf.getText(), namef.getText(),
-							fnamef.getText(), lnamef.getText(), passwordf.getText(),
-							Integer.parseInt(phonef.getText()));
+							fnamef.getText(), lnamef.getText(), passwordf.getText(), phonef.getText());
 					JOptionPane.showMessageDialog(null, "User creation complete.");
 				} else
 					JOptionPane.showMessageDialog(null, "Fill every required field to create the user.");
