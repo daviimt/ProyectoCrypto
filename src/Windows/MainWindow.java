@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import java.awt.BorderLayout;
 
 @SuppressWarnings("serial")
 public class MainWindow extends JFrame {
@@ -24,11 +25,11 @@ public class MainWindow extends JFrame {
 		setBounds(100, 100, 600, 400);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
-		getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
+		getContentPane().setLayout(new BorderLayout(0, 0));
 
 		jluser = new JLabel("User: ");
 		jluser.setHorizontalAlignment(SwingConstants.CENTER);
-		getContentPane().add(jluser);
+		getContentPane().add(jluser, BorderLayout.NORTH);
 
 		// Creo que es m�s sencillo a�adir el nombre de usuario al primer label que
 		// tener dos --Juan.
@@ -36,64 +37,10 @@ public class MainWindow extends JFrame {
 		// getContentPane().add(nombre);
 
 		table = new JTable();
-		getContentPane().add(table);
-
-		panel = new JPanel();
-		getContentPane().add(panel);
-
-		jbdetails = new JButton("Details");
-		jbdetails.addActionListener(new ActionListener() {
-
-			@SuppressWarnings("unused")
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				Details details = new Details();
-
-			}
-		});
-		panel.add(jbdetails);
-
-		jbinsert = new JButton("Insert");
-		jbinsert.addActionListener(new ActionListener() {
-
-			@SuppressWarnings("unused")
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				Insert statistics = new Insert();
-				dispose();
-
-			}
-		});
-		panel.add(jbinsert);
-
-		jbupdate = new JButton("Update");
-		panel.add(jbupdate);
-		jbupdate.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				Update update = new Update();
-				dispose();
-
-			}
-		});
-
-		jbclose = new JButton("Log Out");
-		panel.add(jbclose);
-		jbclose.addActionListener(new ActionListener() {
-
-			@SuppressWarnings("unused")
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				Login login = new Login();
-
-			}
-		});
+		getContentPane().add(table, BorderLayout.CENTER);
 
 		panel_1 = new JPanel();
-		getContentPane().add(panel_1);
+		getContentPane().add(panel_1, BorderLayout.SOUTH);
 
 		jbstatistics = new JButton("Statistics");
 		jbstatistics.addActionListener(new ActionListener() {
@@ -107,6 +54,60 @@ public class MainWindow extends JFrame {
 			}
 		});
 		panel_1.add(jbstatistics);
+												
+														panel = new JPanel();
+														panel_1.add(panel);
+														
+																jbinsert = new JButton("Insert");
+																jbinsert.addActionListener(new ActionListener() {
+
+																	@SuppressWarnings("unused")
+																	@Override
+																	public void actionPerformed(ActionEvent e) {
+																		Insert statistics = new Insert();
+																		dispose();
+
+																	}
+																});
+																
+																		jbdetails = new JButton("Details");
+																		panel.add(jbdetails);
+																		jbdetails.addActionListener(new ActionListener() {
+
+																			@SuppressWarnings("unused")
+																			@Override
+																			public void actionPerformed(ActionEvent e) {
+																				dispose();
+																				Details details = new Details();
+
+																			}
+																		});
+																		panel.add(jbinsert);
+																		
+																				jbupdate = new JButton("Update");
+																				panel.add(jbupdate);
+																				jbupdate.addActionListener(new ActionListener() {
+
+																					@Override
+																					public void actionPerformed(ActionEvent e) {
+																						Update update = new Update();
+																						dispose();
+
+																					}
+																				});
+																				
+																						jbclose = new JButton("Log Out");
+																						panel.add(jbclose);
+												jbclose.addActionListener(new ActionListener() {
+
+													@SuppressWarnings("unused")
+													@Override
+													public void actionPerformed(ActionEvent e) {
+														dispose();
+														Login login = new Login();
+
+													}
+												});
 
 		setVisible(true);
 	}
