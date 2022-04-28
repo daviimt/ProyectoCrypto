@@ -16,7 +16,7 @@ import java.awt.Color;
 public class Details extends JFrame {
 
 	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jlquantity,jldetails;
-	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtquantity,jtdetails;
+	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtquantity;
 	private JButton jbnext, jbcancel,jbdetails;
 
 	public Details() {

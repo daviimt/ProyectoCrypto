@@ -1,6 +1,5 @@
 package Windows;
 
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -60,61 +59,61 @@ public class MainWindow extends JFrame {
 			}
 		});
 		panel_1.add(jbstatistics);
-												
-														panel = new JPanel();
-														panel.setBackground(Color.GRAY);
-														panel_1.add(panel);
-														
-																jbinsert = new JButton("Insert");
-																jbinsert.addActionListener(new ActionListener() {
 
-																	@SuppressWarnings("unused")
-																	@Override
-																	public void actionPerformed(ActionEvent e) {
-																		Insert statistics = new Insert();
-																		dispose();
+		panel = new JPanel();
+		panel.setBackground(Color.GRAY);
+		panel_1.add(panel);
 
-																	}
-																});
-																
-																		jbdetails = new JButton("Details");
-																		panel.add(jbdetails);
-																		jbdetails.addActionListener(new ActionListener() {
+		jbinsert = new JButton("Insert");
+		jbinsert.addActionListener(new ActionListener() {
 
-																			@SuppressWarnings("unused")
-																			@Override
-																			public void actionPerformed(ActionEvent e) {
-																				dispose();
-																				Details details = new Details();
+			@SuppressWarnings("unused")
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Insert statistics = new Insert();
+				dispose();
 
-																			}
-																		});
-																		panel.add(jbinsert);
-																		
-																				jbupdate = new JButton("Update");
-																				panel.add(jbupdate);
-																				jbupdate.addActionListener(new ActionListener() {
+			}
+		});
 
-																					@Override
-																					public void actionPerformed(ActionEvent e) {
-																						Update update = new Update();
-																						dispose();
+		jbdetails = new JButton("Details");
+		panel.add(jbdetails);
+		jbdetails.addActionListener(new ActionListener() {
 
-																					}
-																				});
-																				
-																						jbclose = new JButton("Log Out");
-																						panel.add(jbclose);
-												jbclose.addActionListener(new ActionListener() {
+			@SuppressWarnings("unused")
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Details details = new Details();
 
-													@SuppressWarnings("unused")
-													@Override
-													public void actionPerformed(ActionEvent e) {
-														dispose();
-														Login login = new Login();
+			}
+		});
+		panel.add(jbinsert);
 
-													}
-												});
+		jbupdate = new JButton("Update");
+		panel.add(jbupdate);
+		jbupdate.addActionListener(new ActionListener() {
+			@SuppressWarnings("unused")
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Update update = new Update();
+
+			}
+		});
+
+		jbclose = new JButton("Log Out");
+		panel.add(jbclose);
+		jbclose.addActionListener(new ActionListener() {
+
+			@SuppressWarnings("unused")
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Login login = new Login();
+
+			}
+		});
 
 		setVisible(true);
 	}
