@@ -33,6 +33,7 @@ public class Insert extends JFrame {
 		jtname.setBounds(207, 50, 96, 19);
 		jtname.setColumns(10);
 		getContentPane().add(jtname);
+		jtname.setToolTipText("Introduce a crypto name");
 
 		jlvalue = new JLabel("Value:");
 		jlvalue.setHorizontalAlignment(SwingConstants.CENTER);
@@ -43,6 +44,7 @@ public class Insert extends JFrame {
 		jtvalue.setBounds(207, 73, 96, 19);
 		jtvalue.setColumns(10);
 		getContentPane().add(jtvalue);
+		jtvalue.setToolTipText("Introduce his value");
 
 		jlmarketCap = new JLabel("Market Cap:");
 		jlmarketCap.setHorizontalAlignment(SwingConstants.CENTER);
@@ -53,6 +55,7 @@ public class Insert extends JFrame {
 		getContentPane().add(jtmarketCap);
 		jtmarketCap.setBounds(207, 96, 96, 19);
 		jtmarketCap.setColumns(10);
+		jtmarketCap.setToolTipText("Introduce his market cap");
 
 		jlsupply = new JLabel("Supply:");
 		jlsupply.setHorizontalAlignment(SwingConstants.CENTER);
@@ -63,6 +66,7 @@ public class Insert extends JFrame {
 		jtsupply.setBounds(207, 119, 96, 19);
 		jtsupply.setColumns(10);
 		getContentPane().add(jtsupply);
+		jtsupply.setToolTipText("Introduce his supply");
 
 		// Buttons
 		jbnext = new JButton("Continue");

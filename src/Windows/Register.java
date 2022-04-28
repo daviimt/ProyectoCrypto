@@ -40,6 +40,7 @@ public class Register extends JFrame {
 		jtusername.setBounds(119, 27, 114, 19);
 		getContentPane().add(jtusername);
 		jtusername.setColumns(10);
+		jtusername.setToolTipText("Introduce your user");
 
 		jlname = new JLabel("Name: ");
 		jlname.setHorizontalAlignment(SwingConstants.CENTER);
@@ -50,6 +51,7 @@ public class Register extends JFrame {
 		jtname.setBounds(119, 50, 114, 19);
 		getContentPane().add(jtname);
 		jtname.setColumns(10);
+		jtname.setToolTipText("Introduce your name");
 
 		jlfirstsurname = new JLabel("First Surname: ");
 		jlfirstsurname.setHorizontalAlignment(SwingConstants.CENTER);
@@ -60,6 +62,7 @@ public class Register extends JFrame {
 		jtfirstsurname.setBounds(119, 73, 114, 19);
 		getContentPane().add(jtfirstsurname);
 		jtfirstsurname.setColumns(10);
+		jtfirstsurname.setToolTipText("Introduce your first surname");
 
 		jllastsurname = new JLabel("Last Surname: ");
 		jllastsurname.setHorizontalAlignment(SwingConstants.CENTER);
@@ -70,6 +73,7 @@ public class Register extends JFrame {
 		jtlastsurname.setBounds(119, 96, 114, 19);
 		getContentPane().add(jtlastsurname);
 		jtlastsurname.setColumns(10);
+		jtlastsurname.setToolTipText("Introduce your last surname");
 
 		jldni = new JLabel("D.N.I. : ");
 		jldni.setHorizontalAlignment(SwingConstants.CENTER);
@@ -80,6 +84,7 @@ public class Register extends JFrame {
 		jtdni.setBounds(119, 119, 114, 19);
 		getContentPane().add(jtdni);
 		jtdni.setColumns(12);
+		jtdni.setToolTipText("Introduce your DNI");
 
 		jlemail = new JLabel("Email: ");
 		jlemail.setHorizontalAlignment(SwingConstants.CENTER);
@@ -90,6 +95,7 @@ public class Register extends JFrame {
 		jtemail.setBounds(119, 142, 114, 19);
 		getContentPane().add(jtemail);
 		jtemail.setColumns(13);
+		jtemail.setToolTipText("Introduce your email");
 
 		jlphone = new JLabel("Phone: ");
 		jlphone.setHorizontalAlignment(SwingConstants.CENTER);
@@ -100,6 +106,7 @@ public class Register extends JFrame {
 		jtphone.setBounds(119, 165, 114, 19);
 		getContentPane().add(jtphone);
 		jtphone.setColumns(10);
+		jtphone.setToolTipText("Introduce your phone");
 
 		jlpassword = new JLabel("Password: ");
 		jlpassword.setHorizontalAlignment(SwingConstants.CENTER);
@@ -110,6 +117,7 @@ public class Register extends JFrame {
 		jppassword.setBounds(119, 188, 114, 19);
 		jppassword.setColumns(10);
 		getContentPane().add(jppassword);
+		jppassword.setToolTipText("Introduce your password");
 
 		jlpassword2 = new JLabel("Repeat Pass.: ");
 		jlpassword2.setHorizontalAlignment(SwingConstants.CENTER);
@@ -120,6 +128,7 @@ public class Register extends JFrame {
 		jppassword2.setBounds(119, 211, 114, 19);
 		jppassword2.setColumns(10);
 		getContentPane().add(jppassword2);
+		jppassword2.setToolTipText("Repeat your password");
 
 		// This button tries to create the user that will be added to the binary file.
 

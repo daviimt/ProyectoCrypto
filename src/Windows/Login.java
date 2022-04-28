@@ -12,10 +12,10 @@ import javax.swing.JTextField;
 @SuppressWarnings("serial")
 public class Login extends JFrame {
 
-	private JLabel username, password;
-	private JButton register, access;
-	private JTextField usernamef;
-	private JPasswordField passwordf;
+	private JLabel jlusername, jlpassword;
+	private JButton jbregister, jbaccess;
+	private JTextField jtusername;
+	private JPasswordField jppassword;
 
 	public Login() {
 		super("Login");
@@ -25,18 +25,18 @@ public class Login extends JFrame {
 		getContentPane().setLayout(null);
 		setLocationRelativeTo(null);
 
-		username = new JLabel("Username:");
-		username.setBounds(25, 32, 70, 13);
-		getContentPane().add(username);
+		jlusername = new JLabel("Username:");
+		jlusername.setBounds(25, 32, 70, 13);
+		getContentPane().add(jlusername);
 
-		password = new JLabel("Password:");
-		password.setBounds(25, 55, 70, 13);
-		getContentPane().add(password);
+		jlpassword = new JLabel("Password:");
+		jlpassword.setBounds(25, 55, 70, 13);
+		getContentPane().add(jlpassword);
 
-		register = new JButton("Register");
-		register.setBounds(22, 93, 85, 21);
-		getContentPane().add(register);
-		register.addActionListener(new ActionListener() {
+		jbregister = new JButton("Register");
+		jbregister.setBounds(22, 93, 85, 21);
+		getContentPane().add(jbregister);
+		jbregister.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
 			@Override
@@ -46,10 +46,10 @@ public class Login extends JFrame {
 			}
 		});
 
-		access = new JButton("Access");
-		access.setBounds(128, 93, 85, 21);
-		getContentPane().add(access);
-		access.addActionListener(new ActionListener() {
+		jbaccess = new JButton("Access");
+		jbaccess.setBounds(128, 93, 85, 21);
+		getContentPane().add(jbaccess);
+		jbaccess.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
 			@Override
@@ -59,15 +59,17 @@ public class Login extends JFrame {
 			}
 		});
 
-		usernamef = new JTextField();
-		usernamef.setBounds(118, 29, 96, 19);
-		getContentPane().add(usernamef);
-		usernamef.setColumns(10);
+		jtusername = new JTextField();
+		jtusername.setBounds(118, 29, 96, 19);
+		getContentPane().add(jtusername);
+		jtusername.setColumns(10);
+		jtusername.setToolTipText("Introduce your user");
 
-		passwordf = new JPasswordField();
-		passwordf.setBounds(118, 52, 96, 21);
-		getContentPane().add(passwordf);
+		jppassword = new JPasswordField();
+		jppassword.setBounds(118, 52, 96, 21);
+		getContentPane().add(jppassword);
 		setVisible(true);
+		jppassword.setToolTipText("Introduce your password");
 	}
 
 }

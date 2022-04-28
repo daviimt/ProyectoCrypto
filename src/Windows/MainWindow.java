@@ -15,10 +15,10 @@ import javax.swing.SwingConstants;
 public class MainWindow extends JFrame {
 
 	private JTable table;
-	private JPanel panel;
-	private JButton details, insert, update, close, statistics;
-	private JLabel user;// nombre;
-	private JPanel panel_1;
+	private JPanel panel, panel_1;
+	private JButton jbdetails, jbinsert, jbupdate, jbclose, jbstatistics;
+	private JLabel jluser;// nombre;
+
 
 	public MainWindow() {
 		super("Menu");
@@ -27,9 +27,9 @@ public class MainWindow extends JFrame {
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
 
-		user = new JLabel("User: ");
-		user.setHorizontalAlignment(SwingConstants.CENTER);
-		getContentPane().add(user);
+		jluser = new JLabel("User: ");
+		jluser.setHorizontalAlignment(SwingConstants.CENTER);
+		getContentPane().add(jluser);
 
 		// Creo que es más sencillo añadir el nombre de usuario al primer label que
 		// tener dos --Juan.
@@ -42,8 +42,8 @@ public class MainWindow extends JFrame {
 		panel = new JPanel();
 		getContentPane().add(panel);
 
-		details = new JButton("Details");
-		details.addActionListener(new ActionListener() {
+		jbdetails = new JButton("Details");
+		jbdetails.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
 			@Override
@@ -53,10 +53,10 @@ public class MainWindow extends JFrame {
 
 			}
 		});
-		panel.add(details);
+		panel.add(jbdetails);
 
-		insert = new JButton("Insert");
-		insert.addActionListener(new ActionListener() {
+		jbinsert = new JButton("Insert");
+		jbinsert.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
 			@Override
@@ -66,11 +66,11 @@ public class MainWindow extends JFrame {
 
 			}
 		});
-		panel.add(insert);
+		panel.add(jbinsert);
 
-		update = new JButton("Update");
-		panel.add(update);
-		update.addActionListener(new ActionListener() {
+		jbupdate = new JButton("Update");
+		panel.add(jbupdate);
+		jbupdate.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -79,9 +79,9 @@ public class MainWindow extends JFrame {
 			}
 		});
 
-		close = new JButton("Log Out");
-		panel.add(close);
-		close.addActionListener(new ActionListener() {
+		jbclose = new JButton("Log Out");
+		panel.add(jbclose);
+		jbclose.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
 			@Override
@@ -95,8 +95,8 @@ public class MainWindow extends JFrame {
 		panel_1 = new JPanel();
 		getContentPane().add(panel_1);
 
-		statistics = new JButton("Statistics");
-		statistics.addActionListener(new ActionListener() {
+		jbstatistics = new JButton("Statistics");
+		jbstatistics.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
 			@Override
@@ -106,7 +106,7 @@ public class MainWindow extends JFrame {
 
 			}
 		});
-		panel_1.add(statistics);
+		panel_1.add(jbstatistics);
 
 		setVisible(true);
 	}
