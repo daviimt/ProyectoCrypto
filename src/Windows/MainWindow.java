@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import java.awt.BorderLayout;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class MainWindow extends JFrame {
@@ -22,12 +23,15 @@ public class MainWindow extends JFrame {
 
 	public MainWindow() {
 		super("Menu");
+		setBackground(Color.GRAY);
 		setBounds(100, 100, 600, 400);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout(0, 0));
+		setMinimumSize(getSize());
 
 		jluser = new JLabel("User: ");
+		jluser.setBackground(Color.GRAY);
 		jluser.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(jluser, BorderLayout.NORTH);
 
@@ -37,9 +41,11 @@ public class MainWindow extends JFrame {
 		// getContentPane().add(nombre);
 
 		table = new JTable();
+		table.setBackground(Color.LIGHT_GRAY);
 		getContentPane().add(table, BorderLayout.CENTER);
 
 		panel_1 = new JPanel();
+		panel_1.setBackground(Color.GRAY);
 		getContentPane().add(panel_1, BorderLayout.SOUTH);
 
 		jbstatistics = new JButton("Statistics");
@@ -56,6 +62,7 @@ public class MainWindow extends JFrame {
 		panel_1.add(jbstatistics);
 												
 														panel = new JPanel();
+														panel.setBackground(Color.GRAY);
 														panel_1.add(panel);
 														
 																jbinsert = new JButton("Insert");

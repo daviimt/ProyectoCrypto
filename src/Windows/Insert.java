@@ -23,6 +23,7 @@ public class Insert extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(new GridLayout(6, 2));
 		setLocationRelativeTo(null);
+		setMinimumSize(getSize());
 
 		jlname = new JLabel("Name:");
 		jlname.setHorizontalAlignment(SwingConstants.CENTER);

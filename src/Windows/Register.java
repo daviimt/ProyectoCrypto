@@ -30,6 +30,7 @@ public class Register extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new GridLayout(10, 2));
+		setMinimumSize(getSize());
 
 		jlusername = new JLabel("Username:");
 		jlusername.setHorizontalAlignment(SwingConstants.CENTER);

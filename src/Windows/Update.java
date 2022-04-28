@@ -26,7 +26,8 @@ public class Update extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(new GridLayout(4, 2));
 		setLocationRelativeTo(null);
-
+		setMinimumSize(getSize());
+		
 		jlname = new JLabel("Name to Update:");
 		jlname.setHorizontalAlignment(SwingConstants.CENTER);
 		jlname.setBounds(123, 53, 45, 13);

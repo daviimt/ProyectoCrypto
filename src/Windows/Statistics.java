@@ -24,7 +24,8 @@ public class Statistics extends JFrame {
 		setLocationRelativeTo(null);
 		setSize(600, 400);
 		getContentPane().setLayout(new GridLayout(3, 0, 0, 0));
-
+		setMinimumSize(getSize());
+		
 		jlusername = new JLabel("Username: ");
 		jlusername.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(jlusername);
