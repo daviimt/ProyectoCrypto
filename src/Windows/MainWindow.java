@@ -19,7 +19,6 @@ public class MainWindow extends JFrame {
 	private JButton jbdetails, jbinsert, jbupdate, jbclose, jbstatistics;
 	private JLabel jluser;// nombre;
 
-
 	public MainWindow() {
 		super("Menu");
 		setBounds(100, 100, 600, 400);
@@ -74,7 +73,7 @@ public class MainWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Update update=new Update();
+				Update update = new Update();
 				dispose();
 
 			}

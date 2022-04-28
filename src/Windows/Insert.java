@@ -45,17 +45,17 @@ public class Insert extends JFrame {
 		jtvalue.setColumns(10);
 		getContentPane().add(jtvalue);
 		jtvalue.setToolTipText("Introduce his value");
-		
-				jlquantity = new JLabel("Quantity:");
-				jlquantity.setHorizontalAlignment(SwingConstants.CENTER);
-				jlquantity.setBounds(122, 122, 46, 13);
-				getContentPane().add(jlquantity);
-		
-				jtquantity = new JTextField();
-				jtquantity.setBounds(207, 119, 96, 19);
-				jtquantity.setColumns(10);
-				getContentPane().add(jtquantity);
-				jtquantity.setToolTipText("Introduce quantity");
+
+		jlquantity = new JLabel("Quantity:");
+		jlquantity.setHorizontalAlignment(SwingConstants.CENTER);
+		jlquantity.setBounds(122, 122, 46, 13);
+		getContentPane().add(jlquantity);
+
+		jtquantity = new JTextField();
+		jtquantity.setBounds(207, 119, 96, 19);
+		jtquantity.setColumns(10);
+		getContentPane().add(jtquantity);
+		jtquantity.setToolTipText("Introduce quantity");
 
 		jlmarketCap = new JLabel("Market Cap:");
 		jlmarketCap.setHorizontalAlignment(SwingConstants.CENTER);
@@ -92,7 +92,7 @@ public class Insert extends JFrame {
 				dispose();
 			}
 		});
-		
+
 		jbcancel = new JButton("Cancel");
 		jbcancel.setBounds(218, 163, 85, 21);
 		getContentPane().add(jbcancel);
