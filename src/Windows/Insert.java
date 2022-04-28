@@ -92,7 +92,7 @@ public class Insert extends JFrame {
 				dispose();
 			}
 		});
-
+		
 		jbcancel = new JButton("Cancel");
 		jbcancel.setBounds(218, 163, 85, 21);
 		getContentPane().add(jbcancel);
