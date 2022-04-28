@@ -13,15 +13,15 @@ import javax.swing.SwingConstants;
 @SuppressWarnings("serial")
 public class Insert extends JFrame {
 
-	private JLabel jlname, jlvalue, jlmarketCap, jlsupply;
-	private JTextField jtname, jtvalue, jtmarketCap, jtsupply;
+	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jlquantity;
+	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtquantity;
 	private JButton jbnext, jbcancel;
 
 	public Insert() {
 		super("Insert cryptocurrency");
 		setSize(250, 200);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		getContentPane().setLayout(new GridLayout(5, 2));
+		getContentPane().setLayout(new GridLayout(6, 2));
 		setLocationRelativeTo(null);
 
 		jlname = new JLabel("Name:");
@@ -45,6 +45,17 @@ public class Insert extends JFrame {
 		jtvalue.setColumns(10);
 		getContentPane().add(jtvalue);
 		jtvalue.setToolTipText("Introduce his value");
+		
+				jlquantity = new JLabel("Quantity:");
+				jlquantity.setHorizontalAlignment(SwingConstants.CENTER);
+				jlquantity.setBounds(122, 122, 46, 13);
+				getContentPane().add(jlquantity);
+		
+				jtquantity = new JTextField();
+				jtquantity.setBounds(207, 119, 96, 19);
+				jtquantity.setColumns(10);
+				getContentPane().add(jtquantity);
+				jtquantity.setToolTipText("Introduce quantity");
 
 		jlmarketCap = new JLabel("Market Cap:");
 		jlmarketCap.setHorizontalAlignment(SwingConstants.CENTER);

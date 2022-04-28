@@ -2,12 +2,13 @@ package Entities;
 
 public class Crypto {
 	private String name;
-	private float value, marketCap, supply;
+	private float value, quantity, marketCap, supply;
 
-	public Crypto(String name, float value, float marketCap, float supply) {
+	public Crypto(String name, float value, float quantity, float marketCap, float supply) {
 		super();
 		this.name = name;
 		this.value = value;
+		this.quantity = quantity;
 		this.marketCap = marketCap;
 		this.supply = supply;
 	}
@@ -32,6 +33,14 @@ public class Crypto {
 		this.value = value;
 	}
 
+	public float getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(float quantity) {
+		this.quantity = quantity;
+	}
+
 	public float getMarketCap() {
 		return marketCap;
 	}
@@ -50,7 +59,7 @@ public class Crypto {
 
 	@Override
 	public String toString() {
-		return "Crypto [name=" + name + ", value=" + value + ", marketCap=" + marketCap + ", supply=" + supply + "]";
+		return "Crypto [name=" + name + ", value=" + value + ", quantity=" + quantity + ", marketCap=" + marketCap
+				+ ", supply=" + supply + "]";
 	}
-
 }
