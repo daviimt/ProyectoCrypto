@@ -31,7 +31,7 @@ public class MainWindow extends JFrame {
 		jluser.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(jluser);
 
-		// Creo que es más sencillo añadir el nombre de usuario al primer label que
+		// Creo que es mï¿½s sencillo aï¿½adir el nombre de usuario al primer label que
 		// tener dos --Juan.
 		// nombre = new JLabel("nombre");
 		// getContentPane().add(nombre);
@@ -74,7 +74,8 @@ public class MainWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// configurar boton update
+				Update update=new Update();
+				dispose();
 
 			}
 		});
