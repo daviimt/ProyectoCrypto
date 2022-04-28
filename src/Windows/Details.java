@@ -7,51 +7,128 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextPane;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class Details extends JFrame {
 
-	JLabel jlusername;
-	JTextPane textPane;
-	JButton jbback;
+	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jlquantity,jldetails;
+	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtquantity,jtdetails;
+	private JButton jbnext, jbcancel,jbdetails;
 
 	public Details() {
-
 		super("Details");
-		setBounds(100, 100, 600, 505);
+		getContentPane().setBackground(Color.LIGHT_GRAY);
+		setSize(350, 250);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getContentPane().setLayout(new GridLayout(7, 2));
 		setLocationRelativeTo(null);
-		setSize(600, 400);
-		getContentPane().setLayout(new GridLayout(3, 0, 0, 0));
 		setMinimumSize(getSize());
+
+		jlname = new JLabel("Name:");
+		jlname.setHorizontalAlignment(SwingConstants.CENTER);
+		jlname.setBounds(123, 53, 45, 13);
+		getContentPane().add(jlname);
+
+		jtname = new JTextField();
+		jtname.setBounds(207, 50, 96, 19);
+		jtname.setColumns(10);
+		jtname.setEditable(false);
+		getContentPane().add(jtname);
+
+		jlvalue = new JLabel("Value:");
+		jlvalue.setHorizontalAlignment(SwingConstants.CENTER);
+		jlvalue.setBounds(123, 76, 45, 13);
+		getContentPane().add(jlvalue);
+
+		jtvalue = new JTextField();
+		jtvalue.setBounds(207, 73, 96, 19);
+		jtvalue.setColumns(10);
+		jtvalue.setEditable(false);
+		getContentPane().add(jtvalue);
+
+		jlquantity = new JLabel("Quantity:");
+		jlquantity.setHorizontalAlignment(SwingConstants.CENTER);
+		jlquantity.setBounds(122, 122, 46, 13);
+		getContentPane().add(jlquantity);
+
+		jtquantity = new JTextField();
+		jtquantity.setBounds(207, 119, 96, 19);
+		jtquantity.setColumns(10);
+		jtquantity.setEditable(false);
+		getContentPane().add(jtquantity);
+
+		jlmarketCap = new JLabel("Market Cap:");
+		jlmarketCap.setHorizontalAlignment(SwingConstants.CENTER);
+		jlmarketCap.setBounds(93, 99, 75, 13);
+		getContentPane().add(jlmarketCap);
+
+		jtmarketCap = new JTextField();
+		getContentPane().add(jtmarketCap);
+		jtmarketCap.setBounds(207, 96, 96, 19);
+		jtmarketCap.setEditable(false);
+		jtmarketCap.setColumns(10);
+
+		jlsupply = new JLabel("Supply:");
+		jlsupply.setHorizontalAlignment(SwingConstants.CENTER);
+		jlsupply.setBounds(122, 122, 46, 13);
+		getContentPane().add(jlsupply);
+
+		jtsupply = new JTextField();
+		jtsupply.setBounds(207, 119, 96, 19);
+		jtsupply.setColumns(10);
+		jtsupply.setEditable(false);
+		getContentPane().add(jtsupply);
 		
-		jlusername = new JLabel("Username: ");
-		jlusername.setHorizontalAlignment(SwingConstants.CENTER);
-		getContentPane().add(jlusername);
+		jldetails = new JLabel("Description:");
+		jldetails.setHorizontalAlignment(SwingConstants.CENTER);
+		jldetails.setBounds(122, 122, 46, 13);
+		getContentPane().add(jldetails);
 
-		textPane = new JTextPane();
-		getContentPane().add(textPane);
-
-		JPanel panel = new JPanel();
-		getContentPane().add(panel);
-
-		jbback = new JButton("Back");
-		jbback.setHorizontalAlignment(SwingConstants.CENTER);
-		jbback.addActionListener(new ActionListener() {
+		// Buttons
+		jbdetails = new JButton("More Info");
+		jbdetails.setBackground(Color.DARK_GRAY);
+		jbdetails.setBounds(101, 163, 85, 21);
+		getContentPane().add(jbdetails);
+		jbdetails.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-				MainWindow ventana = new MainWindow();
-
+				JOptionPane.showMessageDialog(Details.this, "descripcion de la crypto");
 			}
 		});
-		panel.add(jbback);
+		
+		jbnext = new JButton("Continue");
+		jbnext.setBounds(101, 163, 85, 21);
+		getContentPane().add(jbnext);
+		jbnext.addActionListener(new ActionListener() {
+
+			@SuppressWarnings("unused")
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MainWindow main = new MainWindow();
+				dispose();
+			}
+		});
+
+		jbcancel = new JButton("Cancel");
+		jbcancel.setBounds(218, 163, 85, 21);
+		getContentPane().add(jbcancel);
+		jbcancel.addActionListener(new ActionListener() {
+
+			@SuppressWarnings("unused")
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MainWindow main = new MainWindow();
+				dispose();
+			}
+		});
 
 		setVisible(true);
 	}
+
 }

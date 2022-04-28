@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import java.awt.Color;
+import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class Update extends JFrame {
@@ -22,6 +24,7 @@ public class Update extends JFrame {
 
 	public Update() {
 		super("Update details");
+		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setSize(250, 200);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(new GridLayout(4, 2));
@@ -29,6 +32,7 @@ public class Update extends JFrame {
 		setMinimumSize(getSize());
 		
 		jlname = new JLabel("Name to Update:");
+		jlname.setFont(new Font("Noto Nastaliq Urdu", Font.PLAIN, 13));
 		jlname.setHorizontalAlignment(SwingConstants.CENTER);
 		jlname.setBounds(123, 53, 45, 13);
 		getContentPane().add(jlname);
@@ -40,6 +44,7 @@ public class Update extends JFrame {
 		jtname.setToolTipText("Introduce a crypto name");
 
 		jlquantity = new JLabel("Quantity:");
+		jlquantity.setFont(new Font("Noto Nastaliq Urdu", Font.PLAIN, 13));
 		jlquantity.setHorizontalAlignment(SwingConstants.CENTER);
 		jlquantity.setBounds(123, 76, 45, 13);
 		getContentPane().add(jlquantity);
@@ -54,9 +59,11 @@ public class Update extends JFrame {
 		ButtonGroup bgchange=new ButtonGroup(); 
 		
 		jrbuy = new JRadioButton("Buy");
+		jrbuy.setFont(new Font("Noto Nastaliq Urdu", Font.PLAIN, 13));
 		jrbuy.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		jrsell = new JRadioButton("Sell");
+		jrsell.setFont(new Font("Noto Nastaliq Urdu", Font.PLAIN, 13));
 		jrsell.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		bgchange.add(jrbuy);

@@ -13,6 +13,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import Entities.User;
+import java.awt.Color;
+import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class Register extends JFrame {
@@ -26,6 +28,7 @@ public class Register extends JFrame {
 
 		// Setting the window options.
 		super("Register an user");
+		getContentPane().setBackground(Color.GRAY);
 		setSize(300, 285);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -33,6 +36,7 @@ public class Register extends JFrame {
 		setMinimumSize(getSize());
 
 		jlusername = new JLabel("Username:");
+		jlusername.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
 		jlusername.setHorizontalAlignment(SwingConstants.CENTER);
 		jlusername.setBounds(24, 30, 94, 13);
 		getContentPane().add(jlusername);
@@ -44,6 +48,7 @@ public class Register extends JFrame {
 		jtusername.setToolTipText("Introduce your user");
 
 		jlname = new JLabel("Name: ");
+		jlname.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
 		jlname.setHorizontalAlignment(SwingConstants.CENTER);
 		jlname.setBounds(24, 53, 94, 13);
 		getContentPane().add(jlname);
@@ -55,6 +60,7 @@ public class Register extends JFrame {
 		jtname.setToolTipText("Introduce your name");
 
 		jlfirstsurname = new JLabel("First Surname: ");
+		jlfirstsurname.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
 		jlfirstsurname.setHorizontalAlignment(SwingConstants.CENTER);
 		jlfirstsurname.setBounds(24, 76, 94, 13);
 		getContentPane().add(jlfirstsurname);
@@ -66,6 +72,7 @@ public class Register extends JFrame {
 		jtfirstsurname.setToolTipText("Introduce your first surname");
 
 		jllastsurname = new JLabel("Last Surname: ");
+		jllastsurname.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
 		jllastsurname.setHorizontalAlignment(SwingConstants.CENTER);
 		jllastsurname.setBounds(24, 99, 94, 11);
 		getContentPane().add(jllastsurname);
@@ -77,6 +84,7 @@ public class Register extends JFrame {
 		jtlastsurname.setToolTipText("Introduce your last surname");
 
 		jldni = new JLabel("D.N.I. : ");
+		jldni.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
 		jldni.setHorizontalAlignment(SwingConstants.CENTER);
 		jldni.setBounds(24, 122, 94, 13);
 		getContentPane().add(jldni);
@@ -88,6 +96,7 @@ public class Register extends JFrame {
 		jtdni.setToolTipText("Introduce your DNI");
 
 		jlemail = new JLabel("Email: ");
+		jlemail.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
 		jlemail.setHorizontalAlignment(SwingConstants.CENTER);
 		jlemail.setBounds(24, 145, 94, 13);
 		getContentPane().add(jlemail);
@@ -99,6 +108,7 @@ public class Register extends JFrame {
 		jtemail.setToolTipText("Introduce your email");
 
 		jlphone = new JLabel("Phone: ");
+		jlphone.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
 		jlphone.setHorizontalAlignment(SwingConstants.CENTER);
 		jlphone.setBounds(24, 168, 94, 13);
 		getContentPane().add(jlphone);
@@ -110,6 +120,7 @@ public class Register extends JFrame {
 		jtphone.setToolTipText("Introduce your phone");
 
 		jlpassword = new JLabel("Password: ");
+		jlpassword.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
 		jlpassword.setHorizontalAlignment(SwingConstants.CENTER);
 		jlpassword.setBounds(24, 191, 94, 13);
 		getContentPane().add(jlpassword);
@@ -121,6 +132,7 @@ public class Register extends JFrame {
 		jppassword.setToolTipText("Introduce your password");
 
 		jlpassword2 = new JLabel("Repeat Pass.: ");
+		jlpassword2.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
 		jlpassword2.setHorizontalAlignment(SwingConstants.CENTER);
 		jlpassword2.setBounds(24, 214, 94, 13);
 		getContentPane().add(jlpassword2);

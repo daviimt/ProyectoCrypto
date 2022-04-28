@@ -18,7 +18,7 @@ public class Statistics extends JFrame {
 
 	public Statistics() {
 
-		super("Details");
+		super("Stadistics");
 		setBounds(100, 100, 600, 505);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);

@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import java.awt.Color;
+import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class Login extends JFrame {
@@ -19,6 +21,7 @@ public class Login extends JFrame {
 
 	public Login() {
 		super("Login");
+		getContentPane().setBackground(Color.GRAY);
 		setResizable(false);
 		setBounds(100, 100, 250, 181);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -26,11 +29,13 @@ public class Login extends JFrame {
 		setLocationRelativeTo(null);
 
 		jlusername = new JLabel("Username:");
-		jlusername.setBounds(25, 32, 70, 13);
+		jlusername.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
+		jlusername.setBounds(25, 32, 70, 21);
 		getContentPane().add(jlusername);
 
 		jlpassword = new JLabel("Password:");
-		jlpassword.setBounds(25, 55, 70, 13);
+		jlpassword.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
+		jlpassword.setBounds(25, 58, 70, 21);
 		getContentPane().add(jlpassword);
 
 		jbregister = new JButton("Register");

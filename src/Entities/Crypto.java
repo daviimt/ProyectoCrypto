@@ -1,7 +1,8 @@
 package Entities;
 
 public class Crypto {
-	private String name;
+	private String name,details;
+
 	private float value, quantity, marketCap, supply;
 
 	public Crypto(String name, float value, float quantity, float marketCap, float supply) {
@@ -57,9 +58,18 @@ public class Crypto {
 		this.supply = supply;
 	}
 
+	public String getDetails() {
+		return details;
+	}
+	
+	public void setDetails(String details) {
+		this.details = details;
+	}
+
 	@Override
 	public String toString() {
-		return "Crypto [name=" + name + ", value=" + value + ", quantity=" + quantity + ", marketCap=" + marketCap
-				+ ", supply=" + supply + "]";
+		return "Crypto [name=" + name + ", details=" + details + ", value=" + value + ", quantity=" + quantity
+				+ ", marketCap=" + marketCap + ", supply=" + supply + "]";
 	}
+	
 }
