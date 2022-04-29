@@ -15,8 +15,8 @@ import java.awt.Font;
 @SuppressWarnings("serial")
 public class Insert extends JFrame {
 
-	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jlquantity;
-	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtquantity;
+	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jldescription;
+	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtdescription;
 	private JButton jbnext, jbcancel;
 
 	public Insert() {
@@ -52,17 +52,6 @@ public class Insert extends JFrame {
 		getContentPane().add(jtvalue);
 		jtvalue.setToolTipText("Introduce his value");
 
-		jlquantity = new JLabel("Quantity:");
-		jlquantity.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
-		jlquantity.setHorizontalAlignment(SwingConstants.CENTER);
-		jlquantity.setBounds(122, 122, 46, 13);
-		getContentPane().add(jlquantity);
-
-		jtquantity = new JTextField();
-		jtquantity.setBounds(207, 119, 96, 19);
-		jtquantity.setColumns(10);
-		getContentPane().add(jtquantity);
-		jtquantity.setToolTipText("Introduce quantity");
 
 		jlmarketCap = new JLabel("Market Cap:");
 		jlmarketCap.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
@@ -88,6 +77,18 @@ public class Insert extends JFrame {
 		getContentPane().add(jtsupply);
 		jtsupply.setToolTipText("Introduce his supply");
 
+		jldescription = new JLabel("Description:");
+		jldescription.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
+		jldescription.setHorizontalAlignment(SwingConstants.CENTER);
+		jldescription.setBounds(122, 122, 46, 13);
+		getContentPane().add(jldescription);
+		
+		jtdescription = new JTextField();
+		jtdescription.setBounds(207, 119, 96, 19);
+		jtdescription.setColumns(10);
+		getContentPane().add(jtdescription);
+		jtdescription.setToolTipText("Introduce his description");
+		
 		// Buttons
 		jbnext = new JButton("Continue");
 		jbnext.setBounds(101, 163, 85, 21);

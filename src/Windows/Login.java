@@ -73,8 +73,8 @@ public class Login extends JFrame {
 		jppassword = new JPasswordField();
 		jppassword.setBounds(118, 52, 96, 21);
 		getContentPane().add(jppassword);
-		setVisible(true);
 		jppassword.setToolTipText("Introduce your password");
+		setVisible(true);
 	}
 
 }
