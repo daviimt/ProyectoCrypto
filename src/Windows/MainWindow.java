@@ -3,6 +3,8 @@ package Windows;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -111,7 +113,9 @@ public class MainWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				int option = JOptionPane.showOptionDialog(jbupdate, "Are you sure?", "Confirm", JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE, null, null, null);
+				Icon icon=new ImageIcon("images/warning.png");
+				int option = JOptionPane.showOptionDialog(jbupdate, "Are you sure?", "Confirm", JOptionPane.YES_NO_OPTION,
+						JOptionPane.QUESTION_MESSAGE,icon,null,null);
 				if(option==1) {
 					dispose();
 					MainWindow main=new MainWindow();
