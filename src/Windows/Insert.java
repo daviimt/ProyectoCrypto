@@ -3,28 +3,36 @@ package Windows;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import java.awt.Color;
 import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class Insert extends JFrame {
 
-	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jldescription;
+	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jldescription,jlimage;
 	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtdescription;
-	private JButton jbnext, jbcancel;
+	private JButton jbnext, jbcancel,jbimage;
 
 	public Insert() {
 		super("Insert cryptocurrency");
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setSize(250, 200);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		getContentPane().setLayout(new GridLayout(6, 2));
+		getContentPane().setLayout(new GridLayout(7, 2));
 		setLocationRelativeTo(null);
 		setMinimumSize(getSize());
 
@@ -89,7 +97,20 @@ public class Insert extends JFrame {
 		getContentPane().add(jtdescription);
 		jtdescription.setToolTipText("Introduce his description");
 		
+		jlimage = new JLabel("Image:");
+		jlimage.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
+		jlimage.setHorizontalAlignment(SwingConstants.CENTER);
+		jlimage.setBounds(122, 122, 46, 13);
+		getContentPane().add(jlimage);
+		
 		// Buttons
+		
+		jbimage = new JButton("Image");
+		jbimage.setBounds(101, 163, 85, 21);
+		getContentPane().add(jbimage);
+		InsertImg insertImg=new InsertImg();
+		jbimage.addActionListener(insertImg);
+		
 		jbnext = new JButton("Continue");
 		jbnext.setBounds(101, 163, 85, 21);
 		getContentPane().add(jbnext);
@@ -119,4 +140,35 @@ public class Insert extends JFrame {
 		setVisible(true);
 	}
 
+	public class InsertImg implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if (jtname.getText().equals("")) {
+				JOptionPane.showMessageDialog(null, "The crypto name cant be empty", "",
+						JOptionPane.ERROR_MESSAGE);
+			} else {
+
+				JFileChooser fileChooser = new JFileChooser();
+				fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+				FileNameExtensionFilter soloImg = new FileNameExtensionFilter("JPG & PNG Images", "png", "png");
+				fileChooser.setFileFilter(soloImg);
+
+				fileChooser.showSaveDialog(null);
+
+				File imagenes = new File("images/" + jtname.getText() + ".png");
+
+				Path sourcer = fileChooser.getSelectedFile().getAbsoluteFile().toPath();
+				Path destination = imagenes.toPath();
+
+				try {
+					Files.copy(sourcer, destination);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+
+		}
+	}
 }
