@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
@@ -17,7 +18,7 @@ public class MainWindow extends JFrame {
 
 	private JTable table;
 	private JPanel panel, panel_1;
-	private JButton jbdetails, jbinsert, jbupdate, jbclose, jbstatistics;
+	private JButton jbdetails, jbinsert, jbupdate, jbclose, jbstatistics,jbdelete;
 	private JLabel jluser;// nombre;
 
 	public MainWindow() {
@@ -102,6 +103,26 @@ public class MainWindow extends JFrame {
 			}
 		});
 
+		jbdelete = new JButton("Delete");
+		panel.add(jbdelete);
+		jbdelete.addActionListener(new ActionListener() {
+			
+			@SuppressWarnings("unused")
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				int option = JOptionPane.showOptionDialog(jbupdate, "Are you sure?", "Confirm", JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE, null, null, null);
+				if(option==1) {
+					dispose();
+					MainWindow main=new MainWindow();
+					//hay que hacer que borre la crypto
+				}else {
+					dispose();
+					MainWindow main=new MainWindow();
+				}
+			}
+		});
+		
 		jbclose = new JButton("Log Out");
 		panel.add(jbclose);
 		jbclose.addActionListener(new ActionListener() {
@@ -114,6 +135,7 @@ public class MainWindow extends JFrame {
 
 			}
 		});
+		
 
 		setVisible(true);
 	}

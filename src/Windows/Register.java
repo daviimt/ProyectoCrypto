@@ -19,8 +19,8 @@ import java.awt.Font;
 @SuppressWarnings("serial")
 public class Register extends JFrame {
 
-	private JLabel jlusername, jlname, jlfirstsurname, jllastsurname, jldni, jlemail, jlphone, jlpassword, jlpassword2;
-	private JTextField jtusername, jtname, jtfirstsurname, jtlastsurname, jtdni, jtemail, jtphone;
+	private JLabel jlusername, jlname, jldni, jlemail, jlpassword, jlpassword2;
+	private JTextField jtusername, jtname, jtdni, jtemail;
 	private JPasswordField jppassword, jppassword2;
 	private JButton jbconfirm, jbcancel;
 
@@ -32,7 +32,7 @@ public class Register extends JFrame {
 		setSize(300, 285);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
-		getContentPane().setLayout(new GridLayout(10, 2));
+		getContentPane().setLayout(new GridLayout(7, 2));
 		setMinimumSize(getSize());
 
 		jlusername = new JLabel("Username:");
@@ -59,29 +59,7 @@ public class Register extends JFrame {
 		jtname.setColumns(10);
 		jtname.setToolTipText("Introduce your name");
 
-		jlfirstsurname = new JLabel("First Surname: ");
-		jlfirstsurname.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
-		jlfirstsurname.setHorizontalAlignment(SwingConstants.CENTER);
-		jlfirstsurname.setBounds(24, 76, 94, 13);
-		getContentPane().add(jlfirstsurname);
-
-		jtfirstsurname = new JTextField();
-		jtfirstsurname.setBounds(119, 73, 114, 19);
-		getContentPane().add(jtfirstsurname);
-		jtfirstsurname.setColumns(10);
-		jtfirstsurname.setToolTipText("Introduce your first surname");
-
-		jllastsurname = new JLabel("Last Surname: ");
-		jllastsurname.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
-		jllastsurname.setHorizontalAlignment(SwingConstants.CENTER);
-		jllastsurname.setBounds(24, 99, 94, 11);
-		getContentPane().add(jllastsurname);
-
-		jtlastsurname = new JTextField();
-		jtlastsurname.setBounds(119, 96, 114, 19);
-		getContentPane().add(jtlastsurname);
-		jtlastsurname.setColumns(10);
-		jtlastsurname.setToolTipText("Introduce your last surname");
+		
 
 		jldni = new JLabel("D.N.I. : ");
 		jldni.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
@@ -106,18 +84,6 @@ public class Register extends JFrame {
 		getContentPane().add(jtemail);
 		jtemail.setColumns(13);
 		jtemail.setToolTipText("Introduce your email");
-
-		jlphone = new JLabel("Phone: ");
-		jlphone.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
-		jlphone.setHorizontalAlignment(SwingConstants.CENTER);
-		jlphone.setBounds(24, 168, 94, 13);
-		getContentPane().add(jlphone);
-
-		jtphone = new JTextField();
-		jtphone.setBounds(119, 165, 114, 19);
-		getContentPane().add(jtphone);
-		jtphone.setColumns(10);
-		jtphone.setToolTipText("Introduce your phone");
 
 		jlpassword = new JLabel("Password: ");
 		jlpassword.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
@@ -156,21 +122,18 @@ public class Register extends JFrame {
 				// Pendiente verificacion para usar los distintos constructores de User (campos
 				// necesarios y no necesarios)
 				// Pendiente verificacion filtros username, dni, email, phone, password y que
-				// coincidan las contrase�as entre ellas.
+				// coincidan las contraseï¿½as entre ellas.
 				boolean verification;
 				verification = isNotNull(jtusername.getText());
 				verification = isNotNull(jtname.getText());
-				verification = isNotNull(jtfirstsurname.getText());
-				verification = isNotNull(jtlastsurname.getText());
 				verification = isNotNull(jtdni.getText());
 				verification = isNotNull(jtemail.getText());
-				verification = isNotNull(jtphone.getText());
 				verification = isNotNull(jppassword.getText());
 				verification = isNotNull(jppassword2.getText());
 
 				if (verification) {
 					User user = new User(jtusername.getText(), jtdni.getText(), jtemail.getText(), jtname.getText(),
-							jtfirstsurname.getText(), jtlastsurname.getText(), jppassword.getText(), jtphone.getText());
+							 jppassword.getText());
 					JOptionPane.showMessageDialog(null, "User creation complete.");
 				} else
 					JOptionPane.showMessageDialog(null, "Fill every required field to create the user.");
