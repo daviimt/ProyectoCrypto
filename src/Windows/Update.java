@@ -4,11 +4,17 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import Entities.Crypto;
+
 import java.awt.Color;
 import java.awt.Font;
 
@@ -18,6 +24,7 @@ public class Update extends JFrame {
 	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jldescription;
 	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtdescription;
 	private JButton jbnext, jbcancel;
+	private Icon icon;
 
 	public Update() {
 		super("Update cryptocurrency");
@@ -95,11 +102,38 @@ public class Update extends JFrame {
 		getContentPane().add(jbnext);
 		jbnext.addActionListener(new ActionListener() {
 
-			@SuppressWarnings("unused")
+			@SuppressWarnings({ "unused" })
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainWindow main = new MainWindow();
-				dispose();
+				// Pendiente verificacion para usar los distintos constructores de User (campos
+				// necesarios y no necesarios)
+				// Pendiente verificacion filtros username, dni, email, phone, password y que
+				// coincidan las contraseÃ¯Â¿Â½as entre ellas.
+				//si el ultimo es true lo capta como esta bien (hay que estructurar la verificacion de nuevo)
+				boolean verification;
+				verification = isNotNull(jtname.getText());
+				verification = isNotNull(jtvalue.getText());
+				verification = isNotNull(jtmarketCap.getText());
+				verification = isNotNull(jtsupply.getText());
+				verification = isNotNull(jtdescription.getText());
+
+				if (verification) {
+
+					//error por el parseFloat (arreglarlo)
+					Crypto crypto = new Crypto(jtname.getText(), Float.parseFloat(jtvalue.getText()),
+							Float.parseFloat(jtmarketCap.getText()), Float.parseFloat(jtsupply.getText()),
+							jtdescription.getText());
+					
+					icon=new ImageIcon("images/check.png");
+					JOptionPane.showMessageDialog(null, "Crypto creation complete.","Completed",JOptionPane.INFORMATION_MESSAGE,icon);
+					dispose();
+					MainWindow main = new MainWindow();
+				} else {
+					icon = new ImageIcon("images/warning.png");
+					JOptionPane.showMessageDialog(null, "Fill every required field to create the crypto.", "Error",
+							JOptionPane.WARNING_MESSAGE, icon);
+				}
+
 			}
 		});
 
@@ -117,6 +151,14 @@ public class Update extends JFrame {
 		});
 
 		setVisible(true);
+	}
+	
+	private boolean isNotNull(String s) {
+		if (s.isBlank()) {
+			return false;
+		} else
+			return true;
+
 	}
 
 }
