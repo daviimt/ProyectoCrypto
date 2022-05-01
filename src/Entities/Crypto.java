@@ -1,15 +1,27 @@
 package Entities;
 
-public class Crypto {
-	private String name,details;
+import javax.swing.Icon;
 
+public class Crypto {
+
+	private String name;
 	private float value, marketCap, supply;
 	private String description;
+	private Icon icon;
 
-	public Crypto(String name, String details, float value, float marketCap, float supply, String description) {
+	public Crypto(String name, float value, float marketCap, float supply, String description, Icon icon) {
 		super();
 		this.name = name;
-		this.details = details;
+		this.value = value;
+		this.marketCap = marketCap;
+		this.supply = supply;
+		this.description = description;
+		this.icon = icon;
+	}
+
+	public Crypto(String name, float value, float marketCap, float supply, String description) {
+		super();
+		this.name = name;
 		this.value = value;
 		this.marketCap = marketCap;
 		this.supply = supply;
@@ -52,14 +64,6 @@ public class Crypto {
 		this.supply = supply;
 	}
 
-	public String getDetails() {
-		return details;
-	}
-	
-	public void setDetails(String details) {
-		this.details = details;
-	}
-
 	public String getDescription() {
 		return description;
 	}
@@ -68,10 +72,18 @@ public class Crypto {
 		this.description = description;
 	}
 
+	public Icon getIcon() {
+		return icon;
+	}
+
+	public void setIcon(Icon icon) {
+		this.icon = icon;
+	}
+
 	@Override
 	public String toString() {
-		return "Crypto [name=" + name + ", details=" + details + ", value=" + value + ", marketCap=" + marketCap
-				+ ", supply=" + supply + ", description=" + description + "]";
+		return "Crypto [name=" + name + ", value=" + value + ", marketCap=" + marketCap + ", supply=" + supply
+				+ ", description=" + description + ", icon=" + icon + "]";
 	}
-	
+
 }

@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -17,15 +19,18 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import Entities.Crypto;
+
 import java.awt.Color;
 import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class Insert extends JFrame {
 
-	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jldescription,jlimage;
+	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jldescription, jlimage;
 	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtdescription;
-	private JButton jbnext, jbcancel,jbimage;
+	private JButton jbnext, jbcancel, jbimage;
+	private Icon icon;
 
 	public Insert() {
 		super("Insert cryptocurrency");
@@ -60,7 +65,6 @@ public class Insert extends JFrame {
 		getContentPane().add(jtvalue);
 		jtvalue.setToolTipText("Introduce his value");
 
-
 		jlmarketCap = new JLabel("Market Cap:");
 		jlmarketCap.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
 		jlmarketCap.setHorizontalAlignment(SwingConstants.CENTER);
@@ -90,37 +94,63 @@ public class Insert extends JFrame {
 		jldescription.setHorizontalAlignment(SwingConstants.CENTER);
 		jldescription.setBounds(122, 122, 46, 13);
 		getContentPane().add(jldescription);
-		
+
 		jtdescription = new JTextField();
 		jtdescription.setBounds(207, 119, 96, 19);
 		jtdescription.setColumns(10);
 		getContentPane().add(jtdescription);
 		jtdescription.setToolTipText("Introduce his description");
-		
+
 		jlimage = new JLabel("Image:");
 		jlimage.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
 		jlimage.setHorizontalAlignment(SwingConstants.CENTER);
 		jlimage.setBounds(122, 122, 46, 13);
 		getContentPane().add(jlimage);
-		
+
 		// Buttons
-		
+
 		jbimage = new JButton("Image");
 		jbimage.setBounds(101, 163, 85, 21);
 		getContentPane().add(jbimage);
-		InsertImg insertImg=new InsertImg();
+		InsertImg insertImg = new InsertImg();
 		jbimage.addActionListener(insertImg);
-		
+
 		jbnext = new JButton("Continue");
 		jbnext.setBounds(101, 163, 85, 21);
 		getContentPane().add(jbnext);
 		jbnext.addActionListener(new ActionListener() {
 
-			@SuppressWarnings("unused")
+			@SuppressWarnings({ "unused" })
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainWindow main = new MainWindow();
-				dispose();
+				// Pendiente verificacion para usar los distintos constructores de User (campos
+				// necesarios y no necesarios)
+				// Pendiente verificacion filtros username, dni, email, phone, password y que
+				// coincidan las contraseÃ¯Â¿Â½as entre ellas.
+				//si el ultimo es true lo capta como esta bien (hay que estructurar la verificacion de nuevo)
+				boolean verification;
+				verification = isNotNull(jtname.getText());
+				verification = isNotNull(jtvalue.getText());
+				verification = isNotNull(jtmarketCap.getText());
+				verification = isNotNull(jtsupply.getText());
+				verification = isNotNull(jtdescription.getText());
+
+				if (verification) {
+
+					//error por el parseFloat (arreglarlo)
+					Crypto crypto = new Crypto(jtname.getText(), Float.parseFloat(jtvalue.getText()),
+							Float.parseFloat(jtmarketCap.getText()), Float.parseFloat(jtsupply.getText()),
+							jtdescription.getText());
+
+					JOptionPane.showMessageDialog(null, "Crypto creation complete.");
+					dispose();
+					MainWindow main = new MainWindow();
+				} else {
+					icon = new ImageIcon("images/warning.png");
+					JOptionPane.showMessageDialog(null, "Fill every required field to create the crypto.", "Error",
+							JOptionPane.WARNING_MESSAGE, icon);
+				}
+
 			}
 		});
 
@@ -138,14 +168,23 @@ public class Insert extends JFrame {
 		});
 
 		setVisible(true);
+
+	}
+
+	private boolean isNotNull(String s) {
+		if (s.isBlank()) {
+			return false;
+		} else
+			return true;
+
 	}
 
 	public class InsertImg implements ActionListener {
+
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (jtname.getText().equals("")) {
-				JOptionPane.showMessageDialog(null, "The crypto name cant be empty", "",
-						JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "The crypto name cant be empty", "", JOptionPane.ERROR_MESSAGE);
 			} else {
 
 				JFileChooser fileChooser = new JFileChooser();

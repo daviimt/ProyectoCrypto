@@ -126,6 +126,7 @@ public class Register extends JFrame {
 				// necesarios y no necesarios)
 				// Pendiente verificacion filtros username, dni, email, phone, password y que
 				// coincidan las contraseÃ¯Â¿Â½as entre ellas.
+				//si el ultimo es true lo capta como esta bien (hay que estructurar la verificacion de nuevo)
 				boolean verification;
 				verification = isNotNull(jtusername.getText());
 				verification = isNotNull(jtname.getText());
@@ -139,12 +140,12 @@ public class Register extends JFrame {
 					User user = new User(jtusername.getText(), jtdni.getText(), jtemail.getText(), jtname.getText(),
 							 jppassword.getText());
 					JOptionPane.showMessageDialog(null, "User creation complete.");
+					dispose();
+					Login login = new Login();
 				} else {
 					icon=new ImageIcon("images/warning.png");
 					JOptionPane.showMessageDialog(null, "Fill every required field to create the user.", "Error", JOptionPane.WARNING_MESSAGE, icon);
 				}
-				Login login = new Login();
-				dispose();
 				
 			}
 		});
