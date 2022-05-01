@@ -139,7 +139,8 @@ public class Register extends JFrame {
 				if (verification) {
 					User user = new User(jtusername.getText(), jtdni.getText(), jtemail.getText(), jtname.getText(),
 							 jppassword.getText());
-					JOptionPane.showMessageDialog(null, "User creation complete.");
+					icon=new ImageIcon("images/check.png");
+					JOptionPane.showMessageDialog(null, "User creation complete.","Complete",JOptionPane.INFORMATION_MESSAGE,icon);
 					dispose();
 					Login login = new Login();
 				} else {
