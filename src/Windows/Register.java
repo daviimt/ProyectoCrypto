@@ -4,6 +4,8 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,7 +25,8 @@ public class Register extends JFrame {
 	private JTextField jtusername, jtname, jtdni, jtemail;
 	private JPasswordField jppassword, jppassword2;
 	private JButton jbconfirm, jbcancel;
-
+	private Icon icon;
+	
 	public Register() {
 
 		// Setting the window options.
@@ -122,7 +125,7 @@ public class Register extends JFrame {
 				// Pendiente verificacion para usar los distintos constructores de User (campos
 				// necesarios y no necesarios)
 				// Pendiente verificacion filtros username, dni, email, phone, password y que
-				// coincidan las contraseï¿½as entre ellas.
+				// coincidan las contraseÃ¯Â¿Â½as entre ellas.
 				boolean verification;
 				verification = isNotNull(jtusername.getText());
 				verification = isNotNull(jtname.getText());
@@ -130,17 +133,19 @@ public class Register extends JFrame {
 				verification = isNotNull(jtemail.getText());
 				verification = isNotNull(jppassword.getText());
 				verification = isNotNull(jppassword2.getText());
-
+				
+				
 				if (verification) {
 					User user = new User(jtusername.getText(), jtdni.getText(), jtemail.getText(), jtname.getText(),
 							 jppassword.getText());
 					JOptionPane.showMessageDialog(null, "User creation complete.");
-				} else
-					JOptionPane.showMessageDialog(null, "Fill every required field to create the user.");
-
+				} else {
+					icon=new ImageIcon("images/warning.png");
+					JOptionPane.showMessageDialog(null, "Fill every required field to create the user.", "Error", JOptionPane.WARNING_MESSAGE, icon);
+				}
 				Login login = new Login();
 				dispose();
-
+				
 			}
 		});
 
