@@ -3,7 +3,10 @@ package Windows;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -31,6 +34,8 @@ public class Register extends JFrame {
 	private String sdni = "[0-9]{8}[A-Za-z]";
 	private String semail = "^[A-Za-z0-9]+@[A-Za-z0-9]+.([A-Za-z0-9]+)$";
 	private String spassw = "[A-Za-z\\d$@$#_!%*?&]{6,15}$";
+
+	private ObjectOutputStream os;
 
 	public Register() {
 
@@ -114,7 +119,6 @@ public class Register extends JFrame {
 		jppassword2.setColumns(10);
 		getContentPane().add(jppassword2);
 		jppassword2.setToolTipText("Repeat your password");
-		
 
 		jbconfirm = new JButton("Confirm");
 		jbconfirm.setBounds(150, 364, 85, 21);
@@ -146,12 +150,10 @@ public class Register extends JFrame {
 									User user = new User(jtusername.getText(), jtdni.getText(), jtemail.getText(),
 											jtname.getText(), jppassword.getText());
 
-									AddObjectOutputStream aos;
 									try {
-										aos = new AddObjectOutputStream();
-										aos.abrir("Users");
-										aos.writeObject(user);
-										aos.cerrar();
+										abrir("Users");
+										os.writeObject(user);
+										cerrar();
 									} catch (IOException e1) {
 										e1.printStackTrace();
 									}
@@ -164,8 +166,8 @@ public class Register extends JFrame {
 
 								} else {
 									icon = new ImageIcon("images/warning.png");
-									JOptionPane.showMessageDialog(null, "Passwords don't match",
-											"Error", JOptionPane.WARNING_MESSAGE, icon);
+									JOptionPane.showMessageDialog(null, "Passwords don't match", "Error",
+											JOptionPane.WARNING_MESSAGE, icon);
 								}
 
 							} else {
@@ -208,6 +210,21 @@ public class Register extends JFrame {
 		});
 
 		setVisible(true);
+	}
+	
+	public void abrir(String nameFile) throws IOException {
+		File f = new File("files/"+nameFile);
+		try {
+			if (f.exists())
+				os = new AddObjectOutputStream(new FileOutputStream(f, true));
+			else
+				os = new ObjectOutputStream(new FileOutputStream(f));
+		} catch (Exception ex) {
+		}
+	}
+
+	public void cerrar() throws IOException {
+		os.close();
 	}
 
 }

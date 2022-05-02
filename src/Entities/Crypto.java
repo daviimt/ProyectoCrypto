@@ -1,8 +1,10 @@
 package Entities;
 
+import java.io.Serializable;
+
 import javax.swing.Icon;
 
-public class Crypto {
+public class Crypto implements Serializable{
 
 	private String name;
 	private float value, marketCap, supply;

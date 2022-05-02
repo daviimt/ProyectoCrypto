@@ -4,7 +4,9 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -31,7 +33,8 @@ public class Insert extends JFrame {
 	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtdescription;
 	private JButton jbnext, jbcancel, jbimage;
 	private Icon icon;
-
+	private ObjectOutputStream os;
+	
 	public Insert(String name) {
 		super("Insert cryptocurrency");
 		getContentPane().setBackground(Color.LIGHT_GRAY);
@@ -143,10 +146,10 @@ public class Insert extends JFrame {
 
 					AddObjectOutputStream aos;
 					try {
-						aos = new AddObjectOutputStream();
-						aos.abrir("Cryptos");
-						aos.writeObject(crypto);
-						aos.cerrar();
+						//aos = new AddObjectOutputStream();
+						abrir("Cryptos");
+						os.writeObject(crypto);
+						cerrar();
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
@@ -180,6 +183,21 @@ public class Insert extends JFrame {
 
 		setVisible(true);
 
+	}
+	
+	public void abrir(String nameFile) throws IOException {
+		File f = new File("files/"+nameFile);
+		try {
+			if (f.exists())
+				os = new AddObjectOutputStream(new FileOutputStream(f, true));
+			else
+				os = new ObjectOutputStream(new FileOutputStream(f));
+		} catch (Exception ex) {
+		}
+	}
+
+	public void cerrar() throws IOException {
+		os.close();
 	}
 
 	public class InsertImg implements ActionListener {
