@@ -2,23 +2,14 @@ package Entities;
 
 public class User {
 
-	private String username, dni, correo, name, password;
+	private String username, name, dni, email, password;
 
-	public User(String username, String dni, String correo, String name, String apellido1, String apellido2,
-			String password, String tlf) {
+	public User(String username, String name, String dni, String email, String password) {
 		super();
 		this.username = username;
-		this.dni = dni;
-		this.correo = correo;
 		this.name = name;
-		this.password = password;
-	}
-
-	public User(String username, String dni, String correo, String password, String tlf) {
-		super();
-		this.username = username;
 		this.dni = dni;
-		this.correo = correo;
+		this.email = email;
 		this.password = password;
 	}
 
@@ -34,6 +25,14 @@ public class User {
 		this.username = username;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public String getDni() {
 		return dni;
 	}
@@ -42,12 +41,12 @@ public class User {
 		this.dni = dni;
 	}
 
-	public String getCorreo() {
-		return correo;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setCorreo(String correo) {
-		this.correo = correo;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {
@@ -60,7 +59,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [username=" + username + ", dni=" + dni + ", correo=" + correo + ", name=" + name + ", password="
+		return "User [username=" + username + ", name=" + name + ", dni=" + dni + ", email=" + email + ", password="
 				+ password + "]";
 	}
 
