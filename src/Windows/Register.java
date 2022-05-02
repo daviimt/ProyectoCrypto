@@ -4,9 +4,8 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -18,7 +17,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import Entities.User;
 import java.awt.Color;
 import java.awt.Font;
 
@@ -35,7 +33,7 @@ public class Register extends JFrame {
 	private String semail = "^[A-Za-z0-9]+@[A-Za-z0-9]+.([A-Za-z0-9]+)$";
 	private String spassw = "[A-Za-z\\d$@$#_!%*?&]{6,15}$";
 
-	private ObjectOutputStream os;
+	private File fusers = new File("files/Users");
 
 	public Register() {
 
@@ -147,17 +145,14 @@ public class Register extends JFrame {
 							if (jppassword.getText().matches(spassw)) {
 								if (jppassword2.getText().equals(jppassword.getText())) {
 
-									User user = new User(jtusername.getText(), jtdni.getText(), jtemail.getText(),
-											jtname.getText(), jppassword.getText());
-
 									try {
-										abrir("Users");
-										os.writeObject(user);
-										cerrar();
+										FileWriter fw = new FileWriter(fusers, true);
+										fw.write(jtusername.getText() + ";" + jtname.getText() + ";" + jtdni.getText()
+												+ ";" + jtemail.getText() + ";" + jppassword.getText() + "\n");
+										fw.close();
 									} catch (IOException e1) {
 										e1.printStackTrace();
 									}
-
 									icon = new ImageIcon("images/check.png");
 									JOptionPane.showMessageDialog(null, "User creation complete.", "Complete",
 											JOptionPane.INFORMATION_MESSAGE, icon);
@@ -210,21 +205,6 @@ public class Register extends JFrame {
 		});
 
 		setVisible(true);
-	}
-	
-	public void abrir(String nameFile) throws IOException {
-		File f = new File("files/"+nameFile);
-		try {
-			if (f.exists())
-				os = new AddObjectOutputStream(new FileOutputStream(f, true));
-			else
-				os = new ObjectOutputStream(new FileOutputStream(f));
-		} catch (Exception ex) {
-		}
-	}
-
-	public void cerrar() throws IOException {
-		os.close();
 	}
 
 }

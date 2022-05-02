@@ -2,6 +2,7 @@ package Entities;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class User implements Serializable{
 
 	private String username, name, dni, email, password;

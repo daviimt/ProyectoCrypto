@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.swing.Icon;
 
+@SuppressWarnings("serial")
 public class Crypto implements Serializable{
 
 	private String name;
