@@ -3,6 +3,7 @@ package Windows;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -136,6 +137,17 @@ public class Register extends JFrame {
 				if (verification) {
 					User user = new User(jtusername.getText(), jtdni.getText(), jtemail.getText(), jtname.getText(),
 							jppassword.getText());
+					
+					AddObjectOutputStream aos;
+					try {
+						aos = new AddObjectOutputStream();
+						aos.abrir("Users");
+						aos.writeObject(user);
+						aos.cerrar();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+					
 					icon = new ImageIcon("images/check.png");
 					JOptionPane.showMessageDialog(null, "User creation complete.", "Complete",
 							JOptionPane.INFORMATION_MESSAGE, icon);
@@ -149,8 +161,6 @@ public class Register extends JFrame {
 
 			}
 		});
-
-		// This button return to the Login and close Register's window.
 
 		jbcancel = new JButton("Cancel");
 		jbcancel.setBounds(342, 364, 85, 21);

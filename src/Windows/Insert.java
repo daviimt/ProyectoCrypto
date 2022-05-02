@@ -136,11 +136,21 @@ public class Insert extends JFrame {
 				}
 
 				if (verification) {
-						
+
 					Crypto crypto = new Crypto(jtname.getText(), Float.parseFloat(jtvalue.getText()),
 							Float.parseFloat(jtmarketCap.getText()), Float.parseFloat(jtsupply.getText()),
 							jtdescription.getText(), icon);
 
+					AddObjectOutputStream aos;
+					try {
+						aos = new AddObjectOutputStream();
+						aos.abrir("Cryptos");
+						aos.writeObject(crypto);
+						aos.cerrar();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+					
 					icon = new ImageIcon("images/check.png");
 					JOptionPane.showMessageDialog(null, "Crypto creation complete.", "Completed",
 							JOptionPane.INFORMATION_MESSAGE, icon);
