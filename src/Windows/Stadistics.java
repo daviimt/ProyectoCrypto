@@ -16,7 +16,7 @@ public class Stadistics extends JFrame {
 	JLabel jlusername;
 	JButton jbback;
 
-	public Stadistics() {
+	public Stadistics(String name) {
 
 		super("Stadistics");
 		setBounds(100, 100, 600, 505);
@@ -41,7 +41,7 @@ public class Stadistics extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				MainWindow ventana = new MainWindow();
+				MainWindow ventana = new MainWindow(name);
 
 			}
 		});

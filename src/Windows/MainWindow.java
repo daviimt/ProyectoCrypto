@@ -23,7 +23,8 @@ public class MainWindow extends JFrame {
 	private JButton jbdetails, jbinsert, jbupdate, jbclose, jbstatistics,jbdelete;
 	private JLabel jluser;// nombre;
 
-	public MainWindow() {
+
+	public MainWindow(String name) {
 		super("Menu");
 		setBackground(Color.GRAY);
 		setBounds(100, 100, 600, 400);
@@ -32,7 +33,7 @@ public class MainWindow extends JFrame {
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		setMinimumSize(getSize());
 
-		jluser = new JLabel("User: ");
+		jluser = new JLabel(name);
 		jluser.setBackground(Color.GRAY);
 		jluser.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(jluser, BorderLayout.NORTH);
@@ -57,7 +58,7 @@ public class MainWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Stadistics statistics = new Stadistics();
+				Stadistics statistics = new Stadistics(name);
 
 			}
 		});
@@ -73,7 +74,7 @@ public class MainWindow extends JFrame {
 			@SuppressWarnings("unused")
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Insert statistics = new Insert();
+				Insert statistics = new Insert(name);
 				dispose();
 
 			}
@@ -87,7 +88,7 @@ public class MainWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Details details = new Details();
+				Details details = new Details(name);
 
 			}
 		});
@@ -100,7 +101,7 @@ public class MainWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Update update = new Update();
+				Update update = new Update(name);
 
 			}
 		});
@@ -118,11 +119,11 @@ public class MainWindow extends JFrame {
 						JOptionPane.QUESTION_MESSAGE,icon,null,null);
 				if(option==1) {
 					dispose();
-					MainWindow main=new MainWindow();
+					MainWindow main=new MainWindow(name);
 					//hay que hacer que borre la crypto
 				}else {
 					dispose();
-					MainWindow main=new MainWindow();
+					MainWindow main=new MainWindow(name);
 				}
 			}
 		});

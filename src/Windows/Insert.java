@@ -32,7 +32,7 @@ public class Insert extends JFrame {
 	private JButton jbnext, jbcancel, jbimage;
 	private Icon icon;
 
-	public Insert() {
+	public Insert(String name) {
 		super("Insert cryptocurrency");
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setSize(250, 200);
@@ -155,7 +155,7 @@ public class Insert extends JFrame {
 					JOptionPane.showMessageDialog(null, "Crypto creation complete.", "Completed",
 							JOptionPane.INFORMATION_MESSAGE, icon);
 					dispose();
-					MainWindow main = new MainWindow();
+					MainWindow main = new MainWindow(name);
 				} else {
 					icon = new ImageIcon("images/warning.png");
 					JOptionPane.showMessageDialog(null, "Fill every required field to create the crypto.", "Error",
@@ -173,7 +173,7 @@ public class Insert extends JFrame {
 			@SuppressWarnings("unused")
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainWindow main = new MainWindow();
+				MainWindow main = new MainWindow(name);
 				dispose();
 			}
 		});

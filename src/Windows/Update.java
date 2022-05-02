@@ -32,7 +32,7 @@ public class Update extends JFrame {
 	private JButton jbnext, jbcancel, jbimage;
 	private Icon icon;
 
-	public Update() {
+	public Update(String name) {
 		super("Update cryptocurrency");
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setSize(250, 200);
@@ -143,7 +143,7 @@ public class Update extends JFrame {
 					JOptionPane.showMessageDialog(null, "Crypto creation complete.", "Completed",
 							JOptionPane.INFORMATION_MESSAGE, icon);
 					dispose();
-					MainWindow main = new MainWindow();
+					MainWindow main = new MainWindow(name);
 
 				} else {
 					icon = new ImageIcon("images/warning.png");
@@ -161,7 +161,7 @@ public class Update extends JFrame {
 			@SuppressWarnings("unused")
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainWindow main = new MainWindow();
+				MainWindow main = new MainWindow(name);
 				dispose();
 			}
 		});

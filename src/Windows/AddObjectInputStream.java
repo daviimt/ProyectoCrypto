@@ -17,35 +17,40 @@ public class AddObjectInputStream extends ObjectInputStream {
 		
 	}
 	
-	public void abrirUsu() throws FileNotFoundException, IOException, ClassNotFoundException {
+	public User abrirUsu(String username) throws FileNotFoundException, IOException, ClassNotFoundException {
 		File f = new File("files/User");
 		is = new ObjectInputStream(new FileInputStream(f));
 		User u = (User) is.readObject();
 		try {
 				while(u!=null) {
-				System.out.println(u);
-				u = (User) is.readObject();
+				if(u.getUsername().equals(username)) {
+					return u;
+				}else {
+					u = (User) is.readObject();					
+				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+		return null;
 	}
 	
 	
-	public void abrirCrypto() throws FileNotFoundException, IOException, ClassNotFoundException {
+	public Crypto abrirCrypto(String cryptoName) throws FileNotFoundException, IOException, ClassNotFoundException {
 		File f = new File("files/Crypto");
 		is = new ObjectInputStream(new FileInputStream(f));
 		Crypto c = (Crypto) is.readObject();
 		try {
 				while(c!=null) {
-				System.out.println(c);
+				if(c.getName().equals(cryptoName)) {
+					return c;
+				}
 				c = (Crypto) is.readObject();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+		 return null;
 	}
 	
 	public void cerrar() throws IOException {

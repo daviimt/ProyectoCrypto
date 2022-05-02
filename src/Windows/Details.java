@@ -19,7 +19,7 @@ public class Details extends JFrame {
 	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtquantity;
 	private JButton jbnext, jbcancel,jbdetails;
 
-	public Details() {
+	public Details(String name) {
 		super("Details");
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setSize(350, 250);
@@ -110,7 +110,7 @@ public class Details extends JFrame {
 			@SuppressWarnings("unused")
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainWindow main = new MainWindow();
+				MainWindow main = new MainWindow(name);
 				dispose();
 			}
 		});
@@ -123,7 +123,7 @@ public class Details extends JFrame {
 			@SuppressWarnings("unused")
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainWindow main = new MainWindow();
+				MainWindow main = new MainWindow(name);
 				dispose();
 			}
 		});
