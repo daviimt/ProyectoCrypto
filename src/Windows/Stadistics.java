@@ -11,12 +11,12 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
-public class Statistics extends JFrame {
+public class Stadistics extends JFrame {
 
 	JLabel jlusername;
 	JButton jbback;
 
-	public Statistics() {
+	public Stadistics() {
 
 		super("Stadistics");
 		setBounds(100, 100, 600, 505);

@@ -3,15 +3,21 @@ package Windows;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import Entities.Crypto;
 
@@ -21,9 +27,9 @@ import java.awt.Font;
 @SuppressWarnings("serial")
 public class Update extends JFrame {
 
-	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jldescription;
+	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jldescription, jlimage;
 	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtdescription;
-	private JButton jbnext, jbcancel;
+	private JButton jbnext, jbcancel, jbimage;
 	private Icon icon;
 
 	public Update() {
@@ -31,7 +37,7 @@ public class Update extends JFrame {
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setSize(250, 200);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		getContentPane().setLayout(new GridLayout(6, 2));
+		getContentPane().setLayout(new GridLayout(7, 2));
 		setLocationRelativeTo(null);
 		setMinimumSize(getSize());
 
@@ -58,7 +64,6 @@ public class Update extends JFrame {
 		jtvalue.setColumns(10);
 		getContentPane().add(jtvalue);
 		jtvalue.setToolTipText("Introduce his value");
-
 
 		jlmarketCap = new JLabel("Market Cap:");
 		jlmarketCap.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
@@ -89,14 +94,26 @@ public class Update extends JFrame {
 		jldescription.setHorizontalAlignment(SwingConstants.CENTER);
 		jldescription.setBounds(122, 122, 46, 13);
 		getContentPane().add(jldescription);
-		
+
 		jtdescription = new JTextField();
 		jtdescription.setBounds(207, 119, 96, 19);
 		jtdescription.setColumns(10);
 		getContentPane().add(jtdescription);
 		jtdescription.setToolTipText("Introduce his description");
-		
+
+		jlimage = new JLabel("Image:");
+		jlimage.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
+		jlimage.setHorizontalAlignment(SwingConstants.CENTER);
+		jlimage.setBounds(122, 122, 46, 13);
+		getContentPane().add(jlimage);
+
 		// Buttons
+		jbimage = new JButton("Image");
+		jbimage.setBounds(101, 163, 85, 21);
+		getContentPane().add(jbimage);
+		InsertImg insertImg = new InsertImg();
+		jbimage.addActionListener(insertImg);
+
 		jbnext = new JButton("Continue");
 		jbnext.setBounds(101, 163, 85, 21);
 		getContentPane().add(jbnext);
@@ -105,35 +122,34 @@ public class Update extends JFrame {
 			@SuppressWarnings({ "unused" })
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Pendiente verificacion para usar los distintos constructores de User (campos
-				// necesarios y no necesarios)
-				// Pendiente verificacion filtros username, dni, email, phone, password y que
-				// coincidan las contraseÃ¯Â¿Â½as entre ellas.
-				//si el ultimo es true lo capta como esta bien (hay que estructurar la verificacion de nuevo)
-				boolean verification;
-				verification = isNotNull(jtname.getText());
-				verification = isNotNull(jtvalue.getText());
-				verification = isNotNull(jtmarketCap.getText());
-				verification = isNotNull(jtsupply.getText());
-				verification = isNotNull(jtdescription.getText());
+				boolean verification = true;
+
+				JTextField[] group = { jtname, jtvalue, jtmarketCap, jtsupply, jtmarketCap, jtdescription };
+
+				for (JTextField j : group) {
+					if (j.getText().isBlank()) {
+						verification = false;
+						break;
+					}
+
+				}
 
 				if (verification) {
-
-					//error por el parseFloat (arreglarlo)
 					Crypto crypto = new Crypto(jtname.getText(), Float.parseFloat(jtvalue.getText()),
 							Float.parseFloat(jtmarketCap.getText()), Float.parseFloat(jtsupply.getText()),
 							jtdescription.getText());
-					
-					icon=new ImageIcon("images/check.png");
-					JOptionPane.showMessageDialog(null, "Crypto creation complete.","Completed",JOptionPane.INFORMATION_MESSAGE,icon);
+
+					icon = new ImageIcon("images/check.png");
+					JOptionPane.showMessageDialog(null, "Crypto creation complete.", "Completed",
+							JOptionPane.INFORMATION_MESSAGE, icon);
 					dispose();
 					MainWindow main = new MainWindow();
+
 				} else {
 					icon = new ImageIcon("images/warning.png");
 					JOptionPane.showMessageDialog(null, "Fill every required field to create the crypto.", "Error",
 							JOptionPane.WARNING_MESSAGE, icon);
 				}
-
 			}
 		});
 
@@ -152,13 +168,37 @@ public class Update extends JFrame {
 
 		setVisible(true);
 	}
-	
-	private boolean isNotNull(String s) {
-		if (s.isBlank()) {
-			return false;
-		} else
-			return true;
 
+	public class InsertImg implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if (jtname.getText().equals("")) {
+				icon = new ImageIcon("images/warning.png");
+				JOptionPane.showMessageDialog(null, "The crypto name cant be empty", "Error", JOptionPane.ERROR_MESSAGE,
+						icon);				
+			} else {
+
+				JFileChooser fileChooser = new JFileChooser();
+				fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+				FileNameExtensionFilter soloImg = new FileNameExtensionFilter("JPG & PNG Images", "png", "png");
+				fileChooser.setFileFilter(soloImg);
+
+				fileChooser.showSaveDialog(null);
+
+				File imagenes = new File("images/" + jtname.getText() + ".png");
+
+				Path sourcer = fileChooser.getSelectedFile().getAbsoluteFile().toPath();
+				Path destination = imagenes.toPath();
+
+				try {
+					Files.copy(sourcer, destination);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+
+		}
 	}
-
 }

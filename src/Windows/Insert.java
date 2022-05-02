@@ -123,27 +123,27 @@ public class Insert extends JFrame {
 			@SuppressWarnings({ "unused" })
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Pendiente verificacion para usar los distintos constructores de User (campos
-				// necesarios y no necesarios)
-				// Pendiente verificacion filtros username, dni, email, phone, password y que
-				// coincidan las contraseÃ¯Â¿Â½as entre ellas.
-				//si el ultimo es true lo capta como esta bien (hay que estructurar la verificacion de nuevo)
-				boolean verification;
-				verification = isNotNull(jtname.getText());
-				verification = isNotNull(jtvalue.getText());
-				verification = isNotNull(jtmarketCap.getText());
-				verification = isNotNull(jtsupply.getText());
-				verification = isNotNull(jtdescription.getText());
+				boolean verification = true;
+
+				JTextField[] group = { jtname, jtvalue, jtmarketCap, jtsupply, jtmarketCap, jtdescription };
+
+				for (JTextField j : group) {
+					if (j.getText().isBlank()) {
+						verification = false;
+						break;
+					}
+
+				}
 
 				if (verification) {
-
-					//error por el parseFloat (arreglarlo)
+						
 					Crypto crypto = new Crypto(jtname.getText(), Float.parseFloat(jtvalue.getText()),
 							Float.parseFloat(jtmarketCap.getText()), Float.parseFloat(jtsupply.getText()),
-							jtdescription.getText());
-					
-					icon=new ImageIcon("images/check.png");
-					JOptionPane.showMessageDialog(null, "Crypto creation complete.","Completed",JOptionPane.INFORMATION_MESSAGE,icon);
+							jtdescription.getText(), icon);
+
+					icon = new ImageIcon("images/check.png");
+					JOptionPane.showMessageDialog(null, "Crypto creation complete.", "Completed",
+							JOptionPane.INFORMATION_MESSAGE, icon);
 					dispose();
 					MainWindow main = new MainWindow();
 				} else {
@@ -172,20 +172,14 @@ public class Insert extends JFrame {
 
 	}
 
-	private boolean isNotNull(String s) {
-		if (s.isBlank()) {
-			return false;
-		} else
-			return true;
-
-	}
-
 	public class InsertImg implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (jtname.getText().equals("")) {
-				JOptionPane.showMessageDialog(null, "The crypto name cant be empty", "", JOptionPane.ERROR_MESSAGE);
+				icon = new ImageIcon("images/warning.png");
+				JOptionPane.showMessageDialog(null, "The crypto name cant be empty", "", JOptionPane.ERROR_MESSAGE,
+						icon);
 			} else {
 
 				JFileChooser fileChooser = new JFileChooser();
@@ -204,7 +198,6 @@ public class Insert extends JFrame {
 				try {
 					Files.copy(sourcer, destination);
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}

@@ -57,7 +57,7 @@ public class MainWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Statistics statistics = new Statistics();
+				Stadistics statistics = new Stadistics();
 
 			}
 		});

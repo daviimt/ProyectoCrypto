@@ -26,7 +26,7 @@ public class Register extends JFrame {
 	private JPasswordField jppassword, jppassword2;
 	private JButton jbconfirm, jbcancel;
 	private Icon icon;
-	
+
 	public Register() {
 
 		// Setting the window options.
@@ -61,8 +61,6 @@ public class Register extends JFrame {
 		getContentPane().add(jtname);
 		jtname.setColumns(10);
 		jtname.setToolTipText("Introduce your name");
-
-		
 
 		jldni = new JLabel("D.N.I. : ");
 		jldni.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
@@ -122,32 +120,33 @@ public class Register extends JFrame {
 			@SuppressWarnings({ "unused", "deprecation" })
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Pendiente verificacion para usar los distintos constructores de User (campos
-				// necesarios y no necesarios)
-				// Pendiente verificacion filtros username, dni, email, phone, password y que
-				// coincidan las contraseÃ¯Â¿Â½as entre ellas.
-				//si el ultimo es true lo capta como esta bien (hay que estructurar la verificacion de nuevo)
-				boolean verification;
-				verification = isNotNull(jtusername.getText());
-				verification = isNotNull(jtname.getText());
-				verification = isNotNull(jtdni.getText());
-				verification = isNotNull(jtemail.getText());
-				verification = isNotNull(jppassword.getText());
-				verification = isNotNull(jppassword2.getText());
-				
-				
+
+				boolean verification = true;
+
+				JTextField[] group = { jtusername, jtname, jtdni, jtemail, jppassword, jppassword2 };
+
+				for (JTextField j : group) {
+					if (j.getText().isBlank()) {
+						verification = false;
+						break;
+					}
+
+				}
+
 				if (verification) {
 					User user = new User(jtusername.getText(), jtdni.getText(), jtemail.getText(), jtname.getText(),
-							 jppassword.getText());
-					icon=new ImageIcon("images/check.png");
-					JOptionPane.showMessageDialog(null, "User creation complete.","Complete",JOptionPane.INFORMATION_MESSAGE,icon);
+							jppassword.getText());
+					icon = new ImageIcon("images/check.png");
+					JOptionPane.showMessageDialog(null, "User creation complete.", "Complete",
+							JOptionPane.INFORMATION_MESSAGE, icon);
 					dispose();
 					Login login = new Login();
 				} else {
-					icon=new ImageIcon("images/warning.png");
-					JOptionPane.showMessageDialog(null, "Fill every required field to create the user.", "Error", JOptionPane.WARNING_MESSAGE, icon);
+					icon = new ImageIcon("images/warning.png");
+					JOptionPane.showMessageDialog(null, "Fill every required field to create the user.", "Error",
+							JOptionPane.WARNING_MESSAGE, icon);
 				}
-				
+
 			}
 		});
 
@@ -168,16 +167,6 @@ public class Register extends JFrame {
 		});
 
 		setVisible(true);
-	}
-
-	// Method to verificate if a Field is null or not
-
-	private boolean isNotNull(String s) {
-		if (s.isBlank()) {
-			return false;
-		} else
-			return true;
-
 	}
 
 }
