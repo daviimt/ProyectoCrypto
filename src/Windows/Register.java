@@ -28,6 +28,10 @@ public class Register extends JFrame {
 	private JButton jbconfirm, jbcancel;
 	private Icon icon;
 
+	private String sdni = "[0-9]{8}[A-Za-z]";
+	private String semail = "^[A-Za-z0-9]+@[A-Za-z0-9]+.([A-Za-z0-9]+)$";
+	private String spassw = "[A-Za-z\\d$@$#_!%*?&]{6,15}$";
+
 	public Register() {
 
 		// Setting the window options.
@@ -110,8 +114,7 @@ public class Register extends JFrame {
 		jppassword2.setColumns(10);
 		getContentPane().add(jppassword2);
 		jppassword2.setToolTipText("Repeat your password");
-
-		// This button tries to create the user that will be added to the binary file.
+		
 
 		jbconfirm = new JButton("Confirm");
 		jbconfirm.setBounds(150, 364, 85, 21);
@@ -135,24 +138,52 @@ public class Register extends JFrame {
 				}
 
 				if (verification) {
-					User user = new User(jtusername.getText(), jtdni.getText(), jtemail.getText(), jtname.getText(),
-							jppassword.getText());
-					
-					AddObjectOutputStream aos;
-					try {
-						aos = new AddObjectOutputStream();
-						aos.abrir("Users");
-						aos.writeObject(user);
-						aos.cerrar();
-					} catch (IOException e1) {
-						e1.printStackTrace();
+					if (jtdni.getText().matches(sdni)) {
+						if (jtemail.getText().matches(semail)) {
+							if (jppassword.getText().matches(spassw)) {
+								if (jppassword2.getText().equals(jppassword.getText())) {
+
+									User user = new User(jtusername.getText(), jtdni.getText(), jtemail.getText(),
+											jtname.getText(), jppassword.getText());
+
+									AddObjectOutputStream aos;
+									try {
+										aos = new AddObjectOutputStream();
+										aos.abrir("Users");
+										aos.writeObject(user);
+										aos.cerrar();
+									} catch (IOException e1) {
+										e1.printStackTrace();
+									}
+
+									icon = new ImageIcon("images/check.png");
+									JOptionPane.showMessageDialog(null, "User creation complete.", "Complete",
+											JOptionPane.INFORMATION_MESSAGE, icon);
+									dispose();
+									Login login = new Login();
+
+								} else {
+									icon = new ImageIcon("images/warning.png");
+									JOptionPane.showMessageDialog(null, "Passwords don't match",
+											"Error", JOptionPane.WARNING_MESSAGE, icon);
+								}
+
+							} else {
+								icon = new ImageIcon("images/warning.png");
+								JOptionPane.showMessageDialog(null, "Password does not meet the required parameters",
+										"Error", JOptionPane.WARNING_MESSAGE, icon);
+							}
+
+						} else {
+							icon = new ImageIcon("images/warning.png");
+							JOptionPane.showMessageDialog(null, "Email does not meet the required parameters", "Error",
+									JOptionPane.INFORMATION_MESSAGE, icon);
+						}
+					} else {
+						icon = new ImageIcon("images/warning.png");
+						JOptionPane.showMessageDialog(null, "DNI does not meet the required parameters", "Error",
+								JOptionPane.INFORMATION_MESSAGE, icon);
 					}
-					
-					icon = new ImageIcon("images/check.png");
-					JOptionPane.showMessageDialog(null, "User creation complete.", "Complete",
-							JOptionPane.INFORMATION_MESSAGE, icon);
-					dispose();
-					Login login = new Login();
 				} else {
 					icon = new ImageIcon("images/warning.png");
 					JOptionPane.showMessageDialog(null, "Fill every required field to create the user.", "Error",

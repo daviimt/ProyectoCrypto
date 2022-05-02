@@ -150,7 +150,7 @@ public class Insert extends JFrame {
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
-					
+
 					icon = new ImageIcon("images/check.png");
 					JOptionPane.showMessageDialog(null, "Crypto creation complete.", "Completed",
 							JOptionPane.INFORMATION_MESSAGE, icon);
