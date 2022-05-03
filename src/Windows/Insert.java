@@ -144,7 +144,6 @@ public class Insert extends JFrame {
 							Float.parseFloat(jtmarketCap.getText()), Float.parseFloat(jtsupply.getText()),
 							jtdescription.getText(), icon);
 
-					AddObjectOutputStream aos;
 					try {
 						//aos = new AddObjectOutputStream();
 						abrir("Cryptos");

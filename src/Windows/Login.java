@@ -80,8 +80,7 @@ public class Login extends JFrame {
 						BufferedReader br = new BufferedReader(new FileReader(fusers));
 						String linea = br.readLine();
 						while (linea != null) {
-							existUser = false;
-							passwordCorrect = false;
+							
 							String[] usuario = linea.split(";");
 							if (usuario[0].equals(jtusername.getText())) {
 								existUser = true;
