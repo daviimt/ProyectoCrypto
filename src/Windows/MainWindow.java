@@ -57,6 +57,7 @@ public class MainWindow extends JFrame {
 		// JTable Prueba (con defaulttablemade)
 
 		table = new JTable();
+		table.setEnabled(false);
 		table.setBackground(Color.LIGHT_GRAY);
 		getContentPane().add(table, BorderLayout.CENTER);
 		// Creo que es m�s sencillo a�adir el nombre de usuario al primer label que
@@ -85,7 +86,7 @@ public class MainWindow extends JFrame {
 		}
 
 		for (Object[] c : listC) {
-			Object[] tabledatos = { c[0], c[1], c[2] };
+			Object[] tabledatos = { c[0], c[1], c[2], name };
 			dtmCrypto.addRow(tabledatos);
 		}
 		table.setModel(dtmCrypto);
@@ -184,7 +185,6 @@ public class MainWindow extends JFrame {
 					}
 					dispose();
 					MainWindow main = new MainWindow(name);
-					// hay que hacer que borre la crypto
 				} else {
 					dispose();
 					MainWindow main = new MainWindow(name);
