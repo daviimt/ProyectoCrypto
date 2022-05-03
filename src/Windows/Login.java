@@ -75,47 +75,53 @@ public class Login extends JFrame {
 				boolean existUser = false;
 				boolean passwordCorrect = false;
 
-				if (fusers.exists() == true) {
-					try {
-						BufferedReader br = new BufferedReader(new FileReader(fusers));
-						String linea = br.readLine();
-						while (linea != null) {
-							
-							String[] usuario = linea.split(";");
-							if (usuario[0].equals(jtusername.getText())) {
-								existUser = true;
-								if (usuario[4].equals(jppassword.getText())) {
-									passwordCorrect = true;
+				if (jtusername.getText().isBlank()==false) {
+					if (fusers.exists() == true) {
+						try {
+							BufferedReader br = new BufferedReader(new FileReader(fusers));
+							String linea = br.readLine();
+							while (linea != null) {
+
+								String[] usuario = linea.split(";");
+								if (usuario[0].equals(jtusername.getText())) {
+									existUser = true;
+									if (usuario[4].equals(jppassword.getText())) {
+										passwordCorrect = true;
+									}
 								}
+
+								linea = br.readLine();
 							}
-
-							linea = br.readLine();
+							br.close();
+						} catch (FileNotFoundException e1) {
+							e1.printStackTrace();
+						} catch (IOException e1) {
+							e1.printStackTrace();
 						}
-						br.close();
-					} catch (FileNotFoundException e1) {
-						e1.printStackTrace();
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
 
-					if (existUser == true) {
-						if (passwordCorrect == true) {
-							MainWindow main = new MainWindow(jtusername.getText());
-							dispose();
+						if (existUser == true) {
+							if (passwordCorrect == true) {
+								MainWindow main = new MainWindow(jtusername.getText());
+								dispose();
+							} else {
+								icon = new ImageIcon("images/warning.png");
+								JOptionPane.showMessageDialog(null, "Incorrect password", "Error",
+										JOptionPane.WARNING_MESSAGE, icon);
+							}
 						} else {
 							icon = new ImageIcon("images/warning.png");
-							JOptionPane.showMessageDialog(null, "Incorrect password", "Error",
+							JOptionPane.showMessageDialog(null, "User doesn't exist", "Error",
 									JOptionPane.WARNING_MESSAGE, icon);
 						}
 					} else {
 						icon = new ImageIcon("images/warning.png");
-						JOptionPane.showMessageDialog(null, "User doesn't exist", "Error", JOptionPane.WARNING_MESSAGE,
-								icon);
+						JOptionPane.showMessageDialog(null, "Don't exist any users", "Error",
+								JOptionPane.WARNING_MESSAGE, icon);
 					}
 				} else {
 					icon = new ImageIcon("images/warning.png");
-					JOptionPane.showMessageDialog(null, "Don't exist any users", "Error", JOptionPane.WARNING_MESSAGE,
-							icon);
+					JOptionPane.showMessageDialog(null, "User name is empty", "Error",
+							JOptionPane.WARNING_MESSAGE, icon);
 				}
 			}
 		});
