@@ -4,7 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +37,7 @@ public class MainWindow extends JFrame {
 	private JLabel jluser;// nombre;
 
 	private ObjectInputStream is;
+	private ObjectOutputStream os;
 	private File f = new File("files/Cryptos");
 
 	public MainWindow(String name) {
@@ -49,8 +54,8 @@ public class MainWindow extends JFrame {
 		jluser.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(jluser, BorderLayout.NORTH);
 
-		//JTable Prueba (con defaulttablemade)
-		
+		// JTable Prueba (con defaulttablemade)
+
 		table = new JTable();
 		table.setBackground(Color.LIGHT_GRAY);
 		getContentPane().add(table, BorderLayout.CENTER);
@@ -59,33 +64,33 @@ public class MainWindow extends JFrame {
 		// nombre = new JLabel("nombre");
 		// getContentPane().add(nombre);
 		String[] nameColums = { "Icon", "Name", "Value", "Creator" };
-		
-		DefaultTableModel dtmCrypto =new DefaultTableModel();
+
+		DefaultTableModel dtmCrypto = new DefaultTableModel();
 		dtmCrypto.setColumnIdentifiers(nameColums);
 		table.setModel(dtmCrypto);
 
-		List<Crypto> listCryptos = new ArrayList<>();
+		// List<Crypto> listCryptos = new ArrayList<>();
+		List<Object[]> listC = new ArrayList<Object[]>();
 		try {
 			is = new ObjectInputStream(new FileInputStream(f));
 			Crypto c = (Crypto) is.readObject();
 			while (c != null) {
-				listCryptos.add(c);
+				Object[] crypto = { c.getName(), c.getValue(), c.getMarketCap(), c.getSupply(), c.getDescription(),
+						c.getIcon() };
+				listC.add(crypto);
 				c = (Crypto) is.readObject();
 			}
 			is.close();
-		} catch (Exception e) {}
-		
-		for(Crypto c:listCryptos){
-			Object[]list=new Object[dtmCrypto.getColumnCount()];
-		    list[0]=c.getIcon();
-		    list[1]=c.getName();
-		    list[2]=c.getValue();
-		    list[3]=name;
-		    dtmCrypto.addRow(list);
+		} catch (Exception e) {
+		}
+
+		for (Object[] c : listC) {
+			Object[] tabledatos = { c[0], c[1], c[2] };
+			dtmCrypto.addRow(tabledatos);
 		}
 		table.setModel(dtmCrypto);
-		//Termina el JTable
-		
+		// Termina el JTable
+
 		panel_1 = new JPanel();
 		panel_1.setBackground(Color.GRAY);
 		getContentPane().add(panel_1, BorderLayout.SOUTH);
@@ -115,7 +120,7 @@ public class MainWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Insert statistics = new Insert(name);
 				dispose();
-				
+
 			}
 		});
 
@@ -156,7 +161,27 @@ public class MainWindow extends JFrame {
 				Icon icon = new ImageIcon("images/warning.png");
 				int option = JOptionPane.showOptionDialog(jbupdate, "Are you sure?", "Confirm",
 						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icon, null, null);
-				if (option == 1) {
+				if (option == 0) {
+					listC.remove(table.getSelectedRow());
+					int cont=0;
+					for (Object[] c : listC) {
+						Crypto crypto = new Crypto((String) c[0], (float) c[1], (float) c[2], (float) c[3],
+								(String) c[4], (Icon) c[5]);
+						try {
+							if(cont==0) {
+								os = new ObjectOutputStream(new FileOutputStream(f));								
+							}else {
+								os = new AddObjectOutputStream(new FileOutputStream(f, true));
+							}
+							os.writeObject(crypto);
+							os.close();
+						} catch (FileNotFoundException e1) {
+							e1.printStackTrace();
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
+						cont++;
+					}
 					dispose();
 					MainWindow main = new MainWindow(name);
 					// hay que hacer que borre la crypto
