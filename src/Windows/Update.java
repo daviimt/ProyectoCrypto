@@ -137,7 +137,7 @@ public class Update extends JFrame {
 				if (verification) {
 					Crypto crypto = new Crypto(jtname.getText(), Float.parseFloat(jtvalue.getText()),
 							Float.parseFloat(jtmarketCap.getText()), Float.parseFloat(jtsupply.getText()),
-							jtdescription.getText());
+							jtdescription.getText(), name);
 
 					icon = new ImageIcon("images/check.png");
 					JOptionPane.showMessageDialog(null, "Crypto creation complete.", "Completed",

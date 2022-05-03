@@ -11,8 +11,10 @@ public class Crypto implements Serializable{
 	private float value, marketCap, supply;
 	private String description;
 	private Icon icon;
+	private String creator;
 
-	public Crypto(String name, float value, float marketCap, float supply, String description, Icon icon) {
+	public Crypto(String name, float value, float marketCap, float supply, String description, Icon icon,
+			String creator) {
 		super();
 		this.name = name;
 		this.value = value;
@@ -20,15 +22,17 @@ public class Crypto implements Serializable{
 		this.supply = supply;
 		this.description = description;
 		this.icon = icon;
+		this.creator = creator;
 	}
 
-	public Crypto(String name, float value, float marketCap, float supply, String description) {
+	public Crypto(String name, float value, float marketCap, float supply, String description, String creator) {
 		super();
 		this.name = name;
 		this.value = value;
 		this.marketCap = marketCap;
 		this.supply = supply;
 		this.description = description;
+		this.creator = creator;
 	}
 
 	public Crypto() {
@@ -83,10 +87,18 @@ public class Crypto implements Serializable{
 		this.icon = icon;
 	}
 
+	public String getCreator() {
+		return creator;
+	}
+
+	public void setCreator(String creator) {
+		this.creator = creator;
+	}
+
 	@Override
 	public String toString() {
 		return "Crypto [name=" + name + ", value=" + value + ", marketCap=" + marketCap + ", supply=" + supply
-				+ ", description=" + description + ", icon=" + icon + "]";
+				+ ", description=" + description + ", icon=" + icon + ", creator=" + creator + "]";
 	}
 
 }

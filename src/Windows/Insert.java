@@ -142,7 +142,7 @@ public class Insert extends JFrame {
 
 					Crypto crypto = new Crypto(jtname.getText(), Float.parseFloat(jtvalue.getText()),
 							Float.parseFloat(jtmarketCap.getText()), Float.parseFloat(jtsupply.getText()),
-							jtdescription.getText(), icon);
+							jtdescription.getText(), icon, name);
 
 					try {
 						//aos = new AddObjectOutputStream();

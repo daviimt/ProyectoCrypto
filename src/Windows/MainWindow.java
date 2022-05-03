@@ -57,7 +57,6 @@ public class MainWindow extends JFrame {
 		// JTable Prueba (con defaulttablemade)
 
 		table = new JTable();
-		table.setEnabled(false);
 		table.setBackground(Color.LIGHT_GRAY);
 		getContentPane().add(table, BorderLayout.CENTER);
 		// Creo que es m�s sencillo a�adir el nombre de usuario al primer label que
@@ -77,7 +76,7 @@ public class MainWindow extends JFrame {
 			Crypto c = (Crypto) is.readObject();
 			while (c != null) {
 				Object[] crypto = { c.getName(), c.getValue(), c.getMarketCap(), c.getSupply(), c.getDescription(),
-						c.getIcon() };
+						c.getIcon(), c.getCreator() };
 				listC.add(crypto);
 				c = (Crypto) is.readObject();
 			}
@@ -86,7 +85,7 @@ public class MainWindow extends JFrame {
 		}
 
 		for (Object[] c : listC) {
-			Object[] tabledatos = { c[0], c[1], c[2], name };
+			Object[] tabledatos = { c[0], c[1], c[2], c[6]};
 			dtmCrypto.addRow(tabledatos);
 		}
 		table.setModel(dtmCrypto);
@@ -167,7 +166,7 @@ public class MainWindow extends JFrame {
 					int cont=0;
 					for (Object[] c : listC) {
 						Crypto crypto = new Crypto((String) c[0], (float) c[1], (float) c[2], (float) c[3],
-								(String) c[4], (Icon) c[5]);
+								(String) c[4], (Icon) c[5], (String) c[6]);
 						try {
 							if(cont==0) {
 								os = new ObjectOutputStream(new FileOutputStream(f));								
