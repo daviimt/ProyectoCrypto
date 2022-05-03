@@ -4,8 +4,10 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -33,8 +35,11 @@ public class Insert extends JFrame {
 	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtdescription;
 	private JButton jbnext, jbcancel, jbimage;
 	private Icon icon;
+
 	private ObjectOutputStream os;
-	
+	private ObjectInputStream is;
+	private File f = new File("files/Cryptos");
+
 	public Insert(String name) {
 		super("Insert cryptocurrency");
 		getContentPane().setBackground(Color.LIGHT_GRAY);
@@ -127,6 +132,7 @@ public class Insert extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				boolean verification = true;
+				boolean existCrypto = false;
 
 				JTextField[] group = { jtname, jtvalue, jtmarketCap, jtsupply, jtmarketCap, jtdescription };
 
@@ -138,26 +144,45 @@ public class Insert extends JFrame {
 
 				}
 
+				try {
+					is = new ObjectInputStream(new FileInputStream(f));
+					Crypto c = (Crypto) is.readObject();
+					while (c != null) {
+						if (jtname.getText().equals(c.getName()))
+							existCrypto = true;
+
+						c = (Crypto) is.readObject();
+					}
+					is.close();
+				} catch (Exception ex) {
+				}
+
 				if (verification) {
+					if (existCrypto == false) {
+						Crypto crypto = new Crypto(jtname.getText(), Float.parseFloat(jtvalue.getText()),
+								Float.parseFloat(jtmarketCap.getText()), Float.parseFloat(jtsupply.getText()),
+								jtdescription.getText(), icon, name);
 
-					Crypto crypto = new Crypto(jtname.getText(), Float.parseFloat(jtvalue.getText()),
-							Float.parseFloat(jtmarketCap.getText()), Float.parseFloat(jtsupply.getText()),
-							jtdescription.getText(), icon, name);
+						try {
+							// aos = new AddObjectOutputStream();
+							abrir("Cryptos");
+							os.writeObject(crypto);
+							cerrar();
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
 
-					try {
-						//aos = new AddObjectOutputStream();
-						abrir("Cryptos");
-						os.writeObject(crypto);
-						cerrar();
-					} catch (IOException e1) {
-						e1.printStackTrace();
+						icon = new ImageIcon("images/check.png");
+						JOptionPane.showMessageDialog(null, "Crypto creation complete.", "Completed",
+								JOptionPane.INFORMATION_MESSAGE, icon);
+						dispose();
+						MainWindow main = new MainWindow(name);
+					} else {
+						icon = new ImageIcon("images/warning.png");
+						JOptionPane.showMessageDialog(null, "This crypto exist", "Error", JOptionPane.WARNING_MESSAGE,
+								icon);
 					}
 
-					icon = new ImageIcon("images/check.png");
-					JOptionPane.showMessageDialog(null, "Crypto creation complete.", "Completed",
-							JOptionPane.INFORMATION_MESSAGE, icon);
-					dispose();
-					MainWindow main = new MainWindow(name);
 				} else {
 					icon = new ImageIcon("images/warning.png");
 					JOptionPane.showMessageDialog(null, "Fill every required field to create the crypto.", "Error",
@@ -183,9 +208,9 @@ public class Insert extends JFrame {
 		setVisible(true);
 
 	}
-	
+
 	public void abrir(String nameFile) throws IOException {
-		File f = new File("files/"+nameFile);
+		File f = new File("files/" + nameFile);
 		try {
 			if (f.exists())
 				os = new AddObjectOutputStream(new FileOutputStream(f, true));
@@ -223,7 +248,8 @@ public class Insert extends JFrame {
 				Path destination = imagenes.toPath();
 
 				try {
-					Files.copy(sourcer, destination);
+					if (!imagenes.exists())
+						Files.copy(sourcer, destination);
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
