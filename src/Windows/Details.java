@@ -8,16 +8,18 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
 public class Details extends JFrame {
 
 	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jlquantity,jldetails;
 	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtquantity;
-	private JButton jbnext, jbcancel,jbdetails;
+	private JButton jbcancel,jbdetails;
 
 	public Details(String name) {
 		super("Details");
@@ -28,6 +30,8 @@ public class Details extends JFrame {
 		setLocationRelativeTo(null);
 		setMinimumSize(getSize());
 
+		JPanel jpbutton=new JPanel();
+		
 		jlname = new JLabel("Name:");
 		jlname.setHorizontalAlignment(SwingConstants.CENTER);
 		jlname.setBounds(123, 53, 45, 13);
@@ -100,22 +104,9 @@ public class Details extends JFrame {
 				JOptionPane.showMessageDialog(Details.this, "descripcion de la crypto");
 			}
 		});
-		
-		jbnext = new JButton("Continue");
-		jbnext.setBackground(Color.GREEN);
-		jbnext.setBounds(101, 163, 85, 21);
-		getContentPane().add(jbnext);
-		jbnext.addActionListener(new ActionListener() {
-
-			@SuppressWarnings("unused")
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				MainWindow main = new MainWindow(name);
-				dispose();
-			}
-		});
 
 		jbcancel = new JButton("Cancel");
+		jbcancel.setIcon(new ImageIcon("/Users/davidmateomerino/Downloads/Back.png"));
 		jbcancel.setBackground(Color.RED);
 		jbcancel.setBounds(218, 163, 85, 21);
 		getContentPane().add(jbcancel);
@@ -128,7 +119,8 @@ public class Details extends JFrame {
 				dispose();
 			}
 		});
-
+		jpbutton.add(jbcancel);
+		add(jpbutton);
 		setVisible(true);
 	}
 

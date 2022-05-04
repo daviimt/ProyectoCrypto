@@ -109,12 +109,14 @@ public class Update extends JFrame {
 
 		// Buttons
 		jbimage = new JButton("Image");
+		jbimage.setIcon(new ImageIcon("/Users/davidmateomerino/Downloads/Upload.png"));
 		jbimage.setBounds(101, 163, 85, 21);
 		getContentPane().add(jbimage);
 		InsertImg insertImg = new InsertImg();
 		jbimage.addActionListener(insertImg);
 
 		jbnext = new JButton("Continue");
+		jbnext.setIcon(new ImageIcon("/Users/davidmateomerino/Downloads/Black tick.png"));
 		jbnext.setBackground(Color.GREEN);
 		jbnext.setBounds(101, 163, 85, 21);
 		getContentPane().add(jbnext);
@@ -155,6 +157,7 @@ public class Update extends JFrame {
 		});
 
 		jbcancel = new JButton("Cancel");
+		jbcancel.setIcon(new ImageIcon("/Users/davidmateomerino/Downloads/Cross.png"));
 		jbcancel.setBackground(Color.RED);
 		jbcancel.setBounds(218, 163, 85, 21);
 		getContentPane().add(jbcancel);
