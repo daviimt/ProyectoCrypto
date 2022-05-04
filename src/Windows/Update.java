@@ -115,6 +115,7 @@ public class Update extends JFrame {
 		jbimage.addActionListener(insertImg);
 
 		jbnext = new JButton("Continue");
+		jbnext.setBackground(Color.GREEN);
 		jbnext.setBounds(101, 163, 85, 21);
 		getContentPane().add(jbnext);
 		jbnext.addActionListener(new ActionListener() {
@@ -154,6 +155,7 @@ public class Update extends JFrame {
 		});
 
 		jbcancel = new JButton("Cancel");
+		jbcancel.setBackground(Color.RED);
 		jbcancel.setBounds(218, 163, 85, 21);
 		getContentPane().add(jbcancel);
 		jbcancel.addActionListener(new ActionListener() {
