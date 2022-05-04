@@ -1,6 +1,6 @@
 package Windows;
 
-import java.awt.GridLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,6 +9,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 
 @SuppressWarnings("serial")
 public class Stadistics extends JFrame {
@@ -23,14 +30,52 @@ public class Stadistics extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setSize(600, 400);
-		getContentPane().setLayout(new GridLayout(3, 0, 0, 0));
 		setMinimumSize(getSize());
-		
+		getContentPane().setLayout(null);
+		setBackground(Color.GRAY);
+
 		jlusername = new JLabel("Username: ");
+		jlusername.setBounds(0, 0, 586, 51);
 		jlusername.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(jlusername);
 
+		XYSeries series = new XYSeries("Crypto's Number");
+
+		// Introduccion de datos
+		series.add(1, 1);
+		series.add(2, 6);
+		series.add(3, 3);
+		series.add(4, 6);
+		series.add(5, 10);
+		series.add(6, 8);
+		series.add(7, 12);
+		series.add(8, 14);
+		series.add(9, 16);
+		series.add(10, 10);
+		series.add(11, 12);
+		series.add(12, 10);
+
+		XYSeriesCollection dataset = new XYSeriesCollection();
+		dataset.addSeries(series);
+
+		JFreeChart chart = ChartFactory.createXYLineChart("Cryptos", // Título
+				"Time (Month)", // Etiqueta Coordenada X
+				"Amount (Unit)", // Etiqueta Coordenada Y
+				dataset, // Datos
+				PlotOrientation.VERTICAL, true, // Muestra la leyenda de los productos (Producto A)
+				false, false);
+		chart.setBorderVisible(false);
+		chart.setBackgroundPaint(Color.GRAY);
+		chart.setAntiAlias(false);
+
+		ChartPanel panel1 = new ChartPanel(chart);
+		panel1.setBounds(0, 45, 586, 280);
+
+		getContentPane().add(panel1);
+
 		JPanel panel = new JPanel();
+		panel.setBounds(0, 324, 586, 39);
+		panel.setBackground(Color.GRAY);
 		getContentPane().add(panel);
 
 		jbback = new JButton("Back");
@@ -45,6 +90,7 @@ public class Stadistics extends JFrame {
 
 			}
 		});
+
 		panel.add(jbback);
 
 		setVisible(true);
