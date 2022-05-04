@@ -65,7 +65,12 @@ public class MainWindow extends JFrame {
 		// getContentPane().add(nombre);
 		String[] nameColums = { "Icon", "Name", "Value", "Creator" };
 
-		DefaultTableModel dtmCrypto = new DefaultTableModel();
+		DefaultTableModel dtmCrypto = new DefaultTableModel() {
+			@Override
+			public boolean isCellEditable(int row,int column){
+				return false;
+			}
+		};
 		dtmCrypto.setColumnIdentifiers(nameColums);
 		table.setModel(dtmCrypto);
 
