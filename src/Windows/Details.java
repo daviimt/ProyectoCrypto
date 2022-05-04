@@ -95,7 +95,6 @@ public class Details extends JFrame {
 		getContentPane().add(jbdetails);
 		jbdetails.addActionListener(new ActionListener() {
 
-			@SuppressWarnings("unused")
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(Details.this, "descripcion de la crypto");

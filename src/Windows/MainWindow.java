@@ -39,6 +39,7 @@ public class MainWindow extends JFrame {
 	private ObjectInputStream is;
 	private ObjectOutputStream os;
 	private File f = new File("files/Cryptos");
+	String[] nameColums = { "Icon", "Name", "Value", "Creator" };
 
 	public MainWindow(String name) {
 		super("Menu");
@@ -63,7 +64,6 @@ public class MainWindow extends JFrame {
 		// tener dos --Juan.
 		// nombre = new JLabel("nombre");
 		// getContentPane().add(nombre);
-		String[] nameColums = { "Icon", "Name", "Value", "Creator" };
 
 		DefaultTableModel dtmCrypto = new DefaultTableModel();
 		dtmCrypto.setColumnIdentifiers(nameColums);
