@@ -90,7 +90,7 @@ public class Details extends JFrame {
 
 		// Buttons
 		jbdetails = new JButton("More Info");
-		jbdetails.setBackground(Color.DARK_GRAY);
+		jbdetails.setBackground(Color.GRAY);
 		jbdetails.setBounds(101, 163, 85, 21);
 		getContentPane().add(jbdetails);
 		jbdetails.addActionListener(new ActionListener() {
@@ -102,6 +102,7 @@ public class Details extends JFrame {
 		});
 		
 		jbnext = new JButton("Continue");
+		jbnext.setBackground(Color.GREEN);
 		jbnext.setBounds(101, 163, 85, 21);
 		getContentPane().add(jbnext);
 		jbnext.addActionListener(new ActionListener() {
@@ -115,6 +116,7 @@ public class Details extends JFrame {
 		});
 
 		jbcancel = new JButton("Cancel");
+		jbcancel.setBackground(Color.RED);
 		jbcancel.setBounds(218, 163, 85, 21);
 		getContentPane().add(jbcancel);
 		jbcancel.addActionListener(new ActionListener() {

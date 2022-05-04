@@ -119,6 +119,7 @@ public class Register extends JFrame {
 		jppassword2.setToolTipText("Repeat your password");
 
 		jbconfirm = new JButton("Confirm");
+		jbconfirm.setBackground(Color.GREEN);
 		jbconfirm.setBounds(150, 364, 85, 21);
 		getContentPane().add(jbconfirm);
 		jbconfirm.addActionListener(new ActionListener() {
@@ -191,6 +192,7 @@ public class Register extends JFrame {
 		});
 
 		jbcancel = new JButton("Cancel");
+		jbcancel.setBackground(Color.red);
 		jbcancel.setBounds(342, 364, 85, 21);
 		getContentPane().add(jbcancel);
 		jbcancel.addActionListener(new ActionListener() {
