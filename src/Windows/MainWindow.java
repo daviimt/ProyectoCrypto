@@ -67,7 +67,7 @@ public class MainWindow extends JFrame {
 
 		DefaultTableModel dtmCrypto = new DefaultTableModel() {
 			@Override
-			public boolean isCellEditable(int row,int column){
+			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
 		};
@@ -90,7 +90,7 @@ public class MainWindow extends JFrame {
 		}
 
 		for (Object[] c : listC) {
-			Object[] tabledatos = { c[0], c[1], c[2], c[6]};
+			Object[] tabledatos = { c[0], c[1], c[2], c[6] };
 			dtmCrypto.addRow(tabledatos);
 		}
 		table.setModel(dtmCrypto);
@@ -166,30 +166,51 @@ public class MainWindow extends JFrame {
 				Icon icon = new ImageIcon("images/warning.png");
 				int option = JOptionPane.showOptionDialog(jbupdate, "Are you sure?", "Confirm",
 						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icon, null, null);
-				if (option == 0) {
-					listC.remove(table.getSelectedRow());
-					int cont=0;
-					for (Object[] c : listC) {
-						Crypto crypto = new Crypto((String) c[0], (float) c[1], (float) c[2], (float) c[3],
-								(String) c[4], (Icon) c[5], (String) c[6]);
-						try {
-							if(cont==0) {
-								os = new ObjectOutputStream(new FileOutputStream(f));								
-							}else {
-								os = new AddObjectOutputStream(new FileOutputStream(f, true));
-							}
-							os.writeObject(crypto);
-							os.close();
-						} catch (FileNotFoundException e1) {
-							e1.printStackTrace();
-						} catch (IOException e1) {
-							e1.printStackTrace();
-						}
-						cont++;
+
+				List<Object[]> listC = new ArrayList<Object[]>();
+				try {
+					is = new ObjectInputStream(new FileInputStream(f));
+					Crypto c = (Crypto) is.readObject();
+					while (c != null) {
+						Object[] crypto = { c.getName(), c.getValue(), c.getMarketCap(), c.getSupply(),
+								c.getDescription(), c.getIcon(), c.getCreator() };
+						listC.add(crypto);
+						c = (Crypto) is.readObject();
 					}
-					dispose();
-					MainWindow main = new MainWindow(name);
-				} else {
+					is.close();
+				} catch (Exception ex2) {
+				}
+				int contCrypto = (int) listC.stream().count();
+				if (contCrypto != 1) {
+					if (option == 0) {
+						listC.remove(table.getSelectedRow());
+						int cont = 0;
+						for (Object[] c : listC) {
+							Crypto crypto = new Crypto((String) c[0], (float) c[1], (float) c[2], (float) c[3],
+									(String) c[4], (Icon) c[5], (String) c[6]);
+							try {
+								if (cont == 0) {
+									os = new ObjectOutputStream(new FileOutputStream(f));
+								} else {
+									os = new AddObjectOutputStream(new FileOutputStream(f, true));
+								}
+								os.writeObject(crypto);
+								os.close();
+							} catch (FileNotFoundException e1) {
+								e1.printStackTrace();
+							} catch (IOException e1) {
+								e1.printStackTrace();
+							}
+							cont++;
+						}
+						dispose();
+						MainWindow main = new MainWindow(name);
+					} else {
+						dispose();
+						MainWindow main = new MainWindow(name);
+					}
+				}else {
+					f.delete();
 					dispose();
 					MainWindow main = new MainWindow(name);
 				}
