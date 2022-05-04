@@ -193,7 +193,7 @@ public class Register extends JFrame {
 		});
 
 		jbcancel = new JButton("Cancel");
-		jbcancel.setIcon(new ImageIcon("/Users/davidmateomerino/Downloads/Cross.png"));
+		jbcancel.setIcon(new ImageIcon("/Users/davidmateomerino/Downloads/Cross.png"));//comntario
 		jbcancel.setBackground(Color.red);
 		jbcancel.setBounds(342, 364, 85, 21);
 		getContentPane().add(jbcancel);
