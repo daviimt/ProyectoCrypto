@@ -181,8 +181,8 @@ public class MainWindow extends JFrame {
 				} catch (Exception ex2) {
 				}
 				int contCrypto = (int) listC.stream().count();
-				if (contCrypto != 1) {
-					if (option == 0) {
+				if (option == 0) {
+					if (contCrypto != 1) {
 						listC.remove(table.getSelectedRow());
 						int cont = 0;
 						for (Object[] c : listC) {
@@ -206,14 +206,15 @@ public class MainWindow extends JFrame {
 						dispose();
 						MainWindow main = new MainWindow(name);
 					} else {
+						f.delete();
 						dispose();
 						MainWindow main = new MainWindow(name);
 					}
-				}else {
-					f.delete();
+				} else {
 					dispose();
 					MainWindow main = new MainWindow(name);
 				}
+
 			}
 		});
 

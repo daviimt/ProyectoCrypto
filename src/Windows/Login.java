@@ -51,6 +51,7 @@ public class Login extends JFrame {
 		getContentPane().add(jlpassword);
 
 		jbregister = new JButton("Register");
+		jbregister.setIcon(new ImageIcon("/Users/davidmateomerino/Downloads/pruebo.png"));
 		jbregister.setBounds(22, 93, 85, 21);
 		getContentPane().add(jbregister);
 		jbregister.addActionListener(new ActionListener() {
@@ -64,6 +65,7 @@ public class Login extends JFrame {
 		});
 
 		jbaccess = new JButton("Access");
+		jbaccess.setIcon(new ImageIcon("/Users/davidmateomerino/Downloads/Login.png"));
 		jbaccess.setBounds(128, 93, 85, 21);
 		getContentPane().add(jbaccess);
 		jbaccess.addActionListener(new ActionListener() {
