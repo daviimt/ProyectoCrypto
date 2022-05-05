@@ -14,20 +14,25 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
+import java.awt.GridLayout;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class Login extends JFrame {
 
-	private JLabel jlusername, jlpassword;
+	private JLabel jlusername, jlpassword, jltitle;
 	private JButton jbregister, jbaccess;
 	private JTextField jtusername;
 	private JPasswordField jppassword;
 	private Icon icon;
+	private JPanel jpanel1, jpanel2, jpanel3, jpanel4;
 
 	private File fusers = new File("files/Users");
 
@@ -35,25 +40,58 @@ public class Login extends JFrame {
 		super("Login");
 		getContentPane().setBackground(Color.GRAY);
 		setResizable(false);
-		setBounds(100, 100, 350, 281);
+		setSize(300, 200);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		getContentPane().setLayout(null);
 		setLocationRelativeTo(null);
+		getContentPane().setLayout(new GridLayout(4, 1));
+		setMinimumSize(getSize());
+
+		jpanel1 = new JPanel();
+		jpanel1.setBackground(Color.LIGHT_GRAY);
+		jpanel2 = new JPanel();
+		jpanel2.setBackground(Color.LIGHT_GRAY);
+		jpanel3 = new JPanel();
+		jpanel3.setBackground(Color.LIGHT_GRAY);
+		jpanel4 = new JPanel();
+		jpanel4.setBackground(Color.LIGHT_GRAY);
+
+		jltitle = new JLabel("CoinMarket");
+		jltitle.setVerticalAlignment(SwingConstants.BOTTOM);
+		jltitle.setIcon(new ImageIcon("images/CoinMarket.png"));
+		jltitle.setForeground(new Color(138, 43, 226));
+		jltitle.setHorizontalAlignment(SwingConstants.CENTER);
+		jltitle.setFont(new Font("Microsoft Himalaya", Font.BOLD, 25));
+		jltitle.setBounds(25, 32, 70, 21);
+		jpanel1.add(jltitle);
 
 		jlusername = new JLabel("Username:");
+		jlusername.setHorizontalAlignment(SwingConstants.CENTER);
 		jlusername.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
 		jlusername.setBounds(25, 32, 70, 21);
-		getContentPane().add(jlusername);
+		jpanel2.add(jlusername);
+
+		jtusername = new JTextField();
+		jtusername.setBounds(118, 29, 96, 19);
+		jtusername.setColumns(10);
+		jtusername.setToolTipText("Introduce your user");
+		jpanel2.add(jtusername);
 
 		jlpassword = new JLabel("Password:");
+		jlpassword.setHorizontalAlignment(SwingConstants.CENTER);
 		jlpassword.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
 		jlpassword.setBounds(25, 58, 70, 21);
-		getContentPane().add(jlpassword);
+		jpanel3.add(jlpassword);
 
+		jppassword = new JPasswordField();
+		jppassword.setBounds(118, 52, 96, 21);
+		jppassword.setColumns(10);
+		jppassword.setToolTipText("Introduce your password");
+		jpanel3.add(jppassword);
+		
 		jbregister = new JButton("Register");
 		jbregister.setIcon(new ImageIcon("images/Register.png"));
 		jbregister.setBounds(22, 93, 85, 21);
-		getContentPane().add(jbregister);
+		jpanel4.add(jbregister);
 		jbregister.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
@@ -67,7 +105,7 @@ public class Login extends JFrame {
 		jbaccess = new JButton("Access");
 		jbaccess.setIcon(new ImageIcon("images/Login.png"));
 		jbaccess.setBounds(128, 93, 85, 21);
-		getContentPane().add(jbaccess);
+		jpanel4.add(jbaccess);
 		jbaccess.addActionListener(new ActionListener() {
 
 			@SuppressWarnings({ "unused", "deprecation" })
@@ -77,7 +115,7 @@ public class Login extends JFrame {
 				boolean existUser = false;
 				boolean passwordCorrect = false;
 
-				if (jtusername.getText().isBlank()==false) {
+				if (jtusername.getText().isBlank() == false) {
 					if (fusers.exists() == true) {
 						try {
 							BufferedReader br = new BufferedReader(new FileReader(fusers));
@@ -122,22 +160,16 @@ public class Login extends JFrame {
 					}
 				} else {
 					icon = new ImageIcon("images/warning.png");
-					JOptionPane.showMessageDialog(null, "User name is empty", "Error",
-							JOptionPane.WARNING_MESSAGE, icon);
+					JOptionPane.showMessageDialog(null, "User name is empty", "Error", JOptionPane.WARNING_MESSAGE,
+							icon);
 				}
 			}
 		});
-
-		jtusername = new JTextField();
-		jtusername.setBounds(118, 29, 96, 19);
-		getContentPane().add(jtusername);
-		jtusername.setColumns(10);
-		jtusername.setToolTipText("Introduce your user");
-
-		jppassword = new JPasswordField();
-		jppassword.setBounds(118, 52, 96, 21);
-		getContentPane().add(jppassword);
-		jppassword.setToolTipText("Introduce your password");
+		
+		getContentPane().add(jpanel1);
+		getContentPane().add(jpanel2);
+		getContentPane().add(jpanel3);
+		getContentPane().add(jpanel4);
 		setVisible(true);
 	}
 
