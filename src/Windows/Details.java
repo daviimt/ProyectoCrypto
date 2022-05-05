@@ -35,7 +35,6 @@ public class Details extends JFrame {
 		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
 		setIconImage(icon1);
 
-
 		jpanel1 = new JPanel();
 		jpanel1.setBackground(Color.LIGHT_GRAY);
 		jpanel2 = new JPanel();
@@ -52,7 +51,7 @@ public class Details extends JFrame {
 		jpanel7.setBackground(Color.LIGHT_GRAY);
 		jpanel8 = new JPanel();
 		jpanel8.setBackground(Color.LIGHT_GRAY);
-		
+
 		jlname = new JLabel("Name:");
 		jlname.setHorizontalAlignment(SwingConstants.CENTER);
 		jpanel1.add(jlname);
@@ -125,7 +124,7 @@ public class Details extends JFrame {
 
 		jbcancel = new JButton("Back");
 		jbcancel.setIcon(new ImageIcon("images/Back.png"));
-		jbcancel.setBackground(Color.RED);
+		jbcancel.setBackground(new Color(153, 0, 0));
 		jpanel8.add(jbcancel);
 		jbcancel.addActionListener(new ActionListener() {
 

@@ -38,7 +38,6 @@ public class Stadistics extends JFrame {
 		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
 		setIconImage(icon1);
 
-
 		jlusername = new JLabel("Username: ");
 		jlusername.setBounds(0, 0, 586, 51);
 		jlusername.setHorizontalAlignment(SwingConstants.CENTER);
@@ -84,6 +83,7 @@ public class Stadistics extends JFrame {
 		getContentPane().add(panel);
 
 		jbback = new JButton("Back");
+		jbback.setBackground(new Color(153, 0, 0));
 		jbback.setHorizontalAlignment(SwingConstants.CENTER);
 		jbback.addActionListener(new ActionListener() {
 

@@ -53,7 +53,6 @@ public class Insert extends JFrame {
 		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
 		setIconImage(icon1);
 
-
 		jlname = new JLabel("Name:");
 		jlname.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
 		jlname.setHorizontalAlignment(SwingConstants.CENTER);
@@ -143,7 +142,7 @@ public class Insert extends JFrame {
 
 		jbnext = new JButton("Continue");
 		jbnext.setIcon(new ImageIcon("images/BlackTick.png"));
-		jbnext.setBackground(Color.GREEN);
+		jbnext.setBackground(new Color(0, 153, 0));
 		jbnext.setBounds(101, 163, 85, 21);
 		getContentPane().add(jbnext);
 		jbnext.addActionListener(new ActionListener() {
@@ -197,10 +196,10 @@ public class Insert extends JFrame {
 									JOptionPane.INFORMATION_MESSAGE, icon);
 							dispose();
 							MainWindow main = new MainWindow(name);
-						}else {
+						} else {
 							icon = new ImageIcon("images/warning.png");
-							JOptionPane.showMessageDialog(null, "Month number must be between 1 and 12", "Error", JOptionPane.WARNING_MESSAGE,
-									icon);
+							JOptionPane.showMessageDialog(null, "Month number must be between 1 and 12", "Error",
+									JOptionPane.WARNING_MESSAGE, icon);
 						}
 					} else {
 						icon = new ImageIcon("images/warning.png");
@@ -219,7 +218,7 @@ public class Insert extends JFrame {
 
 		jbcancel = new JButton("Cancel");
 		jbcancel.setIcon(new ImageIcon("images/Cross.png"));
-		jbcancel.setBackground(Color.RED);
+		jbcancel.setBackground(new Color(153, 0, 0));
 		jbcancel.setBounds(218, 163, 85, 21);
 		getContentPane().add(jbcancel);
 		jbcancel.addActionListener(new ActionListener() {

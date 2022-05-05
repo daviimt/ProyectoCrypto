@@ -48,6 +48,7 @@ public class Login extends JFrame {
 		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
 		setIconImage(icon1);
 
+		Manejador handlerLogin = new Manejador();
 
 		jpanel1 = new JPanel();
 		jpanel1.setBackground(Color.LIGHT_GRAY);
@@ -89,8 +90,9 @@ public class Login extends JFrame {
 		jppassword.setBounds(118, 52, 96, 21);
 		jppassword.setColumns(10);
 		jppassword.setToolTipText("Introduce your password");
+		jppassword.addActionListener(handlerLogin);
 		jpanel3.add(jppassword);
-		
+
 		jbregister = new JButton("Register");
 		jbregister.setIcon(new ImageIcon("images/Register.png"));
 		jbregister.setBounds(22, 93, 85, 21);
@@ -109,66 +111,8 @@ public class Login extends JFrame {
 		jbaccess.setIcon(new ImageIcon("images/Login.png"));
 		jbaccess.setBounds(128, 93, 85, 21);
 		jpanel4.add(jbaccess);
-		jbaccess.addActionListener(new ActionListener() {
+		jbaccess.addActionListener(handlerLogin);
 
-			@SuppressWarnings({ "unused", "deprecation" })
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				boolean existUser = false;
-				boolean passwordCorrect = false;
-
-				if (jtusername.getText().isBlank() == false) {
-					if (fusers.exists() == true) {
-						try {
-							BufferedReader br = new BufferedReader(new FileReader(fusers));
-							String linea = br.readLine();
-							while (linea != null) {
-
-								String[] usuario = linea.split(";");
-								if (usuario[0].equals(jtusername.getText())) {
-									existUser = true;
-									if (usuario[4].equals(jppassword.getText())) {
-										passwordCorrect = true;
-									}
-								}
-
-								linea = br.readLine();
-							}
-							br.close();
-						} catch (FileNotFoundException e1) {
-							e1.printStackTrace();
-						} catch (IOException e1) {
-							e1.printStackTrace();
-						}
-
-						if (existUser == true) {
-							if (passwordCorrect == true) {
-								MainWindow main = new MainWindow(jtusername.getText());
-								dispose();
-							} else {
-								icon = new ImageIcon("images/warning.png");
-								JOptionPane.showMessageDialog(null, "Incorrect password", "Error",
-										JOptionPane.WARNING_MESSAGE, icon);
-							}
-						} else {
-							icon = new ImageIcon("images/warning.png");
-							JOptionPane.showMessageDialog(null, "User doesn't exist", "Error",
-									JOptionPane.WARNING_MESSAGE, icon);
-						}
-					} else {
-						icon = new ImageIcon("images/warning.png");
-						JOptionPane.showMessageDialog(null, "Don't exist any users", "Error",
-								JOptionPane.WARNING_MESSAGE, icon);
-					}
-				} else {
-					icon = new ImageIcon("images/warning.png");
-					JOptionPane.showMessageDialog(null, "User name is empty", "Error", JOptionPane.WARNING_MESSAGE,
-							icon);
-				}
-			}
-		});
-		
 		getContentPane().add(jpanel1);
 		getContentPane().add(jpanel2);
 		getContentPane().add(jpanel3);
@@ -176,4 +120,62 @@ public class Login extends JFrame {
 		setVisible(true);
 	}
 
+	private class Manejador implements ActionListener {
+
+		@SuppressWarnings({ "deprecation", "unused" })
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			boolean existUser = false;
+			boolean passwordCorrect = false;
+
+			if (jtusername.getText().isBlank() == false) {
+				if (fusers.exists() == true) {
+					try {
+						BufferedReader br = new BufferedReader(new FileReader(fusers));
+						String linea = br.readLine();
+						while (linea != null) {
+
+							String[] usuario = linea.split(";");
+							if (usuario[0].equals(jtusername.getText())) {
+								existUser = true;
+								if (usuario[4].equals(jppassword.getText())) {
+									passwordCorrect = true;
+								}
+							}
+
+							linea = br.readLine();
+						}
+						br.close();
+					} catch (FileNotFoundException e1) {
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+
+					if (existUser == true) {
+						if (passwordCorrect == true) {
+							MainWindow main = new MainWindow(jtusername.getText());
+							dispose();
+						} else {
+							icon = new ImageIcon("images/warning.png");
+							JOptionPane.showMessageDialog(null, "Incorrect password", "Error",
+									JOptionPane.WARNING_MESSAGE, icon);
+						}
+					} else {
+						icon = new ImageIcon("images/warning.png");
+						JOptionPane.showMessageDialog(null, "User doesn't exist", "Error", JOptionPane.WARNING_MESSAGE,
+								icon);
+					}
+				} else {
+					icon = new ImageIcon("images/warning.png");
+					JOptionPane.showMessageDialog(null, "Don't exist any users", "Error", JOptionPane.WARNING_MESSAGE,
+							icon);
+				}
+			} else {
+				icon = new ImageIcon("images/warning.png");
+				JOptionPane.showMessageDialog(null, "User name is empty", "Error", JOptionPane.WARNING_MESSAGE, icon);
+			}
+		}
+
+	}
 }
