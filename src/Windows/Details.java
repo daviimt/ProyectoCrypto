@@ -118,9 +118,9 @@ public class Details extends JFrame {
 		});
 		getContentPane().add(jpbutton);
 				
-						jbcancel = new JButton("Cancel");
+						jbcancel = new JButton("Back");
 						jpbutton.add(jbcancel);
-						jbcancel.setIcon(new ImageIcon("/Users/davidmateomerino/Downloads/Back.png"));
+						jbcancel.setIcon(new ImageIcon("images/Back.png"));
 						jbcancel.setBackground(Color.RED);
 						jbcancel.setBounds(218, 163, 85, 21);
 				jbcancel.addActionListener(new ActionListener() {

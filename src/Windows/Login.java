@@ -35,7 +35,7 @@ public class Login extends JFrame {
 		super("Login");
 		getContentPane().setBackground(Color.GRAY);
 		setResizable(false);
-		setBounds(100, 100, 250, 181);
+		setBounds(100, 100, 350, 281);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 		setLocationRelativeTo(null);
@@ -51,7 +51,7 @@ public class Login extends JFrame {
 		getContentPane().add(jlpassword);
 
 		jbregister = new JButton("Register");
-		jbregister.setIcon(new ImageIcon("/Users/davidmateomerino/Downloads/pruebo.png"));
+		jbregister.setIcon(new ImageIcon("images/Register.png"));
 		jbregister.setBounds(22, 93, 85, 21);
 		getContentPane().add(jbregister);
 		jbregister.addActionListener(new ActionListener() {
@@ -65,7 +65,7 @@ public class Login extends JFrame {
 		});
 
 		jbaccess = new JButton("Access");
-		jbaccess.setIcon(new ImageIcon("/Users/davidmateomerino/Downloads/Login.png"));
+		jbaccess.setIcon(new ImageIcon("images/Login.png"));
 		jbaccess.setBounds(128, 93, 85, 21);
 		getContentPane().add(jbaccess);
 		jbaccess.addActionListener(new ActionListener() {

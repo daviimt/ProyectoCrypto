@@ -40,6 +40,7 @@ public class Register extends JFrame {
 		// Setting the window options.
 		super("Register an user");
 		getContentPane().setBackground(Color.GRAY);
+		setResizable(false);
 		setSize(300, 285);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -119,7 +120,7 @@ public class Register extends JFrame {
 		jppassword2.setToolTipText("Repeat your password");
 
 		jbconfirm = new JButton("Confirm");
-		jbconfirm.setIcon(new ImageIcon("images/Black tick.png"));
+		jbconfirm.setIcon(new ImageIcon("images/BlackTick.png"));
 		jbconfirm.setBackground(Color.GREEN);
 		jbconfirm.setBounds(150, 364, 85, 21);
 		getContentPane().add(jbconfirm);

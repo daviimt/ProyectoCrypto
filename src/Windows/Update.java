@@ -35,7 +35,7 @@ public class Update extends JFrame {
 	public Update(String name) {
 		super("Update cryptocurrency");
 		getContentPane().setBackground(Color.LIGHT_GRAY);
-		setSize(250, 200);
+		setSize(350, 300);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(new GridLayout(8, 2));
 		setLocationRelativeTo(null);
@@ -121,14 +121,14 @@ public class Update extends JFrame {
 
 		// Buttons
 		jbimage = new JButton("Image");
-		jbimage.setIcon(new ImageIcon("/Users/davidmateomerino/Downloads/Upload.png"));
+		jbimage.setIcon(new ImageIcon("images/Upload.png"));
 		jbimage.setBounds(101, 163, 85, 21);
 		getContentPane().add(jbimage);
 		InsertImg insertImg = new InsertImg();
 		jbimage.addActionListener(insertImg);
 
 		jbnext = new JButton("Continue");
-		jbnext.setIcon(new ImageIcon("/Users/davidmateomerino/Downloads/Black tick.png"));
+		jbnext.setIcon(new ImageIcon("images/BlackTick.png"));
 		jbnext.setBackground(Color.GREEN);
 		jbnext.setBounds(101, 163, 85, 21);
 		getContentPane().add(jbnext);
@@ -169,7 +169,7 @@ public class Update extends JFrame {
 		});
 
 		jbcancel = new JButton("Cancel");
-		jbcancel.setIcon(new ImageIcon("/Users/davidmateomerino/Downloads/Cross.png"));
+		jbcancel.setIcon(new ImageIcon("images/Cross.png"));
 		jbcancel.setBackground(Color.RED);
 		jbcancel.setBounds(218, 163, 85, 21);
 		getContentPane().add(jbcancel);
