@@ -25,6 +25,8 @@ import javax.swing.table.DefaultTableModel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 import Entities.Crypto;
 
@@ -49,6 +51,9 @@ public class MainWindow extends JFrame {
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		setMinimumSize(getSize());
+		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
+		setIconImage(icon1);
+
 
 		jluser = new JLabel(name);
 		jluser.setBackground(Color.GRAY);

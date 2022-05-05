@@ -1,5 +1,10 @@
 package Windows;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -17,11 +22,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Font;
-import java.awt.GridLayout;
 import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
@@ -45,6 +45,9 @@ public class Login extends JFrame {
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new GridLayout(4, 1));
 		setMinimumSize(getSize());
+		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
+		setIconImage(icon1);
+
 
 		jpanel1 = new JPanel();
 		jpanel1.setBackground(Color.LIGHT_GRAY);

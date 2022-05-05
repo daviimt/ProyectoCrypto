@@ -1,6 +1,8 @@
 package Windows;
 
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -46,6 +48,9 @@ public class Register extends JFrame {
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new GridLayout(7, 2));
 		setMinimumSize(getSize());
+		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
+		setIconImage(icon1);
+
 
 		jlusername = new JLabel("Username:");
 		jlusername.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));

@@ -1,6 +1,8 @@
 package Windows;
 
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -30,6 +32,9 @@ public class Details extends JFrame {
 		getContentPane().setLayout(new GridLayout(8, 1));
 		setLocationRelativeTo(null);
 		setMinimumSize(getSize());
+		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
+		setIconImage(icon1);
+
 
 		jpanel1 = new JPanel();
 		jpanel1.setBackground(Color.LIGHT_GRAY);
