@@ -17,8 +17,8 @@ import javax.swing.ImageIcon;
 @SuppressWarnings("serial")
 public class Details extends JFrame {
 
-	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jlquantity,jldetails;
-	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtquantity;
+	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jlquantity,jldetails,jlmonth;
+	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtquantity, jtmonth;
 	private JButton jbcancel,jbdetails;
 
 	public Details(String name) {
@@ -26,11 +26,12 @@ public class Details extends JFrame {
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setSize(350, 250);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		getContentPane().setLayout(new GridLayout(7, 2));
+		getContentPane().setLayout(new GridLayout(8, 2));
 		setLocationRelativeTo(null);
 		setMinimumSize(getSize());
 
 		JPanel jpbutton=new JPanel();
+		jpbutton.setBackground(Color.WHITE);
 		
 		jlname = new JLabel("Name:");
 		jlname.setHorizontalAlignment(SwingConstants.CENTER);
@@ -87,6 +88,17 @@ public class Details extends JFrame {
 		jtsupply.setEditable(false);
 		getContentPane().add(jtsupply);
 		
+		jlmonth = new JLabel("Month:");
+		jlmonth.setHorizontalAlignment(SwingConstants.CENTER);
+		jlmonth.setBounds(122, 122, 46, 13);
+		getContentPane().add(jlmonth);
+
+		jtmonth = new JTextField();
+		jtmonth.setBounds(207, 119, 96, 19);
+		jtmonth.setColumns(10);
+		jtmonth.setEditable(false);
+		getContentPane().add(jtmonth);
+		
 		jldetails = new JLabel("Description:");
 		jldetails.setHorizontalAlignment(SwingConstants.CENTER);
 		jldetails.setBounds(122, 122, 46, 13);
@@ -104,23 +116,22 @@ public class Details extends JFrame {
 				JOptionPane.showMessageDialog(Details.this, "descripcion de la crypto");
 			}
 		});
+		getContentPane().add(jpbutton);
+				
+						jbcancel = new JButton("Cancel");
+						jpbutton.add(jbcancel);
+						jbcancel.setIcon(new ImageIcon("/Users/davidmateomerino/Downloads/Back.png"));
+						jbcancel.setBackground(Color.RED);
+						jbcancel.setBounds(218, 163, 85, 21);
+				jbcancel.addActionListener(new ActionListener() {
 
-		jbcancel = new JButton("Cancel");
-		jbcancel.setIcon(new ImageIcon("/Users/davidmateomerino/Downloads/Back.png"));
-		jbcancel.setBackground(Color.RED);
-		jbcancel.setBounds(218, 163, 85, 21);
-		getContentPane().add(jbcancel);
-		jbcancel.addActionListener(new ActionListener() {
-
-			@SuppressWarnings("unused")
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				MainWindow main = new MainWindow(name);
-				dispose();
-			}
-		});
-		jpbutton.add(jbcancel);
-		add(jpbutton);
+					@SuppressWarnings("unused")
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						MainWindow main = new MainWindow(name);
+						dispose();
+					}
+				});
 		setVisible(true);
 	}
 

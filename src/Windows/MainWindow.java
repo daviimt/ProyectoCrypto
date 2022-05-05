@@ -34,12 +34,12 @@ public class MainWindow extends JFrame {
 	private JTable table;
 	private JPanel panel, panel_1;
 	private JButton jbdetails, jbinsert, jbupdate, jbclose, jbstatistics, jbdelete;
-	private JLabel jluser;// nombre;
+	private JLabel jluser;
 
 	private ObjectInputStream is;
 	private ObjectOutputStream os;
 	private File f = new File("files/Cryptos");
-	String[] nameColums = { "Icon", "Name", "Value", "Creator" };
+	String[] nameColums = { "Icon", "Name", "Value", "Creator"};
 
 	public MainWindow(String name) {
 		super("Menu");
@@ -60,10 +60,6 @@ public class MainWindow extends JFrame {
 		table = new JTable();
 		table.setBackground(Color.LIGHT_GRAY);
 		getContentPane().add(table, BorderLayout.CENTER);
-		// Creo que es m�s sencillo a�adir el nombre de usuario al primer label que
-		// tener dos --Juan.
-		// nombre = new JLabel("nombre");
-		// getContentPane().add(nombre);
 
 		DefaultTableModel dtmCrypto = new DefaultTableModel() {
 			@Override
@@ -74,14 +70,13 @@ public class MainWindow extends JFrame {
 		dtmCrypto.setColumnIdentifiers(nameColums);
 		table.setModel(dtmCrypto);
 
-		// List<Crypto> listCryptos = new ArrayList<>();
 		List<Object[]> listC = new ArrayList<Object[]>();
 		try {
 			is = new ObjectInputStream(new FileInputStream(f));
 			Crypto c = (Crypto) is.readObject();
 			while (c != null) {
 				Object[] crypto = { c.getName(), c.getValue(), c.getMarketCap(), c.getSupply(), c.getDescription(),
-						c.getIcon(), c.getCreator() };
+						c.getIcon(), c.getCreator(), c.getMonth() };
 				listC.add(crypto);
 				c = (Crypto) is.readObject();
 			}
@@ -173,7 +168,7 @@ public class MainWindow extends JFrame {
 					Crypto c = (Crypto) is.readObject();
 					while (c != null) {
 						Object[] crypto = { c.getName(), c.getValue(), c.getMarketCap(), c.getSupply(),
-								c.getDescription(), c.getIcon(), c.getCreator() };
+								c.getDescription(), c.getIcon(), c.getCreator(), c.getMonth() };
 						listC.add(crypto);
 						c = (Crypto) is.readObject();
 					}
@@ -187,7 +182,7 @@ public class MainWindow extends JFrame {
 						int cont = 0;
 						for (Object[] c : listC) {
 							Crypto crypto = new Crypto((String) c[0], (float) c[1], (float) c[2], (float) c[3],
-									(String) c[4], (Icon) c[5], (String) c[6]);
+									(String) c[4], (Icon) c[5], (String) c[6], (int)c[7]);
 							try {
 								if (cont == 0) {
 									os = new ObjectOutputStream(new FileOutputStream(f));

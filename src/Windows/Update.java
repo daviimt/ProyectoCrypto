@@ -27,8 +27,8 @@ import java.awt.Font;
 @SuppressWarnings("serial")
 public class Update extends JFrame {
 
-	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jldescription, jlimage;
-	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtdescription;
+	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jldescription, jlimage, jlmonth;
+	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtdescription, jtmonth;
 	private JButton jbnext, jbcancel, jbimage;
 	private Icon icon;
 
@@ -37,7 +37,7 @@ public class Update extends JFrame {
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setSize(250, 200);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		getContentPane().setLayout(new GridLayout(7, 2));
+		getContentPane().setLayout(new GridLayout(8, 2));
 		setLocationRelativeTo(null);
 		setMinimumSize(getSize());
 
@@ -88,6 +88,18 @@ public class Update extends JFrame {
 		jtsupply.setColumns(10);
 		getContentPane().add(jtsupply);
 		jtsupply.setToolTipText("Introduce his supply");
+		
+		jlmonth = new JLabel("Month:");
+		jlmonth.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
+		jlmonth.setHorizontalAlignment(SwingConstants.CENTER);
+		jlmonth.setBounds(122, 122, 46, 13);
+		getContentPane().add(jlmonth);
+
+		jtmonth = new JTextField();
+		jtmonth.setBounds(207, 119, 96, 19);
+		jtmonth.setColumns(10);
+		getContentPane().add(jtmonth);
+		jtmonth.setToolTipText("Introduce the month of creation");
 
 		jldescription = new JLabel("Description:");
 		jldescription.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
@@ -140,7 +152,7 @@ public class Update extends JFrame {
 				if (verification) {
 					Crypto crypto = new Crypto(jtname.getText(), Float.parseFloat(jtvalue.getText()),
 							Float.parseFloat(jtmarketCap.getText()), Float.parseFloat(jtsupply.getText()),
-							jtdescription.getText(), name);
+							jtdescription.getText(), name, Integer.parseInt(jtmonth.getText()));
 
 					icon = new ImageIcon("images/check.png");
 					JOptionPane.showMessageDialog(null, "Crypto creation complete.", "Completed",
