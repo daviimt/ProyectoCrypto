@@ -17,98 +17,99 @@ import javax.swing.ImageIcon;
 @SuppressWarnings("serial")
 public class Details extends JFrame {
 
-	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jlquantity,jldetails,jlmonth;
+	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jlquantity, jldetails, jlmonth;
 	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtquantity, jtmonth;
-	private JButton jbcancel,jbdetails;
+	private JButton jbcancel, jbdetails;
+	private JPanel jpanel1, jpanel2, jpanel3, jpanel4, jpanel5, jpanel6, jpanel7, jpanel8;
 
 	public Details(String name) {
 		super("Details");
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setSize(350, 250);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		getContentPane().setLayout(new GridLayout(8, 2));
+		getContentPane().setLayout(new GridLayout(8, 1));
 		setLocationRelativeTo(null);
 		setMinimumSize(getSize());
 
-		JPanel jpbutton=new JPanel();
-		jpbutton.setBackground(Color.WHITE);
+		jpanel1 = new JPanel();
+		jpanel1.setBackground(Color.LIGHT_GRAY);
+		jpanel2 = new JPanel();
+		jpanel2.setBackground(Color.LIGHT_GRAY);
+		jpanel3 = new JPanel();
+		jpanel3.setBackground(Color.LIGHT_GRAY);
+		jpanel4 = new JPanel();
+		jpanel4.setBackground(Color.LIGHT_GRAY);
+		jpanel5 = new JPanel();
+		jpanel5.setBackground(Color.LIGHT_GRAY);
+		jpanel6 = new JPanel();
+		jpanel6.setBackground(Color.LIGHT_GRAY);
+		jpanel7 = new JPanel();
+		jpanel7.setBackground(Color.LIGHT_GRAY);
+		jpanel8 = new JPanel();
+		jpanel8.setBackground(Color.LIGHT_GRAY);
 		
 		jlname = new JLabel("Name:");
 		jlname.setHorizontalAlignment(SwingConstants.CENTER);
-		jlname.setBounds(123, 53, 45, 13);
-		getContentPane().add(jlname);
+		jpanel1.add(jlname);
 
 		jtname = new JTextField();
-		jtname.setBounds(207, 50, 96, 19);
 		jtname.setColumns(10);
 		jtname.setEditable(false);
-		getContentPane().add(jtname);
+		jpanel1.add(jtname);
 
 		jlvalue = new JLabel("Value:");
 		jlvalue.setHorizontalAlignment(SwingConstants.CENTER);
-		jlvalue.setBounds(123, 76, 45, 13);
-		getContentPane().add(jlvalue);
+		jpanel2.add(jlvalue);
 
 		jtvalue = new JTextField();
-		jtvalue.setBounds(207, 73, 96, 19);
 		jtvalue.setColumns(10);
 		jtvalue.setEditable(false);
-		getContentPane().add(jtvalue);
+		jpanel2.add(jtvalue);
 
 		jlquantity = new JLabel("Quantity:");
 		jlquantity.setHorizontalAlignment(SwingConstants.CENTER);
-		jlquantity.setBounds(122, 122, 46, 13);
-		getContentPane().add(jlquantity);
+		jpanel3.add(jlquantity);
 
 		jtquantity = new JTextField();
-		jtquantity.setBounds(207, 119, 96, 19);
 		jtquantity.setColumns(10);
 		jtquantity.setEditable(false);
-		getContentPane().add(jtquantity);
+		jpanel3.add(jtquantity);
 
 		jlmarketCap = new JLabel("Market Cap:");
 		jlmarketCap.setHorizontalAlignment(SwingConstants.CENTER);
-		jlmarketCap.setBounds(93, 99, 75, 13);
-		getContentPane().add(jlmarketCap);
+		jpanel4.add(jlmarketCap);
 
 		jtmarketCap = new JTextField();
-		getContentPane().add(jtmarketCap);
-		jtmarketCap.setBounds(207, 96, 96, 19);
 		jtmarketCap.setEditable(false);
 		jtmarketCap.setColumns(10);
+		jpanel4.add(jtmarketCap);
 
 		jlsupply = new JLabel("Supply:");
 		jlsupply.setHorizontalAlignment(SwingConstants.CENTER);
-		jlsupply.setBounds(122, 122, 46, 13);
-		getContentPane().add(jlsupply);
+		jpanel5.add(jlsupply);
 
 		jtsupply = new JTextField();
-		jtsupply.setBounds(207, 119, 96, 19);
 		jtsupply.setColumns(10);
 		jtsupply.setEditable(false);
-		getContentPane().add(jtsupply);
-		
+		jpanel5.add(jtsupply);
+
 		jlmonth = new JLabel("Month:");
 		jlmonth.setHorizontalAlignment(SwingConstants.CENTER);
-		jlmonth.setBounds(122, 122, 46, 13);
-		getContentPane().add(jlmonth);
+		jpanel6.add(jlmonth);
 
 		jtmonth = new JTextField();
-		jtmonth.setBounds(207, 119, 96, 19);
 		jtmonth.setColumns(10);
 		jtmonth.setEditable(false);
-		getContentPane().add(jtmonth);
-		
+		jpanel6.add(jtmonth);
+
 		jldetails = new JLabel("Description:");
 		jldetails.setHorizontalAlignment(SwingConstants.CENTER);
-		jldetails.setBounds(122, 122, 46, 13);
-		getContentPane().add(jldetails);
+		jpanel7.add(jldetails);
 
 		// Buttons
 		jbdetails = new JButton("More Info");
 		jbdetails.setBackground(Color.GRAY);
-		jbdetails.setBounds(101, 163, 85, 21);
-		getContentPane().add(jbdetails);
+		jpanel7.add(jbdetails);
 		jbdetails.addActionListener(new ActionListener() {
 
 			@Override
@@ -116,22 +117,28 @@ public class Details extends JFrame {
 				JOptionPane.showMessageDialog(Details.this, "descripcion de la crypto");
 			}
 		});
-		getContentPane().add(jpbutton);
-				
-						jbcancel = new JButton("Back");
-						jpbutton.add(jbcancel);
-						jbcancel.setIcon(new ImageIcon("images/Back.png"));
-						jbcancel.setBackground(Color.RED);
-						jbcancel.setBounds(218, 163, 85, 21);
-				jbcancel.addActionListener(new ActionListener() {
 
-					@SuppressWarnings("unused")
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						MainWindow main = new MainWindow(name);
-						dispose();
-					}
-				});
+		jbcancel = new JButton("Back");
+		jbcancel.setIcon(new ImageIcon("images/Back.png"));
+		jbcancel.setBackground(Color.RED);
+		jpanel8.add(jbcancel);
+		jbcancel.addActionListener(new ActionListener() {
+
+			@SuppressWarnings("unused")
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MainWindow main = new MainWindow(name);
+				dispose();
+			}
+		});
+		getContentPane().add(jpanel1);
+		getContentPane().add(jpanel2);
+		getContentPane().add(jpanel3);
+		getContentPane().add(jpanel4);
+		getContentPane().add(jpanel5);
+		getContentPane().add(jpanel6);
+		getContentPane().add(jpanel7);
+		getContentPane().add(jpanel8);
 		setVisible(true);
 	}
 
