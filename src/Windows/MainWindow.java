@@ -149,6 +149,20 @@ public class MainWindow extends JFrame {
 			@SuppressWarnings("unused")
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				List<Object[]> listCryp = new ArrayList<Object[]>();
+				try {
+					is = new ObjectInputStream(new FileInputStream(f));
+					Crypto c = (Crypto) is.readObject();
+					while (c != null) {
+						Object[] crypto = { c.getName(), c.getValue(), c.getMarketCap(), c.getSupply(),
+								c.getDescription(), c.getIcon(), c.getCreator(), c.getMonth() };
+						listCryp.add(crypto);
+						c = (Crypto) is.readObject();
+					}
+					is.close();
+				} catch (Exception ex2) {}
+				
 				dispose();
 				Update update = new Update(name);
 
