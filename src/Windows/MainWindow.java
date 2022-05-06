@@ -30,6 +30,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 
 import Entities.Crypto;
+import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class MainWindow extends JFrame {
@@ -56,7 +57,8 @@ public class MainWindow extends JFrame {
 		setIconImage(icon1);
 
 
-		jluser = new JLabel(name);
+		jluser = new JLabel("Username: "+name);
+		jluser.setFont(new Font("Poor Richard", Font.BOLD, 18));
 		jluser.setBackground(Color.GRAY);
 		jluser.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(jluser, BorderLayout.NORTH);
