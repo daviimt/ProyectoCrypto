@@ -53,6 +53,7 @@ public class Update extends JFrame {
 		getContentPane().add(jlname);
 
 		jtname = new JTextField();
+		jtname.setText(cryp.getName());
 		jtname.setBounds(207, 50, 96, 19);
 		jtname.setColumns(10);
 		getContentPane().add(jtname);
@@ -65,6 +66,7 @@ public class Update extends JFrame {
 		getContentPane().add(jlvalue);
 
 		jtvalue = new JTextField();
+		jtvalue.setText(String.valueOf(cryp.getValue()));
 		jtvalue.setBounds(207, 73, 96, 19);
 		jtvalue.setColumns(10);
 		getContentPane().add(jtvalue);
@@ -77,6 +79,7 @@ public class Update extends JFrame {
 		getContentPane().add(jlmarketCap);
 
 		jtmarketCap = new JTextField();
+		jtmarketCap.setText(String.valueOf(cryp.getMarketCap()));
 		getContentPane().add(jtmarketCap);
 		jtmarketCap.setBounds(207, 96, 96, 19);
 		jtmarketCap.setColumns(10);
@@ -89,6 +92,7 @@ public class Update extends JFrame {
 		getContentPane().add(jlsupply);
 
 		jtsupply = new JTextField();
+		jtsupply.setText(String.valueOf(cryp.getSupply()));
 		jtsupply.setBounds(207, 119, 96, 19);
 		jtsupply.setColumns(10);
 		getContentPane().add(jtsupply);
@@ -101,12 +105,14 @@ public class Update extends JFrame {
 		getContentPane().add(jlmonth);
 
 		jtmonth = new JTextField();
+		jtmonth.setText(String.valueOf(cryp.getMonth()));
 		jtmonth.setBounds(207, 119, 96, 19);
 		jtmonth.setColumns(10);
 		getContentPane().add(jtmonth);
 		jtmonth.setToolTipText("Introduce the month of creation");
 
 		jldescription = new JLabel("Description:");
+		//jtdescription.setText(cryp.getDescription());
 		jldescription.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
 		jldescription.setHorizontalAlignment(SwingConstants.CENTER);
 		jldescription.setBounds(122, 122, 46, 13);
