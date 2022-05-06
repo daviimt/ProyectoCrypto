@@ -24,8 +24,6 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
-import AAMain.Test;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -46,6 +44,7 @@ public class MainWindow extends JFrame {
 	private ObjectOutputStream os;
 	private File f = new File("files/Cryptos");
 	String[] nameColums = { "Name", "Value", "Market Cap", "Creator" };
+	static List<Crypto> listC;
 
 	private Icon icon;
 
@@ -59,6 +58,18 @@ public class MainWindow extends JFrame {
 		setMinimumSize(getSize());
 		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
 		setIconImage(icon1);
+
+		listC = new ArrayList<>();
+		try {
+			is = new ObjectInputStream(new FileInputStream(f));
+			Crypto c = (Crypto) is.readObject();
+			while (c != null) {
+				listC.add(c);
+				c = (Crypto) is.readObject();
+			}
+			is.close();
+		} catch (Exception e) {
+		}
 
 		jluser = new JLabel("Username: " + name);
 		jluser.setFont(new Font("Poor Richard", Font.BOLD, 18));
@@ -82,7 +93,7 @@ public class MainWindow extends JFrame {
 		dtmCrypto.setColumnIdentifiers(nameColums);
 		table.setModel(dtmCrypto);
 
-		for (Crypto c : Test.getListC()) {
+		for (Crypto c : getListC()) {
 			Object[] row = new Object[4];
 			row[0] = c.getName();
 			row[1] = c.getValue();
@@ -139,12 +150,11 @@ public class MainWindow extends JFrame {
 					JOptionPane.showMessageDialog(null, "You have to select a crypto", "Error",
 							JOptionPane.WARNING_MESSAGE, icon);
 				} else {
-					Crypto c = Test.getListC().get(table.getSelectedRow());
+					Crypto c = getListC().get(table.getSelectedRow());
 					dispose();
 					Details.cryp = c;
 					Details details = new Details(name);
 				}
-
 
 			}
 		});
@@ -157,23 +167,24 @@ public class MainWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				List<Object[]> listCryp = new ArrayList<Object[]>();
-				try {
-					is = new ObjectInputStream(new FileInputStream(f));
-					Crypto c = (Crypto) is.readObject();
-					while (c != null) {
-						Object[] crypto = { c.getName(), c.getValue(), c.getMarketCap(), c.getSupply(),
-								c.getDescription(), c.getIcon(), c.getCreator(), c.getMonth() };
-						listCryp.add(crypto);
-						c = (Crypto) is.readObject();
+				if (table.getSelectedRow() > 0) {
+					Crypto c = getListC().get(table.getSelectedRow());
+					if (c.getCreator().equals(name) || name.equals("admin")) {
+						
+						dispose();
+						Update.cryp = c;
+						Update update = new Update(name);
+					}else {
+						icon = new ImageIcon("images/warning.png");
+						JOptionPane.showMessageDialog(MainWindow.this, "You dont be creator", "Error",
+								JOptionPane.WARNING_MESSAGE, icon);
 					}
-					is.close();
-				} catch (Exception ex2) {
+					
+				} else {
+					icon = new ImageIcon("images/warning.png");
+					JOptionPane.showMessageDialog(null, "You have to select a crypto", "Error",
+							JOptionPane.WARNING_MESSAGE, icon);
 				}
-
-				dispose();
-				Update update = new Update(name);
-
 			}
 		});
 
@@ -184,57 +195,59 @@ public class MainWindow extends JFrame {
 			@SuppressWarnings("unused")
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-				Icon icon = new ImageIcon("images/warning.png");
-				int option = JOptionPane.showOptionDialog(jbupdate, "Are you sure?", "Confirm",
-						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icon, null, null);
+				System.out.println(table.getSelectedRow());
+				icon = new ImageIcon("images/warning.png");
+				int contCrypto = (int) getListC().stream().count();
 
-				List<Object[]> listC = new ArrayList<Object[]>();
-				try {
-					is = new ObjectInputStream(new FileInputStream(f));
-					Crypto c = (Crypto) is.readObject();
-					while (c != null) {
-						Object[] crypto = { c.getName(), c.getValue(), c.getMarketCap(), c.getSupply(),
-								c.getDescription(), c.getIcon(), c.getCreator(), c.getMonth() };
-						listC.add(crypto);
-						c = (Crypto) is.readObject();
-					}
-					is.close();
-				} catch (Exception ex2) {
-				}
-				int contCrypto = (int) listC.stream().count();
-				if (option == 0) {
-					if (contCrypto != 1) {
-						listC.remove(table.getSelectedRow());
-						int cont = 0;
-						for (Object[] c : listC) {
-							Crypto crypto = new Crypto((String) c[0], (float) c[1], (float) c[2], (float) c[3],
-									(String) c[4], (Icon) c[5], (String) c[6], (int) c[7]);
-							try {
-								if (cont == 0) {
-									os = new ObjectOutputStream(new FileOutputStream(f));
-								} else {
-									os = new AddObjectOutputStream(new FileOutputStream(f, true));
+				if (table.getSelectedRow() >= 0) {
+					Crypto cryp = getListC().get(table.getSelectedRow());
+					if (cryp.getCreator().equals(name) || name.equals("admin")) {
+						int option = JOptionPane.showOptionDialog(jbupdate, "Are you sure?", "Confirm",
+								JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icon, null, null);
+						if (option == 0) {
+							if (contCrypto != 1) {
+								getListC().remove(table.getSelectedRow());
+								int cont = 0;
+								for (Crypto c : getListC()) {
+									Crypto crypto = new Crypto(c.getName(), c.getValue(), c.getMarketCap(),
+											c.getSupply(), c.getDescription(), c.getIcon(), c.getCreator(),
+											c.getMonth());
+									try {
+										if (cont == 0) {
+											os = new ObjectOutputStream(new FileOutputStream(f));
+										} else {
+											os = new AddObjectOutputStream(new FileOutputStream(f, true));
+										}
+										os.writeObject(crypto);
+										os.close();
+									} catch (FileNotFoundException e1) {
+										e1.printStackTrace();
+									} catch (IOException e1) {
+										e1.printStackTrace();
+									}
+									cont++;
 								}
-								os.writeObject(crypto);
-								os.close();
-							} catch (FileNotFoundException e1) {
-								e1.printStackTrace();
-							} catch (IOException e1) {
-								e1.printStackTrace();
+								dispose();
+								MainWindow main = new MainWindow(name);
+							} else {
+								f.delete();
+								dispose();
+								MainWindow main = new MainWindow(name);
 							}
-							cont++;
+
+						} else {
+							dispose();
+							MainWindow main = new MainWindow(name);
 						}
-						dispose();
-						MainWindow main = new MainWindow(name);
 					} else {
-						f.delete();
-						dispose();
-						MainWindow main = new MainWindow(name);
+						icon = new ImageIcon("images/warning.png");
+						JOptionPane.showMessageDialog(MainWindow.this, "You dont be creator", "Error",
+								JOptionPane.WARNING_MESSAGE, icon);
 					}
 				} else {
-					dispose();
-					MainWindow main = new MainWindow(name);
+					icon = new ImageIcon("images/warning.png");
+					JOptionPane.showMessageDialog(MainWindow.this, "You haven't to select a crypto", "Error",
+							JOptionPane.WARNING_MESSAGE, icon);
 				}
 
 			}
@@ -254,6 +267,14 @@ public class MainWindow extends JFrame {
 		});
 
 		setVisible(true);
+	}
+
+	public static List<Crypto> getListC() {
+		return listC;
+	}
+
+	public static void setListC(List<Crypto> listC) {
+		MainWindow.listC = listC;
 	}
 
 }

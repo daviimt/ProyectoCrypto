@@ -160,7 +160,6 @@ public class Insert extends JFrame {
 						verification = false;
 						break;
 					}
-
 				}
 
 				try {
@@ -184,7 +183,7 @@ public class Insert extends JFrame {
 									jtdescription.getText(), icon, name, Integer.parseInt(jtmonth.getText()));
 
 							try {
-								abrir("Cryptos");
+								abrir();
 								os.writeObject(crypto);
 								cerrar();
 							} catch (IOException e1) {
@@ -235,8 +234,8 @@ public class Insert extends JFrame {
 
 	}
 
-	public void abrir(String nameFile) throws IOException {
-		File f = new File("files/" + nameFile);
+	public void abrir() throws IOException {
+		File f = new File("files/Cryptos");
 		try {
 			if (f.exists())
 				os = new AddObjectOutputStream(new FileOutputStream(f, true));

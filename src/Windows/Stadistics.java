@@ -54,7 +54,7 @@ public class Stadistics extends JFrame {
 		for (int i = 1; i <= 12; i++)
 			mapa.put(i, 0);
 
-		for (Crypto c : Test.getListC())
+		for (Crypto c : MainWindow.getListC())
 			mapa.put(c.getMonth(), mapa.get(c.getMonth()) + 1);
 
 		Iterator it = mapa.keySet().iterator();

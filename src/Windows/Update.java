@@ -33,6 +33,7 @@ public class Update extends JFrame {
 	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtdescription, jtmonth;
 	private JButton jbnext, jbcancel, jbimage;
 	private Icon icon;
+	static Crypto cryp;
 
 	public Update(String name) {
 		super("Update cryptocurrency");

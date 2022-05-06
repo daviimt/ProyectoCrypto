@@ -17,6 +17,8 @@ import javax.swing.SwingConstants;
 import Entities.Crypto;
 
 import java.awt.Color;
+
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
@@ -25,7 +27,7 @@ public class Details extends JFrame {
 	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jldetails, jlmonth;
 	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtmonth;
 	private JButton jbcancel, jbdetails;
-	private JPanel jpanel1, jpanel2, jpanel3, jpanel4, jpanel5, jpanel6, jpanel7, jpanel8;
+	private JPanel jpanel1, jpanel2, jpanel3, jpanel4, jpanel5, jpanel6, jpanel7;
 	static Crypto cryp;
 
 	public Details(String name) {
@@ -116,8 +118,9 @@ public class Details extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				Icon icon=new ImageIcon("images/"+jtname.getText()+".png");
 				JOptionPane.showMessageDialog(Details.this, cryp.getDescription(), "Details",
-						JOptionPane.WARNING_MESSAGE, cryp.getIcon());
+						JOptionPane.WARNING_MESSAGE, icon);
 			}
 		});
 
