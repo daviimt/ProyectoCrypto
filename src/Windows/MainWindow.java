@@ -24,6 +24,8 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
+import AAMain.Test;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -43,7 +45,9 @@ public class MainWindow extends JFrame {
 	private ObjectInputStream is;
 	private ObjectOutputStream os;
 	private File f = new File("files/Cryptos");
-	String[] nameColums = { "Name", "Value", "Market Cap", "Creator"};
+	String[] nameColums = { "Name", "Value", "Market Cap", "Creator" };
+
+	private Icon icon;
 
 	public MainWindow(String name) {
 		super("Menu");
@@ -56,8 +60,7 @@ public class MainWindow extends JFrame {
 		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
 		setIconImage(icon1);
 
-
-		jluser = new JLabel("Username: "+name);
+		jluser = new JLabel("Username: " + name);
 		jluser.setFont(new Font("Poor Richard", Font.BOLD, 18));
 		jluser.setBackground(Color.GRAY);
 		jluser.setHorizontalAlignment(SwingConstants.CENTER);
@@ -69,7 +72,7 @@ public class MainWindow extends JFrame {
 		table.setBackground(Color.LIGHT_GRAY);
 		JScrollPane scrollPane = new JScrollPane(table);
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
-		
+
 		DefaultTableModel dtmCrypto = new DefaultTableModel() {
 			@Override
 			public boolean isCellEditable(int row, int column) {
@@ -79,23 +82,13 @@ public class MainWindow extends JFrame {
 		dtmCrypto.setColumnIdentifiers(nameColums);
 		table.setModel(dtmCrypto);
 
-		List<Object[]> listC = new ArrayList<Object[]>();
-		try {
-			is = new ObjectInputStream(new FileInputStream(f));
-			Crypto c = (Crypto) is.readObject();
-			while (c != null) {
-				Object[] crypto = { c.getName(), c.getValue(), c.getMarketCap(), c.getSupply(), c.getDescription(),
-						c.getIcon(), c.getCreator(), c.getMonth() };
-				listC.add(crypto);
-				c = (Crypto) is.readObject();
-			}
-			is.close();
-		} catch (Exception e) {
-		}
-
-		for (Object[] c : listC) {
-			Object[] tabledatos = { c[0], c[1], c[2], c[6] };
-			dtmCrypto.addRow(tabledatos);
+		for (Crypto c : Test.getListC()) {
+			Object[] row = new Object[4];
+			row[0] = c.getName();
+			row[1] = c.getValue();
+			row[2] = c.getMarketCap();
+			row[3] = c.getCreator();
+			dtmCrypto.addRow(row);
 		}
 		table.setModel(dtmCrypto);
 		// Termina el JTable
@@ -140,8 +133,18 @@ public class MainWindow extends JFrame {
 			@SuppressWarnings("unused")
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-				Details details = new Details(name);
+
+				if (table.getSelectedRow() < 0) {
+					icon = new ImageIcon("images/warning.png");
+					JOptionPane.showMessageDialog(null, "You have to select a crypto", "Error",
+							JOptionPane.WARNING_MESSAGE, icon);
+				} else {
+					Crypto c = Test.getListC().get(table.getSelectedRow());
+					dispose();
+					Details.cryp = c;
+					Details details = new Details(name);
+				}
+
 
 			}
 		});
@@ -153,7 +156,7 @@ public class MainWindow extends JFrame {
 			@SuppressWarnings("unused")
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				List<Object[]> listCryp = new ArrayList<Object[]>();
 				try {
 					is = new ObjectInputStream(new FileInputStream(f));
@@ -165,8 +168,9 @@ public class MainWindow extends JFrame {
 						c = (Crypto) is.readObject();
 					}
 					is.close();
-				} catch (Exception ex2) {}
-				
+				} catch (Exception ex2) {
+				}
+
 				dispose();
 				Update update = new Update(name);
 
@@ -205,7 +209,7 @@ public class MainWindow extends JFrame {
 						int cont = 0;
 						for (Object[] c : listC) {
 							Crypto crypto = new Crypto((String) c[0], (float) c[1], (float) c[2], (float) c[3],
-									(String) c[4], (Icon) c[5], (String) c[6], (int)c[7]);
+									(String) c[4], (Icon) c[5], (String) c[6], (int) c[7]);
 							try {
 								if (cont == 0) {
 									os = new ObjectOutputStream(new FileOutputStream(f));

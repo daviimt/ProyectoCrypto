@@ -13,6 +13,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import Entities.Crypto;
+
 import java.awt.Color;
 import javax.swing.ImageIcon;
 
@@ -23,6 +26,7 @@ public class Details extends JFrame {
 	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtquantity, jtmonth;
 	private JButton jbcancel, jbdetails;
 	private JPanel jpanel1, jpanel2, jpanel3, jpanel4, jpanel5, jpanel6, jpanel7, jpanel8;
+	static Crypto cryp;
 
 	public Details(String name) {
 		super("Details");
@@ -57,6 +61,7 @@ public class Details extends JFrame {
 		jpanel1.add(jlname);
 
 		jtname = new JTextField();
+		jtname.setText(cryp.getName());
 		jtname.setColumns(10);
 		jtname.setEditable(false);
 		jpanel1.add(jtname);
@@ -66,6 +71,7 @@ public class Details extends JFrame {
 		jpanel2.add(jlvalue);
 
 		jtvalue = new JTextField();
+		jtvalue.setText(String.valueOf(cryp.getValue()));
 		jtvalue.setColumns(10);
 		jtvalue.setEditable(false);
 		jpanel2.add(jtvalue);
@@ -110,6 +116,7 @@ public class Details extends JFrame {
 		jldetails.setHorizontalAlignment(SwingConstants.CENTER);
 		jpanel7.add(jldetails);
 
+		System.out.println(cryp);
 		// Buttons
 		jbdetails = new JButton("More Info");
 		jbdetails.setBackground(Color.GRAY);
