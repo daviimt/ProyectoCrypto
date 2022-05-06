@@ -1,6 +1,8 @@
 package Windows;
 
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -40,6 +42,8 @@ public class Update extends JFrame {
 		getContentPane().setLayout(new GridLayout(8, 2));
 		setLocationRelativeTo(null);
 		setMinimumSize(getSize());
+		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
+		setIconImage(icon1);
 
 		jlname = new JLabel("Name:");
 		jlname.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
@@ -88,7 +92,7 @@ public class Update extends JFrame {
 		jtsupply.setColumns(10);
 		getContentPane().add(jtsupply);
 		jtsupply.setToolTipText("Introduce his supply");
-		
+
 		jlmonth = new JLabel("Month:");
 		jlmonth.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
 		jlmonth.setHorizontalAlignment(SwingConstants.CENTER);
@@ -129,7 +133,7 @@ public class Update extends JFrame {
 
 		jbnext = new JButton("Continue");
 		jbnext.setIcon(new ImageIcon("images/BlackTick.png"));
-		jbnext.setBackground(Color.GREEN);
+		jbnext.setBackground(new Color(0, 153, 0));
 		jbnext.setBounds(101, 163, 85, 21);
 		getContentPane().add(jbnext);
 		jbnext.addActionListener(new ActionListener() {
@@ -170,7 +174,7 @@ public class Update extends JFrame {
 
 		jbcancel = new JButton("Cancel");
 		jbcancel.setIcon(new ImageIcon("images/Cross.png"));
-		jbcancel.setBackground(Color.RED);
+		jbcancel.setBackground(new Color(153, 0, 0));
 		jbcancel.setBounds(218, 163, 85, 21);
 		getContentPane().add(jbcancel);
 		jbcancel.addActionListener(new ActionListener() {
@@ -193,7 +197,7 @@ public class Update extends JFrame {
 			if (jtname.getText().equals("")) {
 				icon = new ImageIcon("images/warning.png");
 				JOptionPane.showMessageDialog(null, "The crypto name cant be empty", "Error", JOptionPane.ERROR_MESSAGE,
-						icon);				
+						icon);
 			} else {
 
 				JFileChooser fileChooser = new JFileChooser();

@@ -1,6 +1,8 @@
 package Windows;
 
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -33,6 +35,8 @@ public class Stadistics extends JFrame {
 		setMinimumSize(getSize());
 		getContentPane().setLayout(null);
 		setBackground(Color.GRAY);
+		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
+		setIconImage(icon1);
 
 		jlusername = new JLabel("Username: ");
 		jlusername.setBounds(0, 0, 586, 51);
@@ -79,6 +83,7 @@ public class Stadistics extends JFrame {
 		getContentPane().add(panel);
 
 		jbback = new JButton("Back");
+		jbback.setBackground(new Color(153, 0, 0));
 		jbback.setHorizontalAlignment(SwingConstants.CENTER);
 		jbback.addActionListener(new ActionListener() {
 
