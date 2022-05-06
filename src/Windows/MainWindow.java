@@ -41,7 +41,7 @@ public class MainWindow extends JFrame {
 	private ObjectInputStream is;
 	private ObjectOutputStream os;
 	private File f = new File("files/Cryptos");
-	String[] nameColums = { "Icon", "Name", "Value", "Creator"};
+	String[] nameColums = { "Name", "Value", "Market Cap", "Creator"};
 
 	public MainWindow(String name) {
 		super("Menu");
