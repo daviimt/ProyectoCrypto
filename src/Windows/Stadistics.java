@@ -58,7 +58,7 @@ public class Stadistics extends JFrame {
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		dataset.addSeries(series);
 
-		JFreeChart chart = ChartFactory.createXYLineChart("Cryptos", // Título
+		JFreeChart chart = ChartFactory.createXYLineChart("Cryptos", // Tï¿½tulo
 				"Time (Month)", // Etiqueta Coordenada X
 				"Amount (Unit)", // Etiqueta Coordenada Y
 				dataset, // Datos
