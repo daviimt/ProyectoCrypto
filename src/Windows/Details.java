@@ -22,8 +22,8 @@ import javax.swing.ImageIcon;
 @SuppressWarnings("serial")
 public class Details extends JFrame {
 
-	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jlquantity, jldetails, jlmonth;
-	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtquantity, jtmonth;
+	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jldetails, jlmonth;
+	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtmonth;
 	private JButton jbcancel, jbdetails;
 	private JPanel jpanel1, jpanel2, jpanel3, jpanel4, jpanel5, jpanel6, jpanel7, jpanel8;
 	static Crypto cryp;
@@ -33,7 +33,7 @@ public class Details extends JFrame {
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setSize(350, 250);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		getContentPane().setLayout(new GridLayout(8, 1));
+		getContentPane().setLayout(new GridLayout(7, 1));
 		setLocationRelativeTo(null);
 		setMinimumSize(getSize());
 		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
@@ -53,8 +53,6 @@ public class Details extends JFrame {
 		jpanel6.setBackground(Color.LIGHT_GRAY);
 		jpanel7 = new JPanel();
 		jpanel7.setBackground(Color.LIGHT_GRAY);
-		jpanel8 = new JPanel();
-		jpanel8.setBackground(Color.LIGHT_GRAY);
 
 		jlname = new JLabel("Name:");
 		jlname.setHorizontalAlignment(SwingConstants.CENTER);
@@ -76,63 +74,57 @@ public class Details extends JFrame {
 		jtvalue.setEditable(false);
 		jpanel2.add(jtvalue);
 
-		jlquantity = new JLabel("Quantity:");
-		jlquantity.setHorizontalAlignment(SwingConstants.CENTER);
-		jpanel3.add(jlquantity);
-
-		jtquantity = new JTextField();
-		jtquantity.setColumns(10);
-		jtquantity.setEditable(false);
-		jpanel3.add(jtquantity);
-
 		jlmarketCap = new JLabel("Market Cap:");
 		jlmarketCap.setHorizontalAlignment(SwingConstants.CENTER);
-		jpanel4.add(jlmarketCap);
+		jpanel3.add(jlmarketCap);
 
 		jtmarketCap = new JTextField();
+		jtmarketCap.setText(String.valueOf(cryp.getMarketCap()));
 		jtmarketCap.setEditable(false);
 		jtmarketCap.setColumns(10);
-		jpanel4.add(jtmarketCap);
+		jpanel3.add(jtmarketCap);
 
 		jlsupply = new JLabel("Supply:");
 		jlsupply.setHorizontalAlignment(SwingConstants.CENTER);
-		jpanel5.add(jlsupply);
+		jpanel4.add(jlsupply);
 
 		jtsupply = new JTextField();
+		jtsupply.setText(String.valueOf(cryp.getSupply()));
 		jtsupply.setColumns(10);
 		jtsupply.setEditable(false);
-		jpanel5.add(jtsupply);
+		jpanel4.add(jtsupply);
 
 		jlmonth = new JLabel("Month:");
 		jlmonth.setHorizontalAlignment(SwingConstants.CENTER);
-		jpanel6.add(jlmonth);
+		jpanel5.add(jlmonth);
 
 		jtmonth = new JTextField();
+		jtmonth.setText(String.valueOf(cryp.getMonth()));
 		jtmonth.setColumns(10);
 		jtmonth.setEditable(false);
-		jpanel6.add(jtmonth);
+		jpanel5.add(jtmonth);
 
 		jldetails = new JLabel("Description:");
 		jldetails.setHorizontalAlignment(SwingConstants.CENTER);
-		jpanel7.add(jldetails);
+		jpanel6.add(jldetails);
 
-		System.out.println(cryp);
 		// Buttons
 		jbdetails = new JButton("More Info");
 		jbdetails.setBackground(Color.GRAY);
-		jpanel7.add(jbdetails);
+		jpanel6.add(jbdetails);
 		jbdetails.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(Details.this, "descripcion de la crypto");
+				JOptionPane.showMessageDialog(Details.this, cryp.getDescription(), "Details",
+						JOptionPane.WARNING_MESSAGE, cryp.getIcon());
 			}
 		});
 
 		jbcancel = new JButton("Back");
 		jbcancel.setIcon(new ImageIcon("images/Back.png"));
 		jbcancel.setBackground(new Color(153, 0, 0));
-		jpanel8.add(jbcancel);
+		jpanel7.add(jbcancel);
 		jbcancel.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
@@ -149,7 +141,6 @@ public class Details extends JFrame {
 		getContentPane().add(jpanel5);
 		getContentPane().add(jpanel6);
 		getContentPane().add(jpanel7);
-		getContentPane().add(jpanel8);
 		setVisible(true);
 	}
 
