@@ -19,6 +19,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
@@ -64,8 +65,9 @@ public class MainWindow extends JFrame {
 
 		table = new JTable();
 		table.setBackground(Color.LIGHT_GRAY);
-		getContentPane().add(table, BorderLayout.CENTER);
-
+		JScrollPane scrollPane = new JScrollPane(table);
+		getContentPane().add(scrollPane, BorderLayout.CENTER);
+		
 		DefaultTableModel dtmCrypto = new DefaultTableModel() {
 			@Override
 			public boolean isCellEditable(int row, int column) {
