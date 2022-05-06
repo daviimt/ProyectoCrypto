@@ -19,6 +19,9 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
+import AAMain.Test;
+import Entities.Crypto;
+
 @SuppressWarnings("serial")
 public class Stadistics extends JFrame {
 
@@ -45,19 +48,17 @@ public class Stadistics extends JFrame {
 
 		XYSeries series = new XYSeries("Crypto's Number");
 
+		for(Crypto c: Test.getListC()) {
+			int cant=0;
+			series.add(c.getMonth(),cant++);
+		}
 		// Introduccion de datos
-		series.add(1, 1);
-		series.add(2, 6);
-		series.add(3, 3);
-		series.add(4, 6);
-		series.add(5, 10);
-		series.add(6, 8);
-		series.add(7, 12);
-		series.add(8, 14);
-		series.add(9, 16);
-		series.add(10, 10);
-		series.add(11, 12);
-		series.add(12, 10);
+		/*
+		 * series.add(1, 1); series.add(2, 6); series.add(3, 3); series.add(4, 6);
+		 * series.add(5, 10); series.add(6, 8); series.add(7, 12); series.add(8, 14);
+		 * series.add(9, 16); series.add(10, 10); series.add(11, 12); series.add(12,
+		 * 10);
+		 */
 
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		dataset.addSeries(series);
