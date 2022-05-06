@@ -5,6 +5,9 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -27,6 +30,7 @@ public class Stadistics extends JFrame {
 
 	JLabel jlusername;
 	JButton jbback;
+	Map<Integer, Integer> mapa = new HashMap<>();
 
 	public Stadistics(String name) {
 
@@ -41,34 +45,30 @@ public class Stadistics extends JFrame {
 		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
 		setIconImage(icon1);
 
-		jlusername = new JLabel("Username: ");
+		jlusername = new JLabel("Username: " + name);
 		jlusername.setBounds(0, 0, 586, 51);
 		jlusername.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(jlusername);
 
 		XYSeries series = new XYSeries("Crypto's Number");
+		for (int i = 1; i <= 12; i++)
+			mapa.put(i, 0);
 
-		for(Crypto c: Test.getListC()) {
-			int cant=0;
-			series.add(c.getMonth(),cant++);
+		for (Crypto c : Test.getListC())
+			mapa.put(c.getMonth(), mapa.get(c.getMonth()) + 1);
+
+		Iterator it = mapa.keySet().iterator();
+		while (it.hasNext()) {
+			Integer key = (Integer) it.next();
+			series.add(key, mapa.get(key));
 		}
-		// Introduccion de datos
-		/*
-		 * series.add(1, 1); series.add(2, 6); series.add(3, 3); series.add(4, 6);
-		 * series.add(5, 10); series.add(6, 8); series.add(7, 12); series.add(8, 14);
-		 * series.add(9, 16); series.add(10, 10); series.add(11, 12); series.add(12,
-		 * 10);
-		 */
+		System.out.println(mapa);
 
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		dataset.addSeries(series);
 
-		JFreeChart chart = ChartFactory.createXYLineChart("Cryptos", // T�tulo
-				"Time (Month)", // Etiqueta Coordenada X
-				"Amount (Unit)", // Etiqueta Coordenada Y
-				dataset, // Datos
-				PlotOrientation.VERTICAL, true, // Muestra la leyenda de los productos (Producto A)
-				false, false);
+		JFreeChart chart = ChartFactory.createXYLineChart("Cryptos", "Time (Month)", "Amount (Unit)", dataset,
+				PlotOrientation.VERTICAL, true, false, false);
 		chart.setBorderVisible(false);
 		chart.setBackgroundPaint(Color.GRAY);
 		chart.setAntiAlias(false);
