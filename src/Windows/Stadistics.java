@@ -60,9 +60,7 @@ public class Stadistics extends JFrame {
 		while (it.hasNext()) {
 			Integer key = (Integer) it.next();
 			series.add(key, mapa.get(key));
-			System.out.println(key);
 		}
-		System.out.println(mapa);
 
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		dataset.addSeries(series);
