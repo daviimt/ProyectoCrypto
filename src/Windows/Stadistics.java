@@ -22,7 +22,6 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
-import AAMain.Test;
 import Entities.Crypto;
 
 @SuppressWarnings("serial")
@@ -57,23 +56,29 @@ public class Stadistics extends JFrame {
 		for (Crypto c : MainWindow.getListC())
 			mapa.put(c.getMonth(), mapa.get(c.getMonth()) + 1);
 
-		Iterator it = mapa.keySet().iterator();
+		Iterator<Integer> it = mapa.keySet().iterator();
 		while (it.hasNext()) {
 			Integer key = (Integer) it.next();
 			series.add(key, mapa.get(key));
+			System.out.println(key);
 		}
 		System.out.println(mapa);
 
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		dataset.addSeries(series);
 
-		JFreeChart chart = ChartFactory.createXYLineChart("Cryptos", "Time (Month)", "Amount (Unit)", dataset,
-				PlotOrientation.VERTICAL, true, false, false);
-		chart.setBorderVisible(false);
-		chart.setBackgroundPaint(Color.GRAY);
-		chart.setAntiAlias(false);
+		JFreeChart chart1 = ChartFactory.createXYBarChart("Cryptos", "Time (Month)", false, "Amount (Unit)", dataset,
+				PlotOrientation.VERTICAL, false, false, false);
 
-		ChartPanel panel1 = new ChartPanel(chart);
+		@SuppressWarnings("unused")
+		JFreeChart chart = ChartFactory.createXYLineChart("Cryptos", "Time (Month)", "Amount (Unit)", dataset,
+				PlotOrientation.VERTICAL, false, false, false);
+		chart1.setBorderVisible(false);
+		chart1.setBackgroundPaint(Color.GRAY);
+		chart1.setBorderPaint(Color.BLACK);
+		chart1.setAntiAlias(false);
+
+		ChartPanel panel1 = new ChartPanel(chart1);
 		panel1.setBounds(0, 45, 586, 280);
 
 		getContentPane().add(panel1);

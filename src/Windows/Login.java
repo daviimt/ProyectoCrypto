@@ -40,7 +40,7 @@ public class Login extends JFrame {
 		super("Login");
 		getContentPane().setBackground(Color.GRAY);
 		setResizable(false);
-		setSize(300, 200);
+		setSize(300, 230);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new GridLayout(4, 1));
@@ -93,8 +93,11 @@ public class Login extends JFrame {
 		jppassword.addActionListener(handlerLogin);
 		jpanel3.add(jppassword);
 
-		jbregister = new JButton("Register");
-		jbregister.setIcon(new ImageIcon("images/Register.png"));
+		jbregister = new JButton("");
+		jbregister.setIcon(new ImageIcon("images/register.png"));
+		jbregister.setBackground(Color.LIGHT_GRAY);
+		jbregister.setBorderPainted(false);
+		jbregister.setToolTipText("Register");
 		jbregister.setBounds(22, 93, 85, 21);
 		jpanel4.add(jbregister);
 		jbregister.addActionListener(new ActionListener() {
@@ -107,8 +110,11 @@ public class Login extends JFrame {
 			}
 		});
 
-		jbaccess = new JButton("Access");
-		jbaccess.setIcon(new ImageIcon("images/Login.png"));
+		jbaccess = new JButton("");
+		jbaccess.setIcon(new ImageIcon("images/login.png"));
+		jbaccess.setToolTipText("Login");
+		jbaccess.setBackground(Color.LIGHT_GRAY);
+		jbaccess.setBorderPainted(false);
 		jbaccess.setBounds(128, 93, 85, 21);
 		jpanel4.add(jbaccess);
 		jbaccess.addActionListener(handlerLogin);

@@ -133,15 +133,18 @@ public class Insert extends JFrame {
 
 		// Buttons
 
-		jbimage = new JButton("Image");
+		jbimage = new JButton("");
 		jbimage.setIcon(new ImageIcon("images/Upload.png"));
+		jbimage.setBackground(Color.GRAY);
+		jbimage.setToolTipText("Search");
 		jbimage.setBounds(101, 163, 85, 21);
 		getContentPane().add(jbimage);
 		InsertImg insertImg = new InsertImg();
 		jbimage.addActionListener(insertImg);
 
-		jbnext = new JButton("Continue");
+		jbnext = new JButton("");
 		jbnext.setIcon(new ImageIcon("images/BlackTick.png"));
+		jbnext.setToolTipText("Confirm");
 		jbnext.setBackground(new Color(0, 153, 0));
 		jbnext.setBounds(101, 163, 85, 21);
 		getContentPane().add(jbnext);
@@ -215,8 +218,9 @@ public class Insert extends JFrame {
 			}
 		});
 
-		jbcancel = new JButton("Cancel");
+		jbcancel = new JButton("");
 		jbcancel.setIcon(new ImageIcon("images/Cross.png"));
+		jbcancel.setToolTipText("Cancel");
 		jbcancel.setBackground(new Color(153, 0, 0));
 		jbcancel.setBounds(218, 163, 85, 21);
 		getContentPane().add(jbcancel);

@@ -31,7 +31,7 @@ public class Update extends JFrame {
 
 	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jldescription, jlimage, jlmonth;
 	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtdescription, jtmonth;
-	private JButton jbnext, jbcancel, jbimage;
+	private JButton jbnext, jbcancel, jbdescription, jbimage;
 	private Icon icon;
 	static Crypto cryp;
 
@@ -112,17 +112,25 @@ public class Update extends JFrame {
 		jtmonth.setToolTipText("Introduce the month of creation");
 
 		jldescription = new JLabel("Description:");
-		//jtdescription.setText(cryp.getDescription());
+		// jtdescription.setText(cryp.getDescription());
 		jldescription.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
 		jldescription.setHorizontalAlignment(SwingConstants.CENTER);
 		jldescription.setBounds(122, 122, 46, 13);
 		getContentPane().add(jldescription);
 
-		jtdescription = new JTextField();
-		jtdescription.setBounds(207, 119, 96, 19);
-		jtdescription.setColumns(10);
-		getContentPane().add(jtdescription);
-		jtdescription.setToolTipText("Introduce his description");
+		jbdescription = new JButton("Update Info");
+		jbdescription.setBackground(Color.GRAY);
+		getContentPane().add(jbdescription);
+		jbdescription.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showInputDialog(Update.this, cryp.getDescription(), "Update Info",
+						JOptionPane.DEFAULT_OPTION);
+			}
+		});
+		jbdescription.setBounds(207, 119, 96, 19);
+		jbdescription.setToolTipText("Introduce his description");
 
 		jlimage = new JLabel("Image:");
 		jlimage.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
@@ -131,15 +139,18 @@ public class Update extends JFrame {
 		getContentPane().add(jlimage);
 
 		// Buttons
-		jbimage = new JButton("Image");
+		jbimage = new JButton("");
 		jbimage.setIcon(new ImageIcon("images/Upload.png"));
+		jbimage.setBackground(Color.GRAY);
+		jbimage.setToolTipText("Search");
 		jbimage.setBounds(101, 163, 85, 21);
 		getContentPane().add(jbimage);
 		InsertImg insertImg = new InsertImg();
 		jbimage.addActionListener(insertImg);
 
-		jbnext = new JButton("Continue");
+		jbnext = new JButton("");
 		jbnext.setIcon(new ImageIcon("images/BlackTick.png"));
+		jbnext.setToolTipText("Confirm");
 		jbnext.setBackground(new Color(0, 153, 0));
 		jbnext.setBounds(101, 163, 85, 21);
 		getContentPane().add(jbnext);
@@ -166,22 +177,23 @@ public class Update extends JFrame {
 							jtdescription.getText(), name, Integer.parseInt(jtmonth.getText()));
 
 					icon = new ImageIcon("images/check.png");
-					JOptionPane.showMessageDialog(null, "Crypto creation complete.", "Completed",
+					JOptionPane.showMessageDialog(null, "Crypto update complete.", "Completed",
 							JOptionPane.INFORMATION_MESSAGE, icon);
 					dispose();
 					MainWindow main = new MainWindow(name);
 
 				} else {
 					icon = new ImageIcon("images/warning.png");
-					JOptionPane.showMessageDialog(null, "Fill every required field to create the crypto.", "Error",
+					JOptionPane.showMessageDialog(null, "Fill every required field to update the crypto.", "Error",
 							JOptionPane.WARNING_MESSAGE, icon);
 				}
 			}
 		});
 
-		jbcancel = new JButton("Cancel");
+		jbcancel = new JButton("");
 		jbcancel.setIcon(new ImageIcon("images/Cross.png"));
 		jbcancel.setBackground(new Color(153, 0, 0));
+		jbcancel.setToolTipText("Cancel");
 		jbcancel.setBounds(218, 163, 85, 21);
 		getContentPane().add(jbcancel);
 		jbcancel.addActionListener(new ActionListener() {
@@ -201,32 +213,37 @@ public class Update extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if (jtname.getText().equals("")) {
-				icon = new ImageIcon("images/warning.png");
-				JOptionPane.showMessageDialog(null, "The crypto name cant be empty", "Error", JOptionPane.ERROR_MESSAGE,
-						icon);
-			} else {
+			try {
+				if (jtname.getText().equals("")) {
+					icon = new ImageIcon("images/warning.png");
+					JOptionPane.showMessageDialog(null, "The crypto name cant be empty", "Error",
+							JOptionPane.ERROR_MESSAGE, icon);
+				} else {
 
-				JFileChooser fileChooser = new JFileChooser();
-				fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+					JFileChooser fileChooser = new JFileChooser();
+					fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
-				FileNameExtensionFilter soloImg = new FileNameExtensionFilter("JPG & PNG Images", "png", "png");
-				fileChooser.setFileFilter(soloImg);
+					FileNameExtensionFilter soloImg = new FileNameExtensionFilter("JPG & PNG Images", "png", "png");
+					fileChooser.setFileFilter(soloImg);
 
-				fileChooser.showSaveDialog(null);
+					fileChooser.showSaveDialog(null);
 
-				File imagenes = new File("images/" + jtname.getText() + ".png");
+					File imagenes = new File("images/" + jtname.getText() + ".png");
 
-				Path sourcer = fileChooser.getSelectedFile().getAbsoluteFile().toPath();
-				Path destination = imagenes.toPath();
+					Path sourcer = fileChooser.getSelectedFile().getAbsoluteFile().toPath();
+					Path destination = imagenes.toPath();
 
-				try {
-					Files.copy(sourcer, destination);
-				} catch (IOException e1) {
-					e1.printStackTrace();
+					try {
+						Files.copy(sourcer, destination);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
 				}
-			}
 
+			} catch (NullPointerException NPE) {
+				JOptionPane.showMessageDialog(null, "You haven't choose any image", "Information",
+						JOptionPane.INFORMATION_MESSAGE, icon);
+			}
 		}
 	}
 }

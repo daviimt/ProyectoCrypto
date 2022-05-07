@@ -31,6 +31,7 @@ import java.awt.Toolkit;
 
 import Entities.Crypto;
 import java.awt.Font;
+import java.awt.FlowLayout;
 
 @SuppressWarnings("serial")
 public class MainWindow extends JFrame {
@@ -108,7 +109,11 @@ public class MainWindow extends JFrame {
 		panel_1.setBackground(Color.GRAY);
 		getContentPane().add(panel_1, BorderLayout.SOUTH);
 
-		jbstatistics = new JButton("Statistics");
+		jbstatistics = new JButton("");
+		jbstatistics.setIcon(new ImageIcon("images/statistics.png"));
+		jbstatistics.setToolTipText("Statistics");
+		jbstatistics.setBackground(Color.GRAY);
+		jbstatistics.setBorderPainted(false);
 		jbstatistics.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
@@ -119,13 +124,18 @@ public class MainWindow extends JFrame {
 
 			}
 		});
+		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		panel_1.add(jbstatistics);
 
 		panel = new JPanel();
 		panel.setBackground(Color.GRAY);
 		panel_1.add(panel);
 
-		jbinsert = new JButton("Insert");
+		jbinsert = new JButton("");
+		jbinsert.setIcon(new ImageIcon("images/Insert.png"));
+		jbinsert.setToolTipText("Insert");
+		jbinsert.setBackground(Color.GRAY);
+		jbinsert.setBorderPainted(false);
 		jbinsert.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
@@ -137,7 +147,11 @@ public class MainWindow extends JFrame {
 			}
 		});
 
-		jbdetails = new JButton("Details");
+		jbdetails = new JButton("");
+		jbdetails.setIcon(new ImageIcon("images/details.png"));
+		jbdetails.setToolTipText("Details");
+		jbdetails.setBackground(Color.GRAY);
+		jbdetails.setBorderPainted(false);
 		panel.add(jbdetails);
 		jbdetails.addActionListener(new ActionListener() {
 
@@ -160,26 +174,30 @@ public class MainWindow extends JFrame {
 		});
 		panel.add(jbinsert);
 
-		jbupdate = new JButton("Update");
+		jbupdate = new JButton("");
+		jbupdate.setIcon(new ImageIcon("images/update.png"));
+		jbupdate.setToolTipText("Update");
+		jbupdate.setBackground(Color.GRAY);
+		jbupdate.setBorderPainted(false);
 		panel.add(jbupdate);
 		jbupdate.addActionListener(new ActionListener() {
 			@SuppressWarnings("unused")
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				if (table.getSelectedRow() > 0) {
+				if (table.getSelectedRow() >= 0) {
 					Crypto c = getListC().get(table.getSelectedRow());
 					if (c.getCreator().equals(name) || name.equals("admin")) {
-						
+
 						dispose();
 						Update.cryp = c;
 						Update update = new Update(name);
-					}else {
+					} else {
 						icon = new ImageIcon("images/warning.png");
 						JOptionPane.showMessageDialog(MainWindow.this, "You dont be creator", "Error",
 								JOptionPane.WARNING_MESSAGE, icon);
 					}
-					
+
 				} else {
 					icon = new ImageIcon("images/warning.png");
 					JOptionPane.showMessageDialog(null, "You have to select a crypto", "Error",
@@ -188,7 +206,11 @@ public class MainWindow extends JFrame {
 			}
 		});
 
-		jbdelete = new JButton("Delete");
+		jbdelete = new JButton("");
+		jbdelete.setIcon(new ImageIcon("images/delete.png"));
+		jbdelete.setToolTipText("Delete");
+		jbdelete.setBackground(Color.GRAY);
+		jbdelete.setBorderPainted(false);
 		panel.add(jbdelete);
 		jbdelete.addActionListener(new ActionListener() {
 
@@ -253,7 +275,11 @@ public class MainWindow extends JFrame {
 			}
 		});
 
-		jbclose = new JButton("Log Out");
+		jbclose = new JButton("");
+		jbclose.setIcon(new ImageIcon("images/logout.png"));
+		jbclose.setBackground(Color.GRAY);
+		jbclose.setBorderPainted(false);
+		jbclose.setToolTipText("Log Out");
 		panel.add(jbclose);
 		jbclose.addActionListener(new ActionListener() {
 

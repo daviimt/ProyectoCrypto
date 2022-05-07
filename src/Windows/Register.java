@@ -123,8 +123,9 @@ public class Register extends JFrame {
 		getContentPane().add(jppassword2);
 		jppassword2.setToolTipText("Repeat your password");
 
-		jbconfirm = new JButton("Confirm");
+		jbconfirm = new JButton("");
 		jbconfirm.setIcon(new ImageIcon("images/BlackTick.png"));
+		jbconfirm.setToolTipText("Confirm");
 		jbconfirm.setBackground(new Color(0, 153, 0));
 		jbconfirm.setBounds(150, 364, 85, 21);
 		getContentPane().add(jbconfirm);
@@ -197,8 +198,9 @@ public class Register extends JFrame {
 			}
 		});
 
-		jbcancel = new JButton("Cancel");
+		jbcancel = new JButton("");
 		jbcancel.setIcon(new ImageIcon("images/Cross.png"));
+		jbcancel.setToolTipText("Cancel");
 		jbcancel.setBackground(new Color(153, 0, 0));
 		jbcancel.setBounds(342, 364, 85, 21);
 		getContentPane().add(jbcancel);
