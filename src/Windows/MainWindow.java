@@ -191,7 +191,7 @@ public class MainWindow extends JFrame {
 
 						dispose();
 						Update.cryp = c;
-						Update update = new Update(name);
+						Update update = new Update(name, table.getSelectedRow());
 					} else {
 						icon = new ImageIcon("images/warning.png");
 						JOptionPane.showMessageDialog(MainWindow.this, "You aren't creator", "Error",
