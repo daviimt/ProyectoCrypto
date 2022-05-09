@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,6 +24,7 @@ import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
 import Entities.Crypto;
+import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class Stadistics extends JFrame {
@@ -37,6 +39,7 @@ public class Stadistics extends JFrame {
 		setBounds(100, 100, 600, 505);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
+		setResizable(false);
 		setSize(600, 400);
 		setMinimumSize(getSize());
 		getContentPane().setLayout(null);
@@ -45,6 +48,7 @@ public class Stadistics extends JFrame {
 		setIconImage(icon1);
 
 		jlusername = new JLabel("Username: " + name);
+		jlusername.setFont(new Font("Dialog", Font.BOLD, 15));
 		jlusername.setBounds(0, 0, 586, 51);
 		jlusername.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(jlusername);
@@ -86,8 +90,11 @@ public class Stadistics extends JFrame {
 		panel.setBackground(Color.GRAY);
 		getContentPane().add(panel);
 
-		jbback = new JButton("Back");
-		jbback.setBackground(new Color(153, 0, 0));
+		jbback = new JButton("");
+		jbback.setIcon(new ImageIcon("images/Back.png"));
+		jbback.setBackground(Color.GRAY);
+		jbback.setBorderPainted(false);
+		jbback.setToolTipText("Back");
 		jbback.setHorizontalAlignment(SwingConstants.CENTER);
 		jbback.addActionListener(new ActionListener() {
 

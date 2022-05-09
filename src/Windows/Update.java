@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 import javax.swing.Icon;
@@ -42,7 +43,7 @@ public class Update extends JFrame {
 	File file = new File("files/Cryptos");
 	static List<Crypto> listC;
 
-	public Update(String name, int selectedRow) {
+	public Update(String name, int selectedRow){
 		super("Update cryptocurrency");
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setSize(350, 300);
@@ -54,7 +55,16 @@ public class Update extends JFrame {
 		setIconImage(icon1);
 
 		listC = MainWindow.getListC();
+
 		file.delete();
+
+		try {
+			Path path = Files.writeString(Path.of("files/Cryptos"), "", StandardOpenOption.DELETE_ON_CLOSE);
+			Files.delete(path);
+		} catch (IOException e2) {
+			e2.printStackTrace();
+		}
+	
 		jlname = new JLabel("Name:");
 		jlname.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
 		jlname.setHorizontalAlignment(SwingConstants.CENTER);

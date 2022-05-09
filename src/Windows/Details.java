@@ -33,6 +33,7 @@ public class Details extends JFrame {
 		getContentPane().setBackground(Color.GRAY);
 		setSize(350, 280);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
 		setLocationRelativeTo(null);
 		setMinimumSize(getSize());
 		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
