@@ -217,7 +217,6 @@ public class MainWindow extends JFrame {
 			@SuppressWarnings("unused")
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(table.getSelectedRow());
 				icon = new ImageIcon("images/warning.png");
 				int contCrypto = (int) getListC().stream().count();
 
