@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 import javax.swing.Icon;
@@ -55,15 +54,6 @@ public class Update extends JFrame {
 		setIconImage(icon1);
 
 		listC = MainWindow.getListC();
-
-		file.delete();
-
-		try {
-			Path path = Files.writeString(Path.of("files/Cryptos"), "", StandardOpenOption.DELETE_ON_CLOSE);
-			Files.delete(path);
-		} catch (IOException e2) {
-			e2.printStackTrace();
-		}
 	
 		jlname = new JLabel("Name:");
 		jlname.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
@@ -211,11 +201,20 @@ public class Update extends JFrame {
 						}
 						listC.add(crypto);
 
+						listC.stream().forEach(System.out::println);
 						try {
+							int cont2=0;
 							for (Crypto cp : listC) {
-								abrir();
-								os.writeObject(cp);
-								cerrar();
+								if(cont2==0) {
+									os = new ObjectOutputStream(new FileOutputStream(file));
+									os.writeObject(cp);
+									os.close();	
+								}else {
+									os = new AddObjectOutputStream(new FileOutputStream(file, true));
+									os.writeObject(cp);
+									os.close();	
+								}
+								cont2++;
 							}
 						} catch (FileNotFoundException e1) {
 							e1.printStackTrace();
@@ -256,23 +255,7 @@ public class Update extends JFrame {
 
 		setVisible(true);
 	}
-
-	// Metodos para abrir y cerrar los objetos que leen el archivo binario.
-	public void abrir() throws IOException {
-		try {
-			if (file.exists())
-				os = new AddObjectOutputStream(new FileOutputStream(file, true));
-			else
-				os = new ObjectOutputStream(new FileOutputStream(file));
-		} catch (Exception ex) {
-		}
-	}
-
-	// Metodo para cerrar el ObjectOutputStream
-	public void cerrar() throws IOException {
-		os.close();
-	}
-
+	
 	// Metodo para obtener lista de las cryptos
 	public List<Crypto> getListC() {
 		return listC;
