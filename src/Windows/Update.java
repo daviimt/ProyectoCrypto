@@ -34,12 +34,12 @@ import java.awt.Font;
 public class Update extends JFrame {
 
 	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jldescription, jlimage, jlmonth;
-	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtdescription, jtcreator, jtmonth;
+	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtdescription, jtmonth;
 	private JButton jbnext, jbcancel, jbimage;
 	private Icon icon;
 	static Crypto cryp;
-	private ObjectOutputStream os;
-	private File f = new File("files/Cryptos");
+	ObjectOutputStream os;
+	File file = new File("files/Cryptos");
 	static List<Crypto> listC;
 
 	public Update(String name, int selectedRow) {
@@ -52,9 +52,9 @@ public class Update extends JFrame {
 		setMinimumSize(getSize());
 		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
 		setIconImage(icon1);
-
-		listC = MainWindow.getListC();
-
+		
+		listC =MainWindow.getListC();
+		file.delete();
 		jlname = new JLabel("Name:");
 		jlname.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
 		jlname.setHorizontalAlignment(SwingConstants.CENTER);
@@ -133,7 +133,6 @@ public class Update extends JFrame {
 		getContentPane().add(jtdescription);
 		jtdescription.setToolTipText("Introduce the description");
 
-
 		jlimage = new JLabel("Image:");
 		jlimage.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
 		jlimage.setHorizontalAlignment(SwingConstants.CENTER);
@@ -165,7 +164,7 @@ public class Update extends JFrame {
 				// Comprobadores
 				boolean verification = true;
 				boolean existCrypto = false;
-
+				
 				// Array de valores de crypto
 				String[] group = { jtname.getText(), jtvalue.getText(), jtmarketCap.getText(), jtsupply.getText(),
 						cryp.getDescription(), jtmonth.getText() };
@@ -181,114 +180,47 @@ public class Update extends JFrame {
 
 				// Comprobacion todos los campos rellenos + instanciacion crypto
 				if (verification) {
-					Crypto crypto = new Crypto(jtname.getText(), Float.parseFloat(jtvalue.getText()),
-							Float.parseFloat(jtmarketCap.getText()), Float.parseFloat(jtsupply.getText()),
-							cryp.getDescription(), name, Integer.parseInt(jtmonth.getText()));
-
-					// Escritura de la crypto
-					/*
-					 * try { abrir(); os.writeObject(crypto); cerrar(); } catch (IOException e1) {
-					 * e1.printStackTrace(); }
-					 */
-
-					/*
-					 * System.out.println(selectedRow); int contCrypto = (int)
-					 * getListC().stream().count(); System.out.println(contCrypto);
-					 */
-
-					// aqui empieza el delete
-					// Comprobacion, seleccionado dentro del array
-//				if (selectedRow >= 0) {
-//						System.out.println("selectedRow >= 0");
-//
-//					if (cryp.getCreator().equals(name) || name.equals("admin")) {
-					System.out.println("cryp.getCreator().equals(name) || name.equals(\"admin\")");
 					icon = new ImageIcon("images/warning.png");
-					int option = JOptionPane.showOptionDialog(jbnext, "Are you sure?", "Confirm",
+					int option = JOptionPane.showOptionDialog(Update.this, "Are you sure?", "Confirm",
 							JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icon, null, null);
 					if (option == 0) {
-
+						
 						listC.remove(selectedRow);
 						icon = new ImageIcon("images/" + jtname.getText() + ".png");
-						Crypto c = new Crypto(jtname.getText(), Float.parseFloat(jtvalue.getText()),
+
+						Crypto crypto = new Crypto(jtname.getText(), Float.parseFloat(jtvalue.getText()),
 								Float.parseFloat(jtmarketCap.getText()), Float.parseFloat(jtsupply.getText()),
-								jtdescription.getText(), icon, jtcreator.getText(),
-								Integer.parseInt(jtmonth.getText()));
-						listC.add(c);
-						f.delete();
+								jtdescription.getText(), name, Integer.parseInt(jtmonth.getText()));
+//						if (jbimage.getIcon() == null) {
+//							crypto = new Crypto(jtname.getText(), Float.parseFloat(jtvalue.getText()),
+//									Float.parseFloat(jtmarketCap.getText()), Float.parseFloat(jtsupply.getText()),
+//									jtdescription.getText(), name, Integer.parseInt(jtmonth.getText()));
+//						} else {
+//							crypto = new Crypto(jtname.getText(), Float.parseFloat(jtvalue.getText()),
+//									Float.parseFloat(jtmarketCap.getText()), Float.parseFloat(jtsupply.getText()),
+//									jtdescription.getText(), jbimage.getIcon(), name,
+//									Integer.parseInt(jtmonth.getText()));
+//						}
+						listC.add(crypto);
 
 						try {
-							os = new ObjectOutputStream(new FileOutputStream(f));
-							os.writeObject(crypto);
-							os.close();
+							for (Crypto cp : listC) {
+								abrir();
+								os.writeObject(cp);
+								cerrar();
+							}
 						} catch (FileNotFoundException e1) {
 							e1.printStackTrace();
 						} catch (IOException e1) {
 							e1.printStackTrace();
 						}
 
-						// System.out.println("option == 0");
-
-//								if (contCrypto != 1) {
-//									System.out.println("contCrypto != 1");
-//									getListC().remove(selectedRow);
-//									int cont = 0;
-//									for (Crypto c : getListC()) {
-//										Crypto crypto1 = new Crypto(c.getName(), c.getValue(), c.getMarketCap(),
-//												c.getSupply(), c.getDescription(), c.getIcon(), c.getCreator(),
-//												c.getMonth());
-//										try {
-//											if (cont == 0) {
-//												System.out.println("cont == 0");
-//												os = new ObjectOutputStream(new FileOutputStream(f));
-//											} else {
-//												System.out.println("else cont == 0");
-//												os = new AddObjectOutputStream(new FileOutputStream(f, true));
-//											}
-//											os.writeObject(crypto);
-//											os.close();
-//										} catch (FileNotFoundException e1) {
-//											e1.printStackTrace();
-//										} catch (IOException e1) {
-//											e1.printStackTrace();
-//										}
-//										cont++;
-//									}
-//									dispose();
-//									MainWindow main = new MainWindow(name);
-//								} else {
-//									System.out.println("else contCrypto != 1");
-//									f.delete();
-//									dispose();
-//									MainWindow main = new MainWindow(name);
-//								}
 						dispose();
 						MainWindow main = new MainWindow(name);
 					} else {
-						System.out.println("else option == 0");
 						dispose();
 						MainWindow main = new MainWindow(name);
 					}
-					// Si no se es creador:
-//						} else {
-//							System.out.println("else cryp.getCreator().equals(name) || name.equals(\"admin\")");
-//							icon = new ImageIcon("images/warning.png");
-//							JOptionPane.showMessageDialog(Update.this, "You dont be creator", "Error",
-//									JOptionPane.WARNING_MESSAGE, icon);
-//						}
-//						//Si no se ha seleccionado una crypto
-//					} else {
-//						System.out.println("else selectedRow >= 0");
-//						icon = new ImageIcon("images/warning.png");
-//						JOptionPane.showMessageDialog(Update.this, "You haven't to select a crypto", "Error",
-//								JOptionPane.WARNING_MESSAGE, icon);
-//					}
-
-//					icon = new ImageIcon("images/check.png");
-//					JOptionPane.showMessageDialog(null, "Crypto update complete.", "Completed",
-//							JOptionPane.INFORMATION_MESSAGE, icon);
-
-					// Si no se cumple verification
 				} else {
 					icon = new ImageIcon("images/warning.png");
 					JOptionPane.showMessageDialog(null, "Fill every required field to update the crypto.", "Error",
@@ -319,12 +251,11 @@ public class Update extends JFrame {
 
 	// Metodos para abrir y cerrar los objetos que leen el archivo binario.
 	public void abrir() throws IOException {
-		File f = new File("files/Cryptos");
 		try {
-			if (f.exists())
-				os = new AddObjectOutputStream(new FileOutputStream(f, true));
+			if (file.exists())
+				os = new AddObjectOutputStream(new FileOutputStream(file, true));
 			else
-				os = new ObjectOutputStream(new FileOutputStream(f));
+				os = new ObjectOutputStream(new FileOutputStream(file));
 		} catch (Exception ex) {
 		}
 	}
@@ -335,11 +266,11 @@ public class Update extends JFrame {
 	}
 
 	// Metodo para obtener lista de las cryptos
-	public static List<Crypto> getListC() {
+	public List<Crypto> getListC() {
 		return listC;
 	}
 
-	public static void setListC(List<Crypto> listC) {
+	public void setListC(List<Crypto> listC) {
 		Update.listC = listC;
 	}
 

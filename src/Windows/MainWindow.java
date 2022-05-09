@@ -224,7 +224,7 @@ public class MainWindow extends JFrame {
 				if (table.getSelectedRow() >= 0) {
 					Crypto cryp = getListC().get(table.getSelectedRow());
 					if (cryp.getCreator().equals(name) || name.equals("admin")) {
-						int option = JOptionPane.showOptionDialog(jbupdate, "Are you sure?", "Confirm",
+						int option = JOptionPane.showOptionDialog(MainWindow.this, "Are you sure?", "Confirm",
 								JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icon, null, null);
 						if (option == 0) {
 							if (contCrypto != 1) {
