@@ -194,7 +194,7 @@ public class MainWindow extends JFrame {
 						Update update = new Update(name);
 					} else {
 						icon = new ImageIcon("images/warning.png");
-						JOptionPane.showMessageDialog(MainWindow.this, "You dont be creator", "Error",
+						JOptionPane.showMessageDialog(MainWindow.this, "You aren't creator", "Error",
 								JOptionPane.WARNING_MESSAGE, icon);
 					}
 
