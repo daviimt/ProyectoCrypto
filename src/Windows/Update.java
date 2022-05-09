@@ -52,8 +52,8 @@ public class Update extends JFrame {
 		setMinimumSize(getSize());
 		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
 		setIconImage(icon1);
-		
-		listC =MainWindow.getListC();
+
+		listC = MainWindow.getListC();
 		file.delete();
 		jlname = new JLabel("Name:");
 		jlname.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
@@ -164,7 +164,7 @@ public class Update extends JFrame {
 				// Comprobadores
 				boolean verification = true;
 				boolean existCrypto = false;
-				
+
 				// Array de valores de crypto
 				String[] group = { jtname.getText(), jtvalue.getText(), jtmarketCap.getText(), jtsupply.getText(),
 						cryp.getDescription(), jtmonth.getText() };
@@ -184,23 +184,21 @@ public class Update extends JFrame {
 					int option = JOptionPane.showOptionDialog(Update.this, "Are you sure?", "Confirm",
 							JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icon, null, null);
 					if (option == 0) {
-						
+
 						listC.remove(selectedRow);
 						icon = new ImageIcon("images/" + jtname.getText() + ".png");
 
-						Crypto crypto = new Crypto(jtname.getText(), Float.parseFloat(jtvalue.getText()),
-								Float.parseFloat(jtmarketCap.getText()), Float.parseFloat(jtsupply.getText()),
-								jtdescription.getText(), name, Integer.parseInt(jtmonth.getText()));
-//						if (jbimage.getIcon() == null) {
-//							crypto = new Crypto(jtname.getText(), Float.parseFloat(jtvalue.getText()),
-//									Float.parseFloat(jtmarketCap.getText()), Float.parseFloat(jtsupply.getText()),
-//									jtdescription.getText(), name, Integer.parseInt(jtmonth.getText()));
-//						} else {
-//							crypto = new Crypto(jtname.getText(), Float.parseFloat(jtvalue.getText()),
-//									Float.parseFloat(jtmarketCap.getText()), Float.parseFloat(jtsupply.getText()),
-//									jtdescription.getText(), jbimage.getIcon(), name,
-//									Integer.parseInt(jtmonth.getText()));
-//						}
+						Crypto crypto;
+						if (jbimage.getIcon() == null) {
+							crypto = new Crypto(jtname.getText(), Float.parseFloat(jtvalue.getText()),
+									Float.parseFloat(jtmarketCap.getText()), Float.parseFloat(jtsupply.getText()),
+									jtdescription.getText(), name, Integer.parseInt(jtmonth.getText()));
+						} else {
+							crypto = new Crypto(jtname.getText(), Float.parseFloat(jtvalue.getText()),
+									Float.parseFloat(jtmarketCap.getText()), Float.parseFloat(jtsupply.getText()),
+									jtdescription.getText(), jbimage.getIcon(), name,
+									Integer.parseInt(jtmonth.getText()));
+						}
 						listC.add(crypto);
 
 						try {
