@@ -30,14 +30,7 @@ public class Details extends JFrame {
 
 	public Details(String name) {
 		super("Details");
-		getContentPane().setBackground(Color.GRAY);
-		setSize(350, 280);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setResizable(false);
-		setLocationRelativeTo(null);
-		setMinimumSize(getSize());
-		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
-		setIconImage(icon1);
+		inicializate(Details.this);
 
 		panel1 = new JPanel();
 		panel1.setBounds(0, 0, 336, 189);
@@ -46,7 +39,6 @@ public class Details extends JFrame {
 
 		jlname = new JLabel("Name:");
 		jlname.setHorizontalAlignment(SwingConstants.CENTER);
-
 		panel1.add(jlname);
 
 		jtname = new JTextField();
@@ -105,7 +97,6 @@ public class Details extends JFrame {
 		jbdetails.setBackground(Color.GRAY);
 		jbdetails.setBorderPainted(false);
 		jbdetails.setToolTipText("More Info");
-		panel1.add(jbdetails);
 		jbdetails.addActionListener(new ActionListener() {
 
 			@Override
@@ -115,15 +106,14 @@ public class Details extends JFrame {
 						JOptionPane.WARNING_MESSAGE, icon);
 			}
 		});
-		getContentPane().setLayout(null);
+		panel1.add(jbdetails);
 
-		getContentPane().add(panel1);
+		add(panel1);
 
 		jbcancel = new JButton("");
 		jbcancel.setBounds(0, 191, 336, 42);
 		jbcancel.setIcon(new ImageIcon("images/Back.png"));
 		jbcancel.setBackground(new Color(153, 0, 0));
-		getContentPane().add(jbcancel);
 		jbcancel.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
@@ -133,7 +123,23 @@ public class Details extends JFrame {
 				dispose();
 			}
 		});
+		add(jbcancel);
+
 		setVisible(true);
+	}
+
+	private void inicializate(JFrame jf) {
+
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jf.setBackground(Color.GRAY);
+		jf.setSize(350, 280);
+		jf.setMinimumSize(getSize());
+		jf.setResizable(false);
+		jf.setLocationRelativeTo(null);
+		jf.setLayout(null);
+		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
+		jf.setIconImage(icon1);
+
 	}
 
 }

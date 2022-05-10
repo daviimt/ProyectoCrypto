@@ -39,27 +39,18 @@ public class Register extends JFrame {
 
 	public Register() {
 
-		// Setting the window options.
 		super("Register an user");
-		getContentPane().setBackground(Color.GRAY);
-		setResizable(false);
-		setSize(300, 285);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
-		getContentPane().setLayout(new GridLayout(7, 2));
-		setMinimumSize(getSize());
-		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
-		setIconImage(icon1);
+		inicializate(Register.this);
 
 		jlusername = new JLabel("Username:");
 		jlusername.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
 		jlusername.setHorizontalAlignment(SwingConstants.CENTER);
 		jlusername.setBounds(24, 30, 94, 13);
-		getContentPane().add(jlusername);
+		add(jlusername);
 
 		jtusername = new JTextField();
 		jtusername.setBounds(119, 27, 114, 19);
-		getContentPane().add(jtusername);
+		add(jtusername);
 		jtusername.setColumns(10);
 		jtusername.setToolTipText("Introduce your user");
 
@@ -67,11 +58,11 @@ public class Register extends JFrame {
 		jlname.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
 		jlname.setHorizontalAlignment(SwingConstants.CENTER);
 		jlname.setBounds(24, 53, 94, 13);
-		getContentPane().add(jlname);
+		add(jlname);
 
 		jtname = new JTextField();
 		jtname.setBounds(119, 50, 114, 19);
-		getContentPane().add(jtname);
+		add(jtname);
 		jtname.setColumns(10);
 		jtname.setToolTipText("Introduce your name");
 
@@ -79,11 +70,11 @@ public class Register extends JFrame {
 		jldni.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
 		jldni.setHorizontalAlignment(SwingConstants.CENTER);
 		jldni.setBounds(24, 122, 94, 13);
-		getContentPane().add(jldni);
+		add(jldni);
 
 		jtdni = new JTextField();
 		jtdni.setBounds(119, 119, 114, 19);
-		getContentPane().add(jtdni);
+		add(jtdni);
 		jtdni.setColumns(12);
 		jtdni.setToolTipText("Introduce your DNI");
 
@@ -91,11 +82,11 @@ public class Register extends JFrame {
 		jlemail.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
 		jlemail.setHorizontalAlignment(SwingConstants.CENTER);
 		jlemail.setBounds(24, 145, 94, 13);
-		getContentPane().add(jlemail);
+		add(jlemail);
 
 		jtemail = new JTextField();
 		jtemail.setBounds(119, 142, 114, 19);
-		getContentPane().add(jtemail);
+		add(jtemail);
 		jtemail.setColumns(13);
 		jtemail.setToolTipText("Introduce your email");
 
@@ -103,7 +94,7 @@ public class Register extends JFrame {
 		jlpassword.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
 		jlpassword.setHorizontalAlignment(SwingConstants.CENTER);
 		jlpassword.setBounds(24, 191, 94, 13);
-		getContentPane().add(jlpassword);
+		add(jlpassword);
 
 		jppassword = new JPasswordField();
 		jppassword.setBounds(119, 188, 114, 19);
@@ -115,12 +106,12 @@ public class Register extends JFrame {
 		jlpassword2.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
 		jlpassword2.setHorizontalAlignment(SwingConstants.CENTER);
 		jlpassword2.setBounds(24, 214, 94, 13);
-		getContentPane().add(jlpassword2);
+		add(jlpassword2);
 
 		jppassword2 = new JPasswordField();
 		jppassword2.setBounds(119, 211, 114, 19);
 		jppassword2.setColumns(10);
-		getContentPane().add(jppassword2);
+		add(jppassword2);
 		jppassword2.setToolTipText("Repeat your password");
 
 		jbconfirm = new JButton("");
@@ -128,7 +119,7 @@ public class Register extends JFrame {
 		jbconfirm.setToolTipText("Confirm");
 		jbconfirm.setBackground(new Color(0, 153, 0));
 		jbconfirm.setBounds(150, 364, 85, 21);
-		getContentPane().add(jbconfirm);
+		add(jbconfirm);
 		jbconfirm.addActionListener(new ActionListener() {
 
 			@SuppressWarnings({ "unused", "deprecation" })
@@ -203,7 +194,7 @@ public class Register extends JFrame {
 		jbcancel.setToolTipText("Cancel");
 		jbcancel.setBackground(new Color(153, 0, 0));
 		jbcancel.setBounds(342, 364, 85, 21);
-		getContentPane().add(jbcancel);
+		add(jbcancel);
 		jbcancel.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
@@ -216,6 +207,19 @@ public class Register extends JFrame {
 		});
 
 		setVisible(true);
+	}
+
+	private void inicializate(JFrame jf) {
+
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jf.setBackground(Color.GRAY);
+		jf.setSize(300, 285);
+		jf.setMinimumSize(getSize());
+		jf.setResizable(false);
+		jf.setLocationRelativeTo(null);
+		jf.setLayout(new GridLayout(7, 2));
+		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
+		jf.setIconImage(icon1);
 	}
 
 }

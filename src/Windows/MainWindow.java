@@ -45,7 +45,7 @@ public class MainWindow extends JFrame {
 	private JPanel panel, panel_1;
 	private JButton jbdetails, jbinsert, jbupdate, jbclose, jbstatistics, jbdelete;
 	private JLabel jluser;
-	private JComboBox jcbfilter;
+	private JComboBox<?> jcbfilter;
 
 	private ObjectInputStream is;
 	private ObjectOutputStream os;
@@ -55,16 +55,10 @@ public class MainWindow extends JFrame {
 	static List<Crypto> listOrder;
 	private Icon icon;
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public MainWindow(String name) {
 		super("Menu");
-		setBackground(Color.GRAY);
-		setBounds(100, 100, 600, 400);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
-		getContentPane().setLayout(new BorderLayout(0, 0));
-		setMinimumSize(getSize());
-		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
-		setIconImage(icon1);
+		inicializate(MainWindow.this);
 
 		listOrder = new ArrayList<>();
 		listC = new ArrayList<>();
@@ -84,8 +78,8 @@ public class MainWindow extends JFrame {
 		jluser.setBackground(Color.GRAY);
 		jluser.setHorizontalAlignment(SwingConstants.CENTER);
 
-		String[] filters = { "Default", "Name A-Z", "Name Z-A", "Value >", "Value <",
-				"MarketCap >", "MarketCap <", "Creator A-Z", "Creator Z-A" };
+		String[] filters = { "Default", "Name A-Z", "Name Z-A", "Value >", "Value <", "MarketCap >", "MarketCap <",
+				"Creator A-Z", "Creator Z-A" };
 
 		JPanel jpupper = new JPanel();
 		jcbfilter = new JComboBox(filters);
@@ -146,7 +140,7 @@ public class MainWindow extends JFrame {
 		table = new JTable();
 		table.setBackground(Color.LIGHT_GRAY);
 		JScrollPane scrollPane = new JScrollPane(table);
-		getContentPane().add(scrollPane, BorderLayout.CENTER);
+		add(scrollPane, BorderLayout.CENTER);
 
 		listOrder = listC;
 		createJTable();
@@ -154,7 +148,7 @@ public class MainWindow extends JFrame {
 
 		panel_1 = new JPanel();
 		panel_1.setBackground(Color.GRAY);
-		getContentPane().add(panel_1, BorderLayout.SOUTH);
+		add(panel_1, BorderLayout.SOUTH);
 
 		jbstatistics = new JButton("");
 		jbstatistics.setIcon(new ImageIcon("images/statistics.png"));
@@ -339,6 +333,18 @@ public class MainWindow extends JFrame {
 		});
 
 		setVisible(true);
+	}
+
+	private void inicializate(JFrame jf) {
+
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jf.setBackground(Color.GRAY);
+		jf.setBounds(100, 100, 600, 400);
+		jf.setMinimumSize(getSize());
+		jf.setLocationRelativeTo(null);
+		jf.setLayout(new BorderLayout(0, 0));
+		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
+		jf.setIconImage(icon1);
 	}
 
 	public void createJTable() {

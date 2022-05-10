@@ -36,22 +36,13 @@ public class Stadistics extends JFrame {
 	public Stadistics(String name) {
 
 		super("Stadistics");
-		setBounds(100, 100, 600, 505);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
-		setResizable(false);
-		setSize(600, 400);
-		setMinimumSize(getSize());
-		getContentPane().setLayout(null);
-		setBackground(Color.GRAY);
-		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
-		setIconImage(icon1);
+		inicializate(Stadistics.this);
 
 		jlusername = new JLabel("Username: " + name);
 		jlusername.setFont(new Font("Dialog", Font.BOLD, 15));
 		jlusername.setBounds(0, 0, 586, 51);
 		jlusername.setHorizontalAlignment(SwingConstants.CENTER);
-		getContentPane().add(jlusername);
+		add(jlusername);
 
 		XYSeries series = new XYSeries("Crypto's Number");
 		for (int i = 1; i <= 12; i++)
@@ -83,12 +74,12 @@ public class Stadistics extends JFrame {
 		ChartPanel panel1 = new ChartPanel(chart1);
 		panel1.setBounds(0, 45, 586, 280);
 
-		getContentPane().add(panel1);
+		add(panel1);
 
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 324, 586, 39);
 		panel.setBackground(Color.GRAY);
-		getContentPane().add(panel);
+		add(panel);
 
 		jbback = new JButton("");
 		jbback.setIcon(new ImageIcon("images/Back.png"));
@@ -110,6 +101,19 @@ public class Stadistics extends JFrame {
 		panel.add(jbback);
 
 		setVisible(true);
+	}
+
+	private void inicializate(JFrame jf) {
+
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jf.setBackground(Color.GRAY);
+		jf.setBounds(100, 100, 600, 400);
+		jf.setMinimumSize(getSize());
+		jf.setResizable(false);
+		jf.setLocationRelativeTo(null);
+		jf.setLayout(null);
+		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
+		jf.setIconImage(icon1);
 	}
 
 }

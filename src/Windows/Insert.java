@@ -44,47 +44,40 @@ public class Insert extends JFrame {
 
 	public Insert(String name) {
 		super("Insert cryptocurrency");
-		getContentPane().setBackground(Color.LIGHT_GRAY);
-		setSize(350, 300);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		getContentPane().setLayout(new GridLayout(8, 2));
-		setLocationRelativeTo(null);
-		setMinimumSize(getSize());
-		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
-		setIconImage(icon1);
+		inicializate(Insert.this);
 
 		jlname = new JLabel("Name:");
 		jlname.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
 		jlname.setHorizontalAlignment(SwingConstants.CENTER);
 		jlname.setBounds(123, 53, 45, 13);
-		getContentPane().add(jlname);
+		add(jlname);
 
 		jtname = new JTextField();
 		jtname.setBounds(207, 50, 96, 19);
 		jtname.setColumns(10);
-		getContentPane().add(jtname);
+		add(jtname);
 		jtname.setToolTipText("Introduce a crypto name");
 
 		jlvalue = new JLabel("Value:");
 		jlvalue.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
 		jlvalue.setHorizontalAlignment(SwingConstants.CENTER);
 		jlvalue.setBounds(123, 76, 45, 13);
-		getContentPane().add(jlvalue);
+		add(jlvalue);
 
 		jtvalue = new JTextField();
 		jtvalue.setBounds(207, 73, 96, 19);
 		jtvalue.setColumns(10);
-		getContentPane().add(jtvalue);
+		add(jtvalue);
 		jtvalue.setToolTipText("Introduce his value");
 
 		jlmarketCap = new JLabel("Market Cap:");
 		jlmarketCap.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
 		jlmarketCap.setHorizontalAlignment(SwingConstants.CENTER);
 		jlmarketCap.setBounds(93, 99, 75, 13);
-		getContentPane().add(jlmarketCap);
+		add(jlmarketCap);
 
 		jtmarketCap = new JTextField();
-		getContentPane().add(jtmarketCap);
+		add(jtmarketCap);
 		jtmarketCap.setBounds(207, 96, 96, 19);
 		jtmarketCap.setColumns(10);
 		jtmarketCap.setToolTipText("Introduce his market cap");
@@ -93,43 +86,43 @@ public class Insert extends JFrame {
 		jlsupply.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
 		jlsupply.setHorizontalAlignment(SwingConstants.CENTER);
 		jlsupply.setBounds(122, 122, 46, 13);
-		getContentPane().add(jlsupply);
+		add(jlsupply);
 
 		jtsupply = new JTextField();
 		jtsupply.setBounds(207, 119, 96, 19);
 		jtsupply.setColumns(10);
-		getContentPane().add(jtsupply);
+		add(jtsupply);
 		jtsupply.setToolTipText("Introduce his supply");
 
 		jlmonth = new JLabel("Month:");
 		jlmonth.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
 		jlmonth.setHorizontalAlignment(SwingConstants.CENTER);
 		jlmonth.setBounds(122, 122, 46, 13);
-		getContentPane().add(jlmonth);
+		add(jlmonth);
 
 		jtmonth = new JTextField();
 		jtmonth.setBounds(207, 119, 96, 19);
 		jtmonth.setColumns(10);
-		getContentPane().add(jtmonth);
+		add(jtmonth);
 		jtsupply.setToolTipText("Introduce the month of creation");
 
 		jldescription = new JLabel("Description:");
 		jldescription.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
 		jldescription.setHorizontalAlignment(SwingConstants.CENTER);
 		jldescription.setBounds(122, 122, 46, 13);
-		getContentPane().add(jldescription);
+		add(jldescription);
 
 		jtdescription = new JTextField();
 		jtdescription.setBounds(207, 119, 96, 19);
 		jtdescription.setColumns(10);
-		getContentPane().add(jtdescription);
+		add(jtdescription);
 		jtdescription.setToolTipText("Introduce his description");
 
 		jlimage = new JLabel("Image:");
 		jlimage.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
 		jlimage.setHorizontalAlignment(SwingConstants.CENTER);
 		jlimage.setBounds(122, 122, 46, 13);
-		getContentPane().add(jlimage);
+		add(jlimage);
 
 		// Buttons
 
@@ -138,7 +131,7 @@ public class Insert extends JFrame {
 		jbimage.setBackground(Color.GRAY);
 		jbimage.setToolTipText("Search");
 		jbimage.setBounds(101, 163, 85, 21);
-		getContentPane().add(jbimage);
+		add(jbimage);
 		InsertImg insertImg = new InsertImg();
 		jbimage.addActionListener(insertImg);
 
@@ -147,7 +140,7 @@ public class Insert extends JFrame {
 		jbnext.setToolTipText("Confirm");
 		jbnext.setBackground(new Color(0, 153, 0));
 		jbnext.setBounds(101, 163, 85, 21);
-		getContentPane().add(jbnext);
+		add(jbnext);
 		jbnext.addActionListener(new ActionListener() {
 
 			@SuppressWarnings({ "unused" })
@@ -223,7 +216,7 @@ public class Insert extends JFrame {
 		jbcancel.setToolTipText("Cancel");
 		jbcancel.setBackground(new Color(153, 0, 0));
 		jbcancel.setBounds(218, 163, 85, 21);
-		getContentPane().add(jbcancel);
+		add(jbcancel);
 		jbcancel.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
@@ -236,6 +229,19 @@ public class Insert extends JFrame {
 
 		setVisible(true);
 
+	}
+
+	private void inicializate(JFrame jf) {
+
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jf.setBackground(Color.LIGHT_GRAY);
+		jf.setSize(350, 300);
+		jf.setMinimumSize(getSize());
+		jf.setResizable(false);
+		jf.setLayout(new GridLayout(8, 2));
+		jf.setLocationRelativeTo(null);
+		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
+		jf.setIconImage(icon1);
 	}
 
 	public void abrir() throws IOException {

@@ -38,15 +38,7 @@ public class Login extends JFrame {
 
 	public Login() {
 		super("Login");
-		getContentPane().setBackground(Color.GRAY);
-		setResizable(false);
-		setSize(300, 230);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
-		getContentPane().setLayout(new GridLayout(4, 1));
-		setMinimumSize(getSize());
-		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
-		setIconImage(icon1);
+		inicializate(Login.this);
 
 		Manejador handlerLogin = new Manejador();
 
@@ -119,11 +111,24 @@ public class Login extends JFrame {
 		jpanel4.add(jbaccess);
 		jbaccess.addActionListener(handlerLogin);
 
-		getContentPane().add(jpanel1);
-		getContentPane().add(jpanel2);
-		getContentPane().add(jpanel3);
-		getContentPane().add(jpanel4);
+		add(jpanel1);
+		add(jpanel2);
+		add(jpanel3);
+		add(jpanel4);
 		setVisible(true);
+	}
+
+	private void inicializate(JFrame jf) {
+
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jf.setBackground(Color.GRAY);
+		jf.setSize(300, 230);
+		jf.setMinimumSize(getSize());
+		jf.setResizable(false);
+		jf.setLocationRelativeTo(null);
+		jf.setLayout(new GridLayout(4, 1));
+		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
+		jf.setIconImage(icon1);
 	}
 
 	private class Manejador implements ActionListener {
