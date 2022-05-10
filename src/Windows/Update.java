@@ -201,7 +201,6 @@ public class Update extends JFrame {
 						}
 						listC.add(crypto);
 
-						listC.stream().forEach(System.out::println);
 						try {
 							int cont2=0;
 							for (Crypto cp : listC) {

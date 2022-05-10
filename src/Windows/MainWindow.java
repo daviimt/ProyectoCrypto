@@ -2,6 +2,8 @@ package Windows;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,11 +12,14 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -40,13 +45,14 @@ public class MainWindow extends JFrame {
 	private JPanel panel, panel_1;
 	private JButton jbdetails, jbinsert, jbupdate, jbclose, jbstatistics, jbdelete;
 	private JLabel jluser;
+	private JComboBox jcbfilter;
 
 	private ObjectInputStream is;
 	private ObjectOutputStream os;
 	private File f = new File("files/Cryptos");
 	String[] nameColums = { "Name", "Value", "Market Cap", "Creator" };
 	static List<Crypto> listC;
-
+	static List<Crypto> listOrder;
 	private Icon icon;
 
 	public MainWindow(String name) {
@@ -60,6 +66,7 @@ public class MainWindow extends JFrame {
 		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
 		setIconImage(icon1);
 
+		listOrder = new ArrayList<>();
 		listC = new ArrayList<>();
 		try {
 			is = new ObjectInputStream(new FileInputStream(f));
@@ -76,7 +83,63 @@ public class MainWindow extends JFrame {
 		jluser.setFont(new Font("Poor Richard", Font.BOLD, 18));
 		jluser.setBackground(Color.GRAY);
 		jluser.setHorizontalAlignment(SwingConstants.CENTER);
-		getContentPane().add(jluser, BorderLayout.NORTH);
+
+		String[] filters = { "Default", "Name A-Z", "Name Z-A", "Value >", "Value <",
+				"MarketCap >", "MarketCap <", "Creator A-Z", "Creator Z-A" };
+
+		JPanel jpupper = new JPanel();
+		jcbfilter = new JComboBox(filters);
+		jcbfilter.addItemListener(new ItemListener() {
+			@Override
+			public void itemStateChanged(ItemEvent evento) {
+				if (jcbfilter.getSelectedItem().equals("Default")) {
+					listOrder = listC;
+					createJTable();
+
+				} else if (jcbfilter.getSelectedItem().equals("Name A-Z")) {
+					listOrder = listC.stream().sorted(Comparator.comparing(Crypto::getName))
+							.collect(Collectors.toList());
+					createJTable();
+
+				} else if (jcbfilter.getSelectedItem().equals("Name Z-A")) {
+					listOrder = listC.stream().sorted(Comparator.comparing(Crypto::getName).reversed())
+							.collect(Collectors.toList());
+					createJTable();
+				} else if (jcbfilter.getSelectedItem().equals("Value >")) {
+					listOrder = listC.stream().sorted(Comparator.comparing(Crypto::getValue).reversed())
+							.collect(Collectors.toList());
+					createJTable();
+
+				} else if (jcbfilter.getSelectedItem().equals("Value <")) {
+					listOrder = listC.stream().sorted(Comparator.comparing(Crypto::getValue))
+							.collect(Collectors.toList());
+					createJTable();
+
+				} else if (jcbfilter.getSelectedItem().equals("MarketCap >")) {
+					listOrder = listC.stream().sorted(Comparator.comparing(Crypto::getMarketCap).reversed())
+							.collect(Collectors.toList());
+					createJTable();
+
+				} else if (jcbfilter.getSelectedItem().equals("MarketCap <")) {
+					listOrder = listC.stream().sorted(Comparator.comparing(Crypto::getMarketCap))
+							.collect(Collectors.toList());
+					createJTable();
+
+				} else if (jcbfilter.getSelectedItem().equals("Creator A-Z")) {
+					listOrder = listC.stream().sorted(Comparator.comparing(Crypto::getCreator))
+							.collect(Collectors.toList());
+					createJTable();
+				} else if (jcbfilter.getSelectedItem().equals("Creator Z-A")) {
+					listOrder = listC.stream().sorted(Comparator.comparing(Crypto::getCreator).reversed())
+							.collect(Collectors.toList());
+					createJTable();
+				}
+			}
+		});
+
+		jpupper.add(jluser);
+		jpupper.add(jcbfilter);
+		add(jpupper, BorderLayout.NORTH);
 
 		// JTable Prueba (con defaulttablemade)
 
@@ -85,24 +148,8 @@ public class MainWindow extends JFrame {
 		JScrollPane scrollPane = new JScrollPane(table);
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
 
-		DefaultTableModel dtmCrypto = new DefaultTableModel() {
-			@Override
-			public boolean isCellEditable(int row, int column) {
-				return false;
-			}
-		};
-		dtmCrypto.setColumnIdentifiers(nameColums);
-		table.setModel(dtmCrypto);
-
-		for (Crypto c : getListC()) {
-			Object[] row = new Object[4];
-			row[0] = c.getName();
-			row[1] = c.getValue();
-			row[2] = c.getMarketCap();
-			row[3] = c.getCreator();
-			dtmCrypto.addRow(row);
-		}
-		table.setModel(dtmCrypto);
+		listOrder = listC;
+		createJTable();
 		// Termina el JTable
 
 		panel_1 = new JPanel();
@@ -292,6 +339,27 @@ public class MainWindow extends JFrame {
 		});
 
 		setVisible(true);
+	}
+
+	public void createJTable() {
+		DefaultTableModel dtmCrypto = new DefaultTableModel() {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		dtmCrypto.setColumnIdentifiers(nameColums);
+		table.setModel(dtmCrypto);
+
+		for (Crypto c : listOrder) {
+			Object[] row = new Object[4];
+			row[0] = c.getName();
+			row[1] = c.getValue();
+			row[2] = c.getMarketCap();
+			row[3] = c.getCreator();
+			dtmCrypto.addRow(row);
+		}
+		table.setModel(dtmCrypto);
 	}
 
 	public static List<Crypto> getListC() {
