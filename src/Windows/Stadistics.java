@@ -1,6 +1,7 @@
 package Windows;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -20,11 +21,12 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYBarRenderer;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
 import Entities.Crypto;
-import java.awt.Font;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -88,7 +90,14 @@ public class Stadistics extends JFrame {
 		chart1.setBorderPaint(Color.BLACK);
 		chart1.setBorderVisible(false);
 		chart1.setAntiAlias(false);
-
+		XYPlot plot = (XYPlot) chart1.getPlot();
+		final XYBarRenderer renderer = (XYBarRenderer) plot.getRenderer();
+		renderer.setDrawBarOutline(false);
+		renderer.setShadowVisible(false);
+		renderer.setMargin(0.4);
+		XYBarRenderer.setDefaultShadowsVisible(false);
+		
+		
 		ChartPanel panel1 = new ChartPanel(chart1);
 		panel1.setBounds(0, 45, 586, 267);
 		panel1.setBackground(new Color(196, 172, 148));
