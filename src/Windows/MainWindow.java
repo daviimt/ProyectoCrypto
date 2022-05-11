@@ -115,6 +115,8 @@ public class MainWindow extends JFrame {
 		JPanel jpupper = new JPanel();
 		jpupper.setBackground(new Color(243, 189, 109));
 		jcbfilter = new JComboBox(filters);
+		jcbfilter.setBackground(new Color(196, 172, 148));
+		jcbfilter.setToolTipText("Filters");
 		jcbfilter.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent evento) {

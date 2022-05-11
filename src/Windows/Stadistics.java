@@ -102,12 +102,12 @@ public class Stadistics extends JFrame {
 		panel1.setBounds(0, 45, 586, 267);
 		panel1.setBackground(new Color(196, 172, 148));
 
-		getContentPane().add(panel1);
+		add(panel1);
 
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 311, 586, 57);
 		panel.setBackground(new Color(196, 172, 148));
-		getContentPane().add(panel);
+		add(panel);
 
 		jbback = new JButton("");
 		jbback.setIcon(new ImageIcon("images/Back.png"));
