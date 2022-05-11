@@ -74,6 +74,7 @@ public class Register extends JFrame {
 
 		jtusername = new JTextField();
 		jtusername.setBounds(119, 27, 114, 19);
+		jtusername.setBackground(new Color(235, 222, 240));
 		jtusername.setColumns(10);
 		jtusername.setToolTipText("Introduce your user");
 		getContentPane().add(jtusername);
@@ -87,6 +88,7 @@ public class Register extends JFrame {
 
 		jtname = new JTextField();
 		jtname.setBounds(119, 50, 114, 19);
+		jtname.setBackground(new Color(235, 222, 240));
 		jtname.setColumns(10);
 		jtname.setToolTipText("Introduce your name");
 		getContentPane().add(jtname);
@@ -100,6 +102,7 @@ public class Register extends JFrame {
 
 		jtdni = new JTextField();
 		jtdni.setBounds(119, 119, 114, 19);
+		jtdni.setBackground(new Color(235, 222, 240));
 		jtdni.setColumns(12);
 		jtdni.setToolTipText("Introduce your DNI");
 		getContentPane().add(jtdni);
@@ -113,6 +116,7 @@ public class Register extends JFrame {
 
 		jtemail = new JTextField();
 		jtemail.setBounds(119, 142, 114, 19);
+		jtemail.setBackground(new Color(235, 222, 240));
 		jtemail.setColumns(13);
 		jtemail.setToolTipText("Introduce your email");
 		getContentPane().add(jtemail);
@@ -126,6 +130,7 @@ public class Register extends JFrame {
 
 		jppassword = new JPasswordField();
 		jppassword.setBounds(119, 188, 114, 19);
+		jppassword.setBackground(new Color(235, 222, 240));
 		jppassword.setColumns(10);
 		jppassword.setToolTipText("Introduce your password");
 		getContentPane().add(jppassword);
@@ -139,6 +144,7 @@ public class Register extends JFrame {
 
 		jppassword2 = new JPasswordField();
 		jppassword2.setBounds(119, 211, 114, 19);
+		jppassword2.setBackground(new Color(235, 222, 240));
 		jppassword2.setColumns(10);
 		jppassword2.setToolTipText("Repeat your password");
 		getContentPane().add(jppassword2);

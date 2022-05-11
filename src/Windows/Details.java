@@ -60,6 +60,7 @@ public class Details extends JFrame {
 
 		jtname = new JTextField();
 		jtname.setText(cryp.getName());
+		jtname.setBackground(new Color(235, 222, 240));
 		jtname.setColumns(10);
 		jtname.setEditable(false);
 		panel1.add(jtname);
@@ -70,6 +71,7 @@ public class Details extends JFrame {
 
 		jtvalue = new JTextField();
 		jtvalue.setText(String.valueOf(cryp.getValue()));
+		jtvalue.setBackground(new Color(235, 222, 240));
 		jtvalue.setColumns(10);
 		jtvalue.setEditable(false);
 		panel1.add(jtvalue);
@@ -80,6 +82,7 @@ public class Details extends JFrame {
 
 		jtmarketCap = new JTextField();
 		jtmarketCap.setText(String.valueOf(cryp.getMarketCap()));
+		jtmarketCap.setBackground(new Color(235, 222, 240));
 		jtmarketCap.setColumns(10);
 		jtmarketCap.setEditable(false);
 		panel1.add(jtmarketCap);
@@ -90,6 +93,7 @@ public class Details extends JFrame {
 
 		jtsupply = new JTextField();
 		jtsupply.setText(String.valueOf(cryp.getSupply()));
+		jtsupply.setBackground(new Color(235, 222, 240));
 		jtsupply.setColumns(10);
 		jtsupply.setEditable(false);
 		panel1.add(jtsupply);
@@ -100,6 +104,7 @@ public class Details extends JFrame {
 
 		jtmonth = new JTextField();
 		jtmonth.setText(String.valueOf(cryp.getMonth()));
+		jtmonth.setBackground(new Color(235, 222, 240));
 		jtmonth.setColumns(10);
 		jtmonth.setEditable(false);
 		panel1.add(jtmonth);

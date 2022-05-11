@@ -81,6 +81,7 @@ public class Update extends JFrame {
 
 		jtname = new JTextField();
 		jtname.setBounds(207, 50, 96, 19);
+		jtname.setBackground(new Color(235, 222, 240));
 		jtname.setColumns(10);
 		jtname.setText(cryp.getName());
 		jtname.setToolTipText("Introduce a crypto name");
@@ -94,6 +95,7 @@ public class Update extends JFrame {
 
 		jtvalue = new JTextField();
 		jtvalue.setBounds(207, 73, 96, 19);
+		jtvalue.setBackground(new Color(235, 222, 240));
 		jtvalue.setColumns(10);
 		jtvalue.setText(String.valueOf(cryp.getValue()));
 		jtvalue.setToolTipText("Introduce his value");
@@ -107,6 +109,7 @@ public class Update extends JFrame {
 
 		jtmarketCap = new JTextField();
 		jtmarketCap.setBounds(207, 96, 96, 19);
+		jtmarketCap.setBackground(new Color(235, 222, 240));
 		jtmarketCap.setColumns(10);
 		jtmarketCap.setText(String.valueOf(cryp.getMarketCap()));
 		jtmarketCap.setToolTipText("Introduce his market cap");
@@ -120,6 +123,7 @@ public class Update extends JFrame {
 
 		jtsupply = new JTextField();
 		jtsupply.setBounds(207, 119, 96, 19);
+		jtsupply.setBackground(new Color(235, 222, 240));
 		jtsupply.setText(String.valueOf(cryp.getSupply()));
 		jtsupply.setToolTipText("Introduce his supply");
 		add(jtsupply);
@@ -132,6 +136,7 @@ public class Update extends JFrame {
 
 		jtmonth = new JTextField();
 		jtmonth.setBounds(207, 119, 96, 19);
+		jtmonth.setBackground(new Color(235, 222, 240));
 		jtmonth.setColumns(10);
 		jtmonth.setText(String.valueOf(cryp.getMonth()));
 		jtmonth.setToolTipText("Introduce the month of creation");
@@ -145,6 +150,7 @@ public class Update extends JFrame {
 
 		jtdescription = new JTextField();
 		jtdescription.setBounds(207, 119, 96, 19);
+		jtdescription.setBackground(new Color(235, 222, 240));
 		jtdescription.setColumns(10);
 		jtdescription.setText(cryp.getDescription());
 		jtdescription.setToolTipText("Introduce the description");

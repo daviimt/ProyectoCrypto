@@ -85,6 +85,7 @@ public class Login extends JFrame {
 
 		jtusername = new JTextField();
 		jtusername.setBounds(118, 29, 96, 19);
+		jtusername.setBackground(new Color(235, 222, 240));
 		jtusername.setColumns(10);
 		jtusername.setToolTipText("Introduce your user");
 		jpanel2.add(jtusername);
@@ -97,6 +98,7 @@ public class Login extends JFrame {
 
 		jppassword = new JPasswordField();
 		jppassword.setBounds(118, 52, 96, 21);
+		jppassword.setBackground(new Color(235, 222, 240));
 		jppassword.setColumns(10);
 		jppassword.setToolTipText("Introduce your password");
 		jppassword.addActionListener(new Handler());
