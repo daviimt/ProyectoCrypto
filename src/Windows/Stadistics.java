@@ -34,13 +34,14 @@ import java.awt.Font;
 public class Stadistics extends JFrame {
 
 	/** The jlusername. */
-	JLabel jlusername;
+	private JLabel jlusername;
 
 	/** The jbback. */
-	JButton jbback;
+	private JButton jbback;
 
 	/** The mapa. */
-	Map<Integer, Integer> mapa = new HashMap<>();
+	private Map<Integer, Integer> mapa = new HashMap<>();
+	private JPanel panel2;
 
 	/**
 	 * Instantiates a new stadistics.
@@ -52,11 +53,17 @@ public class Stadistics extends JFrame {
 		super("Stadistics");
 		inicializate(Stadistics.this);
 
+		panel2 = new JPanel();
+		panel2.setBounds(0, 0, 586, 46);
+		panel2.setBackground(new Color(243, 189, 109));
+		getContentPane().add(panel2);
+
 		jlusername = new JLabel("Username: " + name);
 		jlusername.setBounds(0, 0, 586, 51);
+		jlusername.setBackground(new Color(243, 189, 109));
 		jlusername.setHorizontalAlignment(SwingConstants.CENTER);
 		jlusername.setFont(new Font("Poor Richard", Font.BOLD, 18));
-		add(jlusername);
+		panel2.add(jlusername);
 
 		XYSeries series = new XYSeries("Crypto's Number");
 		for (int i = 1; i <= 12; i++)
@@ -77,26 +84,25 @@ public class Stadistics extends JFrame {
 		JFreeChart chart1 = ChartFactory.createXYBarChart("Cryptos", "Time (Month)", false, "Amount (Unit)", dataset,
 				PlotOrientation.VERTICAL, false, false, false);
 
-		@SuppressWarnings("unused")
-		JFreeChart chart = ChartFactory.createXYLineChart("Cryptos", "Time (Month)", "Amount (Unit)", dataset,
-				PlotOrientation.VERTICAL, false, false, false);
-		chart1.setBackgroundPaint(Color.GRAY);
+		chart1.setBackgroundPaint(new Color(252, 228, 163));
 		chart1.setBorderPaint(Color.BLACK);
 		chart1.setBorderVisible(false);
 		chart1.setAntiAlias(false);
 
 		ChartPanel panel1 = new ChartPanel(chart1);
-		panel1.setBounds(0, 45, 586, 280);
-		add(panel1);
+		panel1.setBounds(0, 45, 586, 267);
+		panel1.setBackground(new Color(196, 172, 148));
+
+		getContentPane().add(panel1);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 324, 586, 39);
-		panel.setBackground(Color.GRAY);
-		add(panel);
+		panel.setBounds(0, 311, 586, 57);
+		panel.setBackground(new Color(196, 172, 148));
+		getContentPane().add(panel);
 
 		jbback = new JButton("");
 		jbback.setIcon(new ImageIcon("images/Back.png"));
-		jbback.setBackground(Color.GRAY);
+		jbback.setBackground(new Color(196, 172, 148));
 		jbback.setBorderPainted(false);
 		jbback.setToolTipText("Back");
 		jbback.setHorizontalAlignment(SwingConstants.CENTER);
@@ -123,14 +129,13 @@ public class Stadistics extends JFrame {
 	private void inicializate(JFrame jf) {
 
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jf.setBackground(Color.GRAY);
-		jf.setBounds(100, 100, 600, 400);
+		jf.setBackground(new Color(243, 189, 109));
+		jf.setBounds(100, 100, 600, 405);
 		jf.setMinimumSize(getSize());
 		jf.setResizable(false);
 		jf.setLocationRelativeTo(null);
-		jf.setLayout(null);
+		jf.getContentPane().setLayout(null);
 		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
 		jf.setIconImage(icon1);
 	}
-
 }

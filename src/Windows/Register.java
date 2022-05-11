@@ -31,25 +31,25 @@ public class Register extends JFrame {
 
 	/** The jlpassword 2. */
 	private JLabel jlusername, jlname, jldni, jlemail, jlpassword, jlpassword2;
-	
+
 	/** The jtemail. */
 	private JTextField jtusername, jtname, jtdni, jtemail;
-	
+
 	/** The jppassword 2. */
 	private JPasswordField jppassword, jppassword2;
-	
+
 	/** The jbcancel. */
 	private JButton jbconfirm, jbcancel;
-	
+
 	/** The icon. */
 	private Icon icon;
 
 	/** The sdni. */
 	private String sdni = "[0-9]{8}[A-Za-z]";
-	
+
 	/** The semail. */
 	private String semail = "^[A-Za-z0-9]+@[A-Za-z0-9]+.([A-Za-z0-9]+)$";
-	
+
 	/** The spassw. */
 	private String spassw = "[A-Za-z\\d$@$#_!%*?&]{6,15}$";
 
@@ -62,79 +62,86 @@ public class Register extends JFrame {
 	public Register() {
 
 		super("Register an user");
+		getContentPane().setBackground(new Color(102, 204, 153));
 		inicializate(Register.this);
 
 		jlusername = new JLabel("Username:");
+		jlusername.setBackground(new Color(252, 228, 163));
 		jlusername.setBounds(24, 30, 94, 13);
 		jlusername.setHorizontalAlignment(SwingConstants.CENTER);
 		jlusername.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
-		add(jlusername);
+		getContentPane().add(jlusername);
 
 		jtusername = new JTextField();
 		jtusername.setBounds(119, 27, 114, 19);
 		jtusername.setColumns(10);
 		jtusername.setToolTipText("Introduce your user");
-		add(jtusername);
+		getContentPane().add(jtusername);
 
 		jlname = new JLabel("Name: ");
+		jlname.setBackground(new Color(252, 228, 163));
 		jlname.setBounds(24, 53, 94, 13);
 		jlname.setHorizontalAlignment(SwingConstants.CENTER);
 		jlname.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
-		add(jlname);
+		getContentPane().add(jlname);
 
 		jtname = new JTextField();
 		jtname.setBounds(119, 50, 114, 19);
 		jtname.setColumns(10);
 		jtname.setToolTipText("Introduce your name");
-		add(jtname);
+		getContentPane().add(jtname);
 
 		jldni = new JLabel("D.N.I. : ");
+		jldni.setBackground(new Color(252, 228, 163));
 		jldni.setBounds(24, 122, 94, 13);
 		jldni.setHorizontalAlignment(SwingConstants.CENTER);
 		jldni.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
-		add(jldni);
+		getContentPane().add(jldni);
 
 		jtdni = new JTextField();
 		jtdni.setBounds(119, 119, 114, 19);
 		jtdni.setColumns(12);
 		jtdni.setToolTipText("Introduce your DNI");
-		add(jtdni);
+		getContentPane().add(jtdni);
 
 		jlemail = new JLabel("Email: ");
+		jlemail.setBackground(new Color(252, 228, 163));
 		jlemail.setBounds(24, 145, 94, 13);
 		jlemail.setHorizontalAlignment(SwingConstants.CENTER);
 		jlemail.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
-		add(jlemail);
+		getContentPane().add(jlemail);
 
 		jtemail = new JTextField();
 		jtemail.setBounds(119, 142, 114, 19);
 		jtemail.setColumns(13);
 		jtemail.setToolTipText("Introduce your email");
-		add(jtemail);
+		getContentPane().add(jtemail);
 
 		jlpassword = new JLabel("Password: ");
+		jlpassword.setBackground(new Color(252, 228, 163));
 		jlpassword.setBounds(24, 191, 94, 13);
 		jlpassword.setHorizontalAlignment(SwingConstants.CENTER);
 		jlpassword.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
-		add(jlpassword);
+		getContentPane().add(jlpassword);
 
 		jppassword = new JPasswordField();
 		jppassword.setBounds(119, 188, 114, 19);
 		jppassword.setColumns(10);
 		jppassword.setToolTipText("Introduce your password");
-		add(jppassword);
+		getContentPane().add(jppassword);
 
 		jlpassword2 = new JLabel("Repeat Pass.: ");
+		jlpassword2.setBackground(new Color(252, 228, 163));
 		jlpassword2.setBounds(24, 214, 94, 13);
 		jlpassword2.setHorizontalAlignment(SwingConstants.CENTER);
 		jlpassword2.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
-		add(jlpassword2);
+		getContentPane().add(jlpassword2);
 
 		jppassword2 = new JPasswordField();
 		jppassword2.setBounds(119, 211, 114, 19);
 		jppassword2.setColumns(10);
 		jppassword2.setToolTipText("Repeat your password");
-		add(jppassword2);
+		getContentPane().add(jppassword2);
 
 		jbconfirm = new JButton("");
 		jbconfirm.setIcon(new ImageIcon("images/BlackTick.png"));
@@ -209,7 +216,7 @@ public class Register extends JFrame {
 
 			}
 		});
-		add(jbconfirm);
+		getContentPane().add(jbconfirm);
 
 		jbcancel = new JButton("");
 		jbcancel.setBounds(342, 364, 85, 21);
@@ -226,7 +233,7 @@ public class Register extends JFrame {
 
 			}
 		});
-		add(jbcancel);
+		getContentPane().add(jbcancel);
 
 		setVisible(true);
 	}
@@ -239,12 +246,13 @@ public class Register extends JFrame {
 	private void inicializate(JFrame jf) {
 
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jf.setBackground(Color.GRAY);
+		jf.setBackground(new Color(252, 228, 163));
+		jf.getContentPane().setBackground(new Color(252, 228, 163));
 		jf.setSize(300, 285);
 		jf.setMinimumSize(getSize());
 		jf.setResizable(false);
 		jf.setLocationRelativeTo(null);
-		jf.setLayout(new GridLayout(7, 2));
+		jf.getContentPane().setLayout(new GridLayout(7, 2));
 		Image icon1 = Toolkit.getDefaultToolkit().getImage("images/CoinMarket.png");
 		jf.setIconImage(icon1);
 	}

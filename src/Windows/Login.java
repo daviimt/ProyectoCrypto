@@ -33,19 +33,19 @@ public class Login extends JFrame {
 
 	/** The jltitle. */
 	private JLabel jlusername, jlpassword, jltitle;
-	
+
 	/** The jbaccess. */
 	private JButton jbregister, jbaccess;
-	
+
 	/** The jtusername. */
 	private JTextField jtusername;
-	
+
 	/** The jppassword. */
 	private JPasswordField jppassword;
-	
+
 	/** The icon. */
 	private Icon icon;
-	
+
 	/** The jpanel 4. */
 	private JPanel jpanel1, jpanel2, jpanel3, jpanel4;
 
@@ -60,13 +60,13 @@ public class Login extends JFrame {
 		inicializate(Login.this);
 
 		jpanel1 = new JPanel();
-		jpanel1.setBackground(Color.LIGHT_GRAY);
+		jpanel1.setBackground(new Color(252, 228, 163));
 		jpanel2 = new JPanel();
-		jpanel2.setBackground(Color.LIGHT_GRAY);
+		jpanel2.setBackground(new Color(252, 228, 163));
 		jpanel3 = new JPanel();
-		jpanel3.setBackground(Color.LIGHT_GRAY);
+		jpanel3.setBackground(new Color(252, 228, 163));
 		jpanel4 = new JPanel();
-		jpanel4.setBackground(Color.LIGHT_GRAY);
+		jpanel4.setBackground(new Color(252, 228, 163));
 
 		jltitle = new JLabel("CoinMarket");
 		jltitle.setBounds(25, 32, 70, 21);
@@ -104,7 +104,7 @@ public class Login extends JFrame {
 
 		jbregister = new JButton("");
 		jbregister.setBounds(22, 93, 85, 21);
-		jbregister.setBackground(Color.LIGHT_GRAY);
+		jbregister.setBackground(new Color(252, 228, 163));
 		jbregister.setToolTipText("Register");
 		jbregister.setBorderPainted(false);
 		jbregister.setIcon(new ImageIcon("images/register.png"));
@@ -121,7 +121,7 @@ public class Login extends JFrame {
 
 		jbaccess = new JButton("");
 		jbaccess.setBounds(128, 93, 85, 21);
-		jbaccess.setBackground(Color.LIGHT_GRAY);
+		jbaccess.setBackground(new Color(252, 228, 163));
 		jbaccess.setToolTipText("Login");
 		jbaccess.setBorderPainted(false);
 		jbaccess.setIcon(new ImageIcon("images/login.png"));
@@ -143,7 +143,7 @@ public class Login extends JFrame {
 	private void inicializate(JFrame jf) {
 
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jf.setBackground(Color.GRAY);
+		jf.setBackground(new Color(252, 228, 163));
 		jf.setSize(300, 230);
 		jf.setMinimumSize(getSize());
 		jf.setResizable(false);

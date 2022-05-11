@@ -39,32 +39,32 @@ public class Update extends JFrame {
 
 	/** The jlmonth. */
 	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jldescription, jlimage, jlmonth;
-	
+
 	/** The jtmonth. */
 	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtdescription, jtmonth;
-	
+
 	/** The jbimage. */
 	private JButton jbnext, jbcancel, jbimage;
-	
+
 	/** The icon. */
 	private Icon icon;
-	
+
 	/** The cryp. */
 	static Crypto cryp;
-	
+
 	/** The os. */
 	ObjectOutputStream os;
-	
+
 	/** The file. */
 	File file = new File("files/Cryptos");
-	
+
 	/** The list C. */
 	static List<Crypto> listC;
 
 	/**
 	 * Instantiates a new update.
 	 *
-	 * @param name the name
+	 * @param name        the name
 	 * @param selectedRow the selected row
 	 */
 	public Update(String name, int selectedRow) {
@@ -158,7 +158,8 @@ public class Update extends JFrame {
 
 		jbimage = new JButton("");
 		jbimage.setIcon(new ImageIcon("images/Upload.png"));
-		jbimage.setBackground(Color.GRAY);
+		jbimage.setBackground(new Color(252, 228, 163));
+		jbimage.setBorderPainted(false);
 		jbimage.setToolTipText("Search");
 		jbimage.setBounds(101, 163, 85, 21);
 		InsertImg insertImg = new InsertImg();
@@ -279,6 +280,7 @@ public class Update extends JFrame {
 
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jf.setBackground(Color.LIGHT_GRAY);
+		jf.getContentPane().setBackground(new Color(252, 228, 163));
 		jf.setSize(350, 300);
 		jf.setMinimumSize(getSize());
 		jf.setLocationRelativeTo(null);

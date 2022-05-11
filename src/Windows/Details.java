@@ -52,7 +52,7 @@ public class Details extends JFrame {
 
 		panel1 = new JPanel();
 		panel1.setBounds(0, 0, 336, 189);
-		panel1.setBackground(Color.GRAY);
+		panel1.setBackground(new Color(252, 228, 163));
 		panel1.setLayout(new GridLayout(6, 2));
 
 		jlname = new JLabel("Name:");
@@ -111,7 +111,7 @@ public class Details extends JFrame {
 
 		jbdetails = new JButton("");
 		jbdetails.setIcon(new ImageIcon("images/info.png"));
-		jbdetails.setBackground(Color.GRAY);
+		jbdetails.setBackground(new Color(252, 228, 163));
 		jbdetails.setBorderPainted(false);
 		jbdetails.setToolTipText("More Info");
 		jbdetails.addActionListener(new ActionListener() {
@@ -153,7 +153,8 @@ public class Details extends JFrame {
 	private void inicializate(JFrame jf) {
 
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jf.setBackground(Color.GRAY);
+		jf.setBackground(new Color(252, 228, 163));
+		jf.getContentPane().setBackground(new Color(252, 228, 163));
 		jf.setSize(350, 280);
 		jf.setMinimumSize(getSize());
 		jf.setResizable(false);

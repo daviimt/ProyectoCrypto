@@ -113,6 +113,7 @@ public class MainWindow extends JFrame {
 				"Creator A-Z", "Creator Z-A" };
 
 		JPanel jpupper = new JPanel();
+		jpupper.setBackground(new Color(243, 189, 109));
 		jcbfilter = new JComboBox(filters);
 		jcbfilter.addItemListener(new ItemListener() {
 			@Override
@@ -169,11 +170,14 @@ public class MainWindow extends JFrame {
 		// JTable Prueba (con defaulttablemade)
 
 		table = new JTable();
-		table.setBackground(Color.LIGHT_GRAY);
+		table.setBackground(new Color(182, 147, 164));
+		table.setOpaque(true);
 		table.getTableHeader().setForeground(Color.WHITE);
 		table.getTableHeader().setBackground(new Color(32, 32, 32));
 
 		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setBackground(new Color(252, 228, 163));
+		scrollPane.getViewport().setBackground(new Color(252, 228, 163));
 		add(scrollPane, BorderLayout.CENTER);
 
 		listOrder = listC;
@@ -181,11 +185,12 @@ public class MainWindow extends JFrame {
 		// Termina el JTable
 
 		panel_1 = new JPanel();
-		panel_1.setBackground(Color.GRAY);
+		panel_1.setBackground(new Color(196, 172, 148));
+		panel_1.setOpaque(true);
 		add(panel_1, BorderLayout.SOUTH);
 
 		jbstatistics = new JButton("");
-		jbstatistics.setBackground(Color.GRAY);
+		jbstatistics.setBackground(new Color(196, 172, 148));
 		jbstatistics.setToolTipText("Statistics");
 		jbstatistics.setBorderPainted(false);
 		jbstatistics.setIcon(new ImageIcon("images/statistics.png"));
@@ -203,11 +208,11 @@ public class MainWindow extends JFrame {
 		panel_1.add(jbstatistics);
 
 		panel = new JPanel();
-		panel.setBackground(Color.GRAY);
+		panel.setBackground(new Color(196, 172, 148));
 		panel_1.add(panel);
 
 		jbinsert = new JButton("");
-		jbinsert.setBackground(Color.GRAY);
+		jbinsert.setBackground(new Color(196, 172, 148));
 		jbinsert.setToolTipText("Insert");
 		jbinsert.setBorderPainted(false);
 		jbinsert.setIcon(new ImageIcon("images/Insert.png"));
@@ -221,13 +226,13 @@ public class MainWindow extends JFrame {
 
 			}
 		});
+		panel.add(jbinsert);
 
 		jbdetails = new JButton("");
 		jbdetails.setIcon(new ImageIcon("images/details.png"));
 		jbdetails.setToolTipText("Details");
-		jbdetails.setBackground(Color.GRAY);
+		jbdetails.setBackground(new Color(196, 172, 148));
 		jbdetails.setBorderPainted(false);
-		panel.add(jbdetails);
 		jbdetails.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
@@ -247,10 +252,10 @@ public class MainWindow extends JFrame {
 
 			}
 		});
-		panel.add(jbinsert);
+		panel.add(jbdetails);
 
 		jbupdate = new JButton("");
-		jbupdate.setBackground(Color.GRAY);
+		jbupdate.setBackground(new Color(196, 172, 148));
 		jbupdate.setToolTipText("Update");
 		jbupdate.setBorderPainted(false);
 		jbupdate.setIcon(new ImageIcon("images/update.png"));
@@ -282,7 +287,7 @@ public class MainWindow extends JFrame {
 		panel.add(jbupdate);
 
 		jbdelete = new JButton("");
-		jbdelete.setBackground(Color.GRAY);
+		jbdelete.setBackground(new Color(196, 172, 148));
 		jbdelete.setToolTipText("Delete");
 		jbdelete.setBorderPainted(false);
 		jbdelete.setIcon(new ImageIcon("images/delete.png"));
@@ -350,7 +355,7 @@ public class MainWindow extends JFrame {
 		panel.add(jbdelete);
 
 		jbclose = new JButton("");
-		jbclose.setBackground(Color.GRAY);
+		jbclose.setBackground(new Color(196, 172, 148));
 		jbclose.setToolTipText("Log Out");
 		jbclose.setBorderPainted(false);
 		jbclose.setIcon(new ImageIcon("images/logout.png"));
@@ -377,7 +382,7 @@ public class MainWindow extends JFrame {
 	private void inicializate(JFrame jf) {
 
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jf.setBackground(Color.GRAY);
+		jf.setBackground(new Color(146, 104, 124));
 		jf.setBounds(100, 100, 600, 400);
 		jf.setMinimumSize(getSize());
 		jf.setLocationRelativeTo(null);
