@@ -47,37 +47,37 @@ public class MainWindow extends JFrame {
 
 	/** The table. */
 	private JTable table;
-	
-	/** The panel 1. */
+
+	/** The jPanels. */
 	private JPanel panel, panel_1;
-	
-	/** The jbdelete. */
+
+	/** The jButtons. */
 	private JButton jbdetails, jbinsert, jbupdate, jbclose, jbstatistics, jbdelete;
-	
+
 	/** The jluser. */
 	private JLabel jluser;
-	
+
 	/** The jcbfilter. */
 	private JComboBox<?> jcbfilter;
 
 	/** The is. */
 	private ObjectInputStream is;
-	
+
 	/** The os. */
 	private ObjectOutputStream os;
-	
+
 	/** The f. */
 	private File f = new File("files/Cryptos");
-	
+
 	/** The name colums. */
 	String[] nameColums = { "Name", "Value", "Market Cap", "Creator" };
-	
+
 	/** The list C. */
 	static List<Crypto> listC;
-	
+
 	/** The list order. */
 	static List<Crypto> listOrder;
-	
+
 	/** The icon. */
 	private Icon icon;
 

@@ -35,10 +35,10 @@ public class Stadistics extends JFrame {
 
 	/** The jlusername. */
 	JLabel jlusername;
-	
+
 	/** The jbback. */
 	JButton jbback;
-	
+
 	/** The mapa. */
 	Map<Integer, Integer> mapa = new HashMap<>();
 
@@ -55,7 +55,7 @@ public class Stadistics extends JFrame {
 		jlusername = new JLabel("Username: " + name);
 		jlusername.setBounds(0, 0, 586, 51);
 		jlusername.setHorizontalAlignment(SwingConstants.CENTER);
-		jlusername.setFont(new Font("Dialog", Font.BOLD, 15));
+		jlusername.setFont(new Font("Poor Richard", Font.BOLD, 18));
 		add(jlusername);
 
 		XYSeries series = new XYSeries("Crypto's Number");
