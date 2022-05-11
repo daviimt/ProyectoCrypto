@@ -30,119 +30,141 @@ import Entities.Crypto;
 import java.awt.Color;
 import java.awt.Font;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Insert.
+ */
 @SuppressWarnings("serial")
 public class Insert extends JFrame {
 
+	/** The jlmonth. */
 	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jldescription, jlimage, jlmonth;
+	
+	/** The jtmonth. */
 	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtdescription, jtmonth;
+	
+	/** The jbimage. */
 	private JButton jbnext, jbcancel, jbimage;
+	
+	/** The icon. */
 	private Icon icon;
 
+	/** The os. */
 	private ObjectOutputStream os;
+	
+	/** The is. */
 	private ObjectInputStream is;
+	
+	/** The f. */
 	private File f = new File("files/Cryptos");
 
+	/**
+	 * Instantiates a new insert.
+	 *
+	 * @param name the name
+	 */
 	public Insert(String name) {
 		super("Insert cryptocurrency");
 		inicializate(Insert.this);
 
 		jlname = new JLabel("Name:");
-		jlname.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
-		jlname.setHorizontalAlignment(SwingConstants.CENTER);
 		jlname.setBounds(123, 53, 45, 13);
+		jlname.setHorizontalAlignment(SwingConstants.CENTER);
+		jlname.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
 		add(jlname);
 
 		jtname = new JTextField();
 		jtname.setBounds(207, 50, 96, 19);
 		jtname.setColumns(10);
-		add(jtname);
 		jtname.setToolTipText("Introduce a crypto name");
+		add(jtname);
 
 		jlvalue = new JLabel("Value:");
-		jlvalue.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
-		jlvalue.setHorizontalAlignment(SwingConstants.CENTER);
 		jlvalue.setBounds(123, 76, 45, 13);
+		jlvalue.setHorizontalAlignment(SwingConstants.CENTER);
+		jlvalue.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
 		add(jlvalue);
 
 		jtvalue = new JTextField();
 		jtvalue.setBounds(207, 73, 96, 19);
 		jtvalue.setColumns(10);
-		add(jtvalue);
 		jtvalue.setToolTipText("Introduce his value");
+		add(jtvalue);
 
 		jlmarketCap = new JLabel("Market Cap:");
-		jlmarketCap.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
-		jlmarketCap.setHorizontalAlignment(SwingConstants.CENTER);
 		jlmarketCap.setBounds(93, 99, 75, 13);
+		jlmarketCap.setHorizontalAlignment(SwingConstants.CENTER);
+		jlmarketCap.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
 		add(jlmarketCap);
 
 		jtmarketCap = new JTextField();
-		add(jtmarketCap);
 		jtmarketCap.setBounds(207, 96, 96, 19);
 		jtmarketCap.setColumns(10);
 		jtmarketCap.setToolTipText("Introduce his market cap");
+		add(jtmarketCap);
 
 		jlsupply = new JLabel("Supply:");
-		jlsupply.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
-		jlsupply.setHorizontalAlignment(SwingConstants.CENTER);
 		jlsupply.setBounds(122, 122, 46, 13);
+		jlsupply.setHorizontalAlignment(SwingConstants.CENTER);
+		jlsupply.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
 		add(jlsupply);
 
 		jtsupply = new JTextField();
 		jtsupply.setBounds(207, 119, 96, 19);
 		jtsupply.setColumns(10);
-		add(jtsupply);
 		jtsupply.setToolTipText("Introduce his supply");
+		add(jtsupply);
 
 		jlmonth = new JLabel("Month:");
-		jlmonth.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
-		jlmonth.setHorizontalAlignment(SwingConstants.CENTER);
 		jlmonth.setBounds(122, 122, 46, 13);
+		jlmonth.setHorizontalAlignment(SwingConstants.CENTER);
+		jlmonth.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
 		add(jlmonth);
 
 		jtmonth = new JTextField();
 		jtmonth.setBounds(207, 119, 96, 19);
 		jtmonth.setColumns(10);
-		add(jtmonth);
 		jtsupply.setToolTipText("Introduce the month of creation");
+		add(jtmonth);
 
 		jldescription = new JLabel("Description:");
-		jldescription.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
-		jldescription.setHorizontalAlignment(SwingConstants.CENTER);
 		jldescription.setBounds(122, 122, 46, 13);
+		jldescription.setHorizontalAlignment(SwingConstants.CENTER);
+		jldescription.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
 		add(jldescription);
 
 		jtdescription = new JTextField();
 		jtdescription.setBounds(207, 119, 96, 19);
 		jtdescription.setColumns(10);
-		add(jtdescription);
 		jtdescription.setToolTipText("Introduce his description");
+		add(jtdescription);
 
 		jlimage = new JLabel("Image:");
-		jlimage.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
-		jlimage.setHorizontalAlignment(SwingConstants.CENTER);
 		jlimage.setBounds(122, 122, 46, 13);
+		jlimage.setHorizontalAlignment(SwingConstants.CENTER);
+		jlimage.setFont(new Font("Noto Sans Kannada", Font.PLAIN, 13));
 		add(jlimage);
 
-		// Buttons
-
 		jbimage = new JButton("");
-		jbimage.setIcon(new ImageIcon("images/Upload.png"));
+		jbimage.setBounds(101, 163, 85, 21);
 		jbimage.setBackground(Color.GRAY);
 		jbimage.setToolTipText("Search");
-		jbimage.setBounds(101, 163, 85, 21);
+		jbimage.setIcon(new ImageIcon("images/Upload.png"));
+		jbimage.addActionListener(new InsertImg());
 		add(jbimage);
-		InsertImg insertImg = new InsertImg();
-		jbimage.addActionListener(insertImg);
 
 		jbnext = new JButton("");
-		jbnext.setIcon(new ImageIcon("images/BlackTick.png"));
-		jbnext.setToolTipText("Confirm");
-		jbnext.setBackground(new Color(0, 153, 0));
 		jbnext.setBounds(101, 163, 85, 21);
-		add(jbnext);
+		jbnext.setBackground(new Color(0, 153, 0));
+		jbnext.setToolTipText("Confirm");
+		jbnext.setIcon(new ImageIcon("images/BlackTick.png"));
 		jbnext.addActionListener(new ActionListener() {
 
+			/**
+			 * Action performed.
+			 *
+			 * @param e the e
+			 */
 			@SuppressWarnings({ "unused" })
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -210,13 +232,13 @@ public class Insert extends JFrame {
 
 			}
 		});
+		add(jbnext);
 
 		jbcancel = new JButton("");
 		jbcancel.setIcon(new ImageIcon("images/Cross.png"));
 		jbcancel.setToolTipText("Cancel");
 		jbcancel.setBackground(new Color(153, 0, 0));
 		jbcancel.setBounds(218, 163, 85, 21);
-		add(jbcancel);
 		jbcancel.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
@@ -226,11 +248,17 @@ public class Insert extends JFrame {
 				dispose();
 			}
 		});
+		add(jbcancel);
 
 		setVisible(true);
 
 	}
 
+	/**
+	 * Inicializate.
+	 *
+	 * @param jf the jf
+	 */
 	private void inicializate(JFrame jf) {
 
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -244,6 +272,11 @@ public class Insert extends JFrame {
 		jf.setIconImage(icon1);
 	}
 
+	/**
+	 * Abrir.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void abrir() throws IOException {
 		File f = new File("files/Cryptos");
 		try {
@@ -255,12 +288,25 @@ public class Insert extends JFrame {
 		}
 	}
 
+	/**
+	 * Cerrar.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void cerrar() throws IOException {
 		os.close();
 	}
 
+	/**
+	 * The Class InsertImg.
+	 */
 	public class InsertImg implements ActionListener {
 
+		/**
+		 * Action performed.
+		 *
+		 * @param e the e
+		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (jtname.getText().equals("")) {

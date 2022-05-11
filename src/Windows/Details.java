@@ -19,15 +19,33 @@ import javax.swing.SwingConstants;
 
 import Entities.Crypto;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Details.
+ */
 @SuppressWarnings("serial")
 public class Details extends JFrame {
 
+	/** The jlmonth. */
 	private JLabel jlname, jlvalue, jlmarketCap, jlsupply, jldetails, jlmonth;
+
+	/** The jtmonth. */
 	private JTextField jtname, jtvalue, jtmarketCap, jtsupply, jtmonth;
+
+	/** The panel 1. */
 	private JPanel panel1;
+
+	/** The jbdetails. */
 	private JButton jbcancel, jbdetails;
+
+	/** The cryp. */
 	static Crypto cryp;
 
+	/**
+	 * Instantiates a new details.
+	 *
+	 * @param name the name
+	 */
 	public Details(String name) {
 		super("Details");
 		inicializate(Details.this);
@@ -63,8 +81,8 @@ public class Details extends JFrame {
 
 		jtmarketCap = new JTextField();
 		jtmarketCap.setText(String.valueOf(cryp.getMarketCap()));
-		jtmarketCap.setEditable(false);
 		jtmarketCap.setColumns(10);
+		jtmarketCap.setEditable(false);
 		panel1.add(jtmarketCap);
 
 		jlsupply = new JLabel("Supply:");
@@ -91,7 +109,6 @@ public class Details extends JFrame {
 		jldetails.setHorizontalAlignment(SwingConstants.CENTER);
 		panel1.add(jldetails);
 
-		// Buttons
 		jbdetails = new JButton("");
 		jbdetails.setIcon(new ImageIcon("images/info.png"));
 		jbdetails.setBackground(Color.GRAY);
@@ -128,6 +145,11 @@ public class Details extends JFrame {
 		setVisible(true);
 	}
 
+	/**
+	 * Inicializate.
+	 *
+	 * @param jf the jf
+	 */
 	private void inicializate(JFrame jf) {
 
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

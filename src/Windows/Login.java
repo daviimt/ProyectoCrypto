@@ -24,23 +24,40 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Login.
+ */
 @SuppressWarnings("serial")
 public class Login extends JFrame {
 
+	/** The jltitle. */
 	private JLabel jlusername, jlpassword, jltitle;
+	
+	/** The jbaccess. */
 	private JButton jbregister, jbaccess;
+	
+	/** The jtusername. */
 	private JTextField jtusername;
+	
+	/** The jppassword. */
 	private JPasswordField jppassword;
+	
+	/** The icon. */
 	private Icon icon;
+	
+	/** The jpanel 4. */
 	private JPanel jpanel1, jpanel2, jpanel3, jpanel4;
 
+	/** The fusers. */
 	private File fusers = new File("files/Users");
 
+	/**
+	 * Instantiates a new login.
+	 */
 	public Login() {
 		super("Login");
 		inicializate(Login.this);
-
-		Manejador handlerLogin = new Manejador();
 
 		jpanel1 = new JPanel();
 		jpanel1.setBackground(Color.LIGHT_GRAY);
@@ -52,18 +69,18 @@ public class Login extends JFrame {
 		jpanel4.setBackground(Color.LIGHT_GRAY);
 
 		jltitle = new JLabel("CoinMarket");
-		jltitle.setVerticalAlignment(SwingConstants.BOTTOM);
-		jltitle.setIcon(new ImageIcon("images/CoinMarket.png"));
-		jltitle.setForeground(new Color(138, 43, 226));
-		jltitle.setHorizontalAlignment(SwingConstants.CENTER);
-		jltitle.setFont(new Font("Microsoft Himalaya", Font.BOLD, 25));
 		jltitle.setBounds(25, 32, 70, 21);
+		jltitle.setVerticalAlignment(SwingConstants.BOTTOM);
+		jltitle.setHorizontalAlignment(SwingConstants.CENTER);
+		jltitle.setForeground(new Color(138, 43, 226));
+		jltitle.setIcon(new ImageIcon("images/CoinMarket.png"));
+		jltitle.setFont(new Font("Microsoft Himalaya", Font.BOLD, 25));
 		jpanel1.add(jltitle);
 
 		jlusername = new JLabel("Username:");
+		jlusername.setBounds(25, 32, 70, 21);
 		jlusername.setHorizontalAlignment(SwingConstants.CENTER);
 		jlusername.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
-		jlusername.setBounds(25, 32, 70, 21);
 		jpanel2.add(jlusername);
 
 		jtusername = new JTextField();
@@ -73,25 +90,24 @@ public class Login extends JFrame {
 		jpanel2.add(jtusername);
 
 		jlpassword = new JLabel("Password:");
+		jlpassword.setBounds(25, 58, 70, 21);
 		jlpassword.setHorizontalAlignment(SwingConstants.CENTER);
 		jlpassword.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
-		jlpassword.setBounds(25, 58, 70, 21);
 		jpanel3.add(jlpassword);
 
 		jppassword = new JPasswordField();
 		jppassword.setBounds(118, 52, 96, 21);
 		jppassword.setColumns(10);
 		jppassword.setToolTipText("Introduce your password");
-		jppassword.addActionListener(handlerLogin);
+		jppassword.addActionListener(new Handler());
 		jpanel3.add(jppassword);
 
 		jbregister = new JButton("");
-		jbregister.setIcon(new ImageIcon("images/register.png"));
-		jbregister.setBackground(Color.LIGHT_GRAY);
-		jbregister.setBorderPainted(false);
-		jbregister.setToolTipText("Register");
 		jbregister.setBounds(22, 93, 85, 21);
-		jpanel4.add(jbregister);
+		jbregister.setBackground(Color.LIGHT_GRAY);
+		jbregister.setToolTipText("Register");
+		jbregister.setBorderPainted(false);
+		jbregister.setIcon(new ImageIcon("images/register.png"));
 		jbregister.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
@@ -101,15 +117,16 @@ public class Login extends JFrame {
 				dispose();
 			}
 		});
+		jpanel4.add(jbregister);
 
 		jbaccess = new JButton("");
-		jbaccess.setIcon(new ImageIcon("images/login.png"));
-		jbaccess.setToolTipText("Login");
-		jbaccess.setBackground(Color.LIGHT_GRAY);
-		jbaccess.setBorderPainted(false);
 		jbaccess.setBounds(128, 93, 85, 21);
+		jbaccess.setBackground(Color.LIGHT_GRAY);
+		jbaccess.setToolTipText("Login");
+		jbaccess.setBorderPainted(false);
+		jbaccess.setIcon(new ImageIcon("images/login.png"));
+		jbaccess.addActionListener(new Handler());
 		jpanel4.add(jbaccess);
-		jbaccess.addActionListener(handlerLogin);
 
 		add(jpanel1);
 		add(jpanel2);
@@ -118,6 +135,11 @@ public class Login extends JFrame {
 		setVisible(true);
 	}
 
+	/**
+	 * Inicializate.
+	 *
+	 * @param jf the jf
+	 */
 	private void inicializate(JFrame jf) {
 
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -131,8 +153,16 @@ public class Login extends JFrame {
 		jf.setIconImage(icon1);
 	}
 
-	private class Manejador implements ActionListener {
+	/**
+	 * The Class Handler.
+	 */
+	private class Handler implements ActionListener {
 
+		/**
+		 * Action performed.
+		 *
+		 * @param e the e
+		 */
 		@SuppressWarnings({ "deprecation", "unused" })
 		@Override
 		public void actionPerformed(ActionEvent e) {

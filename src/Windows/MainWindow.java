@@ -38,23 +38,54 @@ import Entities.Crypto;
 import java.awt.Font;
 import java.awt.FlowLayout;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MainWindow.
+ */
 @SuppressWarnings("serial")
 public class MainWindow extends JFrame {
 
+	/** The table. */
 	private JTable table;
+	
+	/** The panel 1. */
 	private JPanel panel, panel_1;
+	
+	/** The jbdelete. */
 	private JButton jbdetails, jbinsert, jbupdate, jbclose, jbstatistics, jbdelete;
+	
+	/** The jluser. */
 	private JLabel jluser;
+	
+	/** The jcbfilter. */
 	private JComboBox<?> jcbfilter;
 
+	/** The is. */
 	private ObjectInputStream is;
+	
+	/** The os. */
 	private ObjectOutputStream os;
+	
+	/** The f. */
 	private File f = new File("files/Cryptos");
+	
+	/** The name colums. */
 	String[] nameColums = { "Name", "Value", "Market Cap", "Creator" };
+	
+	/** The list C. */
 	static List<Crypto> listC;
+	
+	/** The list order. */
 	static List<Crypto> listOrder;
+	
+	/** The icon. */
 	private Icon icon;
 
+	/**
+	 * Instantiates a new main window.
+	 *
+	 * @param name the name
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public MainWindow(String name) {
 		super("Menu");
@@ -74,9 +105,9 @@ public class MainWindow extends JFrame {
 		}
 
 		jluser = new JLabel("Username: " + name);
-		jluser.setFont(new Font("Poor Richard", Font.BOLD, 18));
 		jluser.setBackground(Color.GRAY);
 		jluser.setHorizontalAlignment(SwingConstants.CENTER);
+		jluser.setFont(new Font("Poor Richard", Font.BOLD, 18));
 
 		String[] filters = { "Default", "Name A-Z", "Name Z-A", "Value >", "Value <", "MarketCap >", "MarketCap <",
 				"Creator A-Z", "Creator Z-A" };
@@ -139,6 +170,9 @@ public class MainWindow extends JFrame {
 
 		table = new JTable();
 		table.setBackground(Color.LIGHT_GRAY);
+		table.getTableHeader().setForeground(Color.WHITE);
+		table.getTableHeader().setBackground(new Color(32, 32, 32));
+
 		JScrollPane scrollPane = new JScrollPane(table);
 		add(scrollPane, BorderLayout.CENTER);
 
@@ -151,10 +185,10 @@ public class MainWindow extends JFrame {
 		add(panel_1, BorderLayout.SOUTH);
 
 		jbstatistics = new JButton("");
-		jbstatistics.setIcon(new ImageIcon("images/statistics.png"));
-		jbstatistics.setToolTipText("Statistics");
 		jbstatistics.setBackground(Color.GRAY);
+		jbstatistics.setToolTipText("Statistics");
 		jbstatistics.setBorderPainted(false);
+		jbstatistics.setIcon(new ImageIcon("images/statistics.png"));
 		jbstatistics.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
@@ -173,10 +207,10 @@ public class MainWindow extends JFrame {
 		panel_1.add(panel);
 
 		jbinsert = new JButton("");
-		jbinsert.setIcon(new ImageIcon("images/Insert.png"));
-		jbinsert.setToolTipText("Insert");
 		jbinsert.setBackground(Color.GRAY);
+		jbinsert.setToolTipText("Insert");
 		jbinsert.setBorderPainted(false);
+		jbinsert.setIcon(new ImageIcon("images/Insert.png"));
 		jbinsert.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
@@ -216,11 +250,10 @@ public class MainWindow extends JFrame {
 		panel.add(jbinsert);
 
 		jbupdate = new JButton("");
-		jbupdate.setIcon(new ImageIcon("images/update.png"));
-		jbupdate.setToolTipText("Update");
 		jbupdate.setBackground(Color.GRAY);
+		jbupdate.setToolTipText("Update");
 		jbupdate.setBorderPainted(false);
-		panel.add(jbupdate);
+		jbupdate.setIcon(new ImageIcon("images/update.png"));
 		jbupdate.addActionListener(new ActionListener() {
 			@SuppressWarnings("unused")
 			@Override
@@ -246,13 +279,13 @@ public class MainWindow extends JFrame {
 				}
 			}
 		});
+		panel.add(jbupdate);
 
 		jbdelete = new JButton("");
-		jbdelete.setIcon(new ImageIcon("images/delete.png"));
-		jbdelete.setToolTipText("Delete");
 		jbdelete.setBackground(Color.GRAY);
+		jbdelete.setToolTipText("Delete");
 		jbdelete.setBorderPainted(false);
-		panel.add(jbdelete);
+		jbdelete.setIcon(new ImageIcon("images/delete.png"));
 		jbdelete.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
@@ -314,13 +347,13 @@ public class MainWindow extends JFrame {
 
 			}
 		});
+		panel.add(jbdelete);
 
 		jbclose = new JButton("");
-		jbclose.setIcon(new ImageIcon("images/logout.png"));
 		jbclose.setBackground(Color.GRAY);
-		jbclose.setBorderPainted(false);
 		jbclose.setToolTipText("Log Out");
-		panel.add(jbclose);
+		jbclose.setBorderPainted(false);
+		jbclose.setIcon(new ImageIcon("images/logout.png"));
 		jbclose.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
@@ -331,10 +364,16 @@ public class MainWindow extends JFrame {
 
 			}
 		});
+		panel.add(jbclose);
 
 		setVisible(true);
 	}
 
+	/**
+	 * Inicializate.
+	 *
+	 * @param jf the jf
+	 */
 	private void inicializate(JFrame jf) {
 
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -347,6 +386,9 @@ public class MainWindow extends JFrame {
 		jf.setIconImage(icon1);
 	}
 
+	/**
+	 * Creates the J table.
+	 */
 	public void createJTable() {
 		DefaultTableModel dtmCrypto = new DefaultTableModel() {
 			@Override
@@ -368,10 +410,20 @@ public class MainWindow extends JFrame {
 		table.setModel(dtmCrypto);
 	}
 
+	/**
+	 * Gets the list C.
+	 *
+	 * @return the list C
+	 */
 	public static List<Crypto> getListC() {
 		return listC;
 	}
 
+	/**
+	 * Sets the list C.
+	 *
+	 * @param listC the new list C
+	 */
 	public static void setListC(List<Crypto> listC) {
 		MainWindow.listC = listC;
 	}

@@ -22,104 +22,125 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.Font;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Register.
+ */
 @SuppressWarnings("serial")
 public class Register extends JFrame {
 
+	/** The jlpassword 2. */
 	private JLabel jlusername, jlname, jldni, jlemail, jlpassword, jlpassword2;
+	
+	/** The jtemail. */
 	private JTextField jtusername, jtname, jtdni, jtemail;
+	
+	/** The jppassword 2. */
 	private JPasswordField jppassword, jppassword2;
+	
+	/** The jbcancel. */
 	private JButton jbconfirm, jbcancel;
+	
+	/** The icon. */
 	private Icon icon;
 
+	/** The sdni. */
 	private String sdni = "[0-9]{8}[A-Za-z]";
+	
+	/** The semail. */
 	private String semail = "^[A-Za-z0-9]+@[A-Za-z0-9]+.([A-Za-z0-9]+)$";
+	
+	/** The spassw. */
 	private String spassw = "[A-Za-z\\d$@$#_!%*?&]{6,15}$";
 
+	/** The fusers. */
 	private File fusers = new File("files/Users");
 
+	/**
+	 * Instantiates a new register.
+	 */
 	public Register() {
 
 		super("Register an user");
 		inicializate(Register.this);
 
 		jlusername = new JLabel("Username:");
-		jlusername.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
-		jlusername.setHorizontalAlignment(SwingConstants.CENTER);
 		jlusername.setBounds(24, 30, 94, 13);
+		jlusername.setHorizontalAlignment(SwingConstants.CENTER);
+		jlusername.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
 		add(jlusername);
 
 		jtusername = new JTextField();
 		jtusername.setBounds(119, 27, 114, 19);
-		add(jtusername);
 		jtusername.setColumns(10);
 		jtusername.setToolTipText("Introduce your user");
+		add(jtusername);
 
 		jlname = new JLabel("Name: ");
-		jlname.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
-		jlname.setHorizontalAlignment(SwingConstants.CENTER);
 		jlname.setBounds(24, 53, 94, 13);
+		jlname.setHorizontalAlignment(SwingConstants.CENTER);
+		jlname.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
 		add(jlname);
 
 		jtname = new JTextField();
 		jtname.setBounds(119, 50, 114, 19);
-		add(jtname);
 		jtname.setColumns(10);
 		jtname.setToolTipText("Introduce your name");
+		add(jtname);
 
 		jldni = new JLabel("D.N.I. : ");
-		jldni.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
-		jldni.setHorizontalAlignment(SwingConstants.CENTER);
 		jldni.setBounds(24, 122, 94, 13);
+		jldni.setHorizontalAlignment(SwingConstants.CENTER);
+		jldni.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
 		add(jldni);
 
 		jtdni = new JTextField();
 		jtdni.setBounds(119, 119, 114, 19);
-		add(jtdni);
 		jtdni.setColumns(12);
 		jtdni.setToolTipText("Introduce your DNI");
+		add(jtdni);
 
 		jlemail = new JLabel("Email: ");
-		jlemail.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
-		jlemail.setHorizontalAlignment(SwingConstants.CENTER);
 		jlemail.setBounds(24, 145, 94, 13);
+		jlemail.setHorizontalAlignment(SwingConstants.CENTER);
+		jlemail.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
 		add(jlemail);
 
 		jtemail = new JTextField();
 		jtemail.setBounds(119, 142, 114, 19);
-		add(jtemail);
 		jtemail.setColumns(13);
 		jtemail.setToolTipText("Introduce your email");
+		add(jtemail);
 
 		jlpassword = new JLabel("Password: ");
-		jlpassword.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
-		jlpassword.setHorizontalAlignment(SwingConstants.CENTER);
 		jlpassword.setBounds(24, 191, 94, 13);
+		jlpassword.setHorizontalAlignment(SwingConstants.CENTER);
+		jlpassword.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
 		add(jlpassword);
 
 		jppassword = new JPasswordField();
 		jppassword.setBounds(119, 188, 114, 19);
 		jppassword.setColumns(10);
-		getContentPane().add(jppassword);
 		jppassword.setToolTipText("Introduce your password");
+		add(jppassword);
 
 		jlpassword2 = new JLabel("Repeat Pass.: ");
-		jlpassword2.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
-		jlpassword2.setHorizontalAlignment(SwingConstants.CENTER);
 		jlpassword2.setBounds(24, 214, 94, 13);
+		jlpassword2.setHorizontalAlignment(SwingConstants.CENTER);
+		jlpassword2.setFont(new Font("Noto Serif Myanmar", Font.PLAIN, 13));
 		add(jlpassword2);
 
 		jppassword2 = new JPasswordField();
 		jppassword2.setBounds(119, 211, 114, 19);
 		jppassword2.setColumns(10);
-		add(jppassword2);
 		jppassword2.setToolTipText("Repeat your password");
+		add(jppassword2);
 
 		jbconfirm = new JButton("");
 		jbconfirm.setIcon(new ImageIcon("images/BlackTick.png"));
 		jbconfirm.setToolTipText("Confirm");
 		jbconfirm.setBackground(new Color(0, 153, 0));
 		jbconfirm.setBounds(150, 364, 85, 21);
-		add(jbconfirm);
 		jbconfirm.addActionListener(new ActionListener() {
 
 			@SuppressWarnings({ "unused", "deprecation" })
@@ -188,13 +209,13 @@ public class Register extends JFrame {
 
 			}
 		});
+		add(jbconfirm);
 
 		jbcancel = new JButton("");
-		jbcancel.setIcon(new ImageIcon("images/Cross.png"));
-		jbcancel.setToolTipText("Cancel");
-		jbcancel.setBackground(new Color(153, 0, 0));
 		jbcancel.setBounds(342, 364, 85, 21);
-		add(jbcancel);
+		jbcancel.setBackground(new Color(153, 0, 0));
+		jbcancel.setToolTipText("Cancel");
+		jbcancel.setIcon(new ImageIcon("images/Cross.png"));
 		jbcancel.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unused")
@@ -205,10 +226,16 @@ public class Register extends JFrame {
 
 			}
 		});
+		add(jbcancel);
 
 		setVisible(true);
 	}
 
+	/**
+	 * Inicializate.
+	 *
+	 * @param jf the jf
+	 */
 	private void inicializate(JFrame jf) {
 
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
