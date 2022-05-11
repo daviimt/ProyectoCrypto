@@ -20,17 +20,24 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
+import javax.swing.plaf.basic.BasicComboBoxUI;
+import javax.swing.plaf.basic.BasicComboPopup;
+import javax.swing.plaf.basic.BasicScrollBarUI;
+import javax.swing.plaf.basic.ComboPopup;
 import javax.swing.table.DefaultTableModel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 
@@ -58,7 +65,7 @@ public class MainWindow extends JFrame {
 	private JLabel jluser;
 
 	/** The jcbfilter. */
-	private JComboBox<?> jcbfilter;
+	private JComboBox<Object> jcbfilter;
 
 	/** The is. */
 	private ObjectInputStream is;
@@ -117,6 +124,54 @@ public class MainWindow extends JFrame {
 		jcbfilter = new JComboBox(filters);
 		jcbfilter.setBackground(new Color(196, 172, 148));
 		jcbfilter.setToolTipText("Filters");
+		jcbfilter.setUI(new BasicComboBoxUI() {
+            @Override
+            protected ComboPopup createPopup() {
+                return new BasicComboPopup(comboBox) {
+                    @Override
+                    protected JScrollPane createScroller() {
+                        JScrollPane scroller = new JScrollPane(list, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+                                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+                        scroller.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+                            @Override
+                            protected JButton createDecreaseButton(int orientation) {
+                                return createZeroButton();
+                            }
+
+                            @Override
+                            protected JButton createIncreaseButton(int orientation) {
+                                return createZeroButton();
+                            }
+
+                            @Override
+                            public Dimension getPreferredSize(JComponent c) {
+                                return new Dimension(10, super.getPreferredSize(c).height);
+                            }
+
+                            private JButton createZeroButton() {
+                                return new JButton() {
+                                    @Override
+                                    public Dimension getMinimumSize() {
+                                        return new Dimension(new Dimension(0, 0));
+                                    }
+
+                                    @Override
+                                    public Dimension getPreferredSize() {
+                                        return new Dimension(new Dimension(0, 0));
+                                    }
+
+                                    @Override
+                                    public Dimension getMaximumSize() {
+                                        return new Dimension(new Dimension(0, 0));
+                                    }
+                                };
+                            }
+                        });
+                        return scroller;
+                    }
+                };
+            }
+        });
 		jcbfilter.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent evento) {
@@ -164,7 +219,7 @@ public class MainWindow extends JFrame {
 				}
 			}
 		});
-
+		
 		jpupper.add(jluser);
 		jpupper.add(jcbfilter);
 		add(jpupper, BorderLayout.NORTH);
@@ -176,7 +231,8 @@ public class MainWindow extends JFrame {
 		table.setOpaque(true);
 		table.getTableHeader().setForeground(Color.WHITE);
 		table.getTableHeader().setBackground(new Color(32, 32, 32));
-
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBackground(new Color(252, 228, 163));
 		scrollPane.getViewport().setBackground(new Color(252, 228, 163));

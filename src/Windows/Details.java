@@ -7,7 +7,6 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -118,7 +117,8 @@ public class Details extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Icon icon = new ImageIcon("images/" + jtname.getText() + ".png");
+				ImageIcon icon = new ImageIcon("images/" + jtname.getText() + ".png");
+				icon.getImage().flush();
 				JOptionPane.showMessageDialog(Details.this, cryp.getDescription(), "Details",
 						JOptionPane.WARNING_MESSAGE, icon);
 			}

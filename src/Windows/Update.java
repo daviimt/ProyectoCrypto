@@ -336,6 +336,9 @@ public class Update extends JFrame {
 
 					fileChooser.showSaveDialog(null);
 
+					File deleteIcon = new File("images/" + jtname.getText() + ".png");
+					deleteIcon.delete();
+
 					File imagenes = new File("images/" + jtname.getText() + ".png");
 
 					Path sourcer = fileChooser.getSelectedFile().getAbsoluteFile().toPath();
@@ -343,12 +346,14 @@ public class Update extends JFrame {
 
 					try {
 						Files.copy(sourcer, destination);
+
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
 				}
 
 			} catch (NullPointerException NPE) {
+				icon = new ImageIcon("images/warning.png");
 				JOptionPane.showMessageDialog(null, "You haven't choose any image", "Information",
 						JOptionPane.INFORMATION_MESSAGE, icon);
 			}
